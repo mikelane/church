@@ -2,13 +2,12 @@
 
 # The Church of Clean Code
 
-**86 purist agents. 16 crusades. Zero tolerance.**
+**147 purist agents. 26 crusades. Zero tolerance.**
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Plugin v2.0.0](https://img.shields.io/badge/plugin-v2.0.0-brightgreen.svg)](https://github.com/btachinardi/church)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-v1.0.33%2B-blueviolet.svg)](https://docs.anthropic.com/en/docs/claude-code)
-[![86 Agents](https://img.shields.io/badge/agents-86-orange.svg)](#purist-agents)
-[![16 Crusades](https://img.shields.io/badge/crusades-16-red.svg)](#crusade-commands)
+[![147 Agents](https://img.shields.io/badge/agents-147-orange.svg)](#purist-agents)
+[![26 Crusades](https://img.shields.io/badge/crusades-26-red.svg)](#crusade-commands)
 [![Website](https://img.shields.io/badge/website-church.btas.dev-black.svg)](https://church.btas.dev)
 
 A Claude Code plugin that deploys specialized AI agents in parallel to enforce code quality across your entire codebase.
@@ -21,10 +20,10 @@ A Claude Code plugin that deploys specialized AI agents in parallel to enforce c
 
 ```bash
 # 1. Add the marketplace
-/plugin marketplace add btachinardi/church
+/plugin marketplace add mikelane/church
 
 # 2. Install the plugin
-/plugin install church@btachinardi-church
+/plugin install church@mikelane-church
 
 # 3. Launch a crusade
 /church:type-crusade
@@ -37,8 +36,8 @@ A Claude Code plugin that deploys specialized AI agents in parallel to enforce c
 ## Features
 
 - **Parallel Enforcement** — Crusades deploy multiple specialist agents simultaneously in a single message, scanning your codebase at scale
-- **Two-Tier Agent System** — 16 generic purists for direct invocation + 70 specialists for crusade deployment
-- **16 Crusade Commands** — One `/church:*-crusade` command per domain, each orchestrating 4-6 specialist agents
+- **Two-Tier Agent System** — 26 generic purists for direct invocation + 121 specialists for crusade deployment
+- **26 Crusade Commands** — One `/church:*-crusade` command per domain, each orchestrating 4-6 specialist agents
 - **Actionable Fixes** — Every finding includes exact file locations and remediation steps
 - **Zero Configuration** — Install and run. No config files, no setup, no dependencies
 
@@ -66,8 +65,18 @@ Invoke any generic purist directly by mentioning its trigger phrases in conversa
 | `adaptive-purist` | Foldable support, touch targets, focus management, DPI, state preservation |
 | `python-purist` | Type hints, PEP 8, complexity limits, pytest quality, security hardening |
 | `rust-purist` | Ownership discipline, error propagation, unsafe justification, type ergonomics, async correctness |
+| `kotlin-purist` | Null safety, coroutine discipline, idiomatic patterns, type design, functional style |
+| `compose-purist` | Composable architecture, state management, effects, performance, modifier chains |
+| `swift-purist` | Swift 6 concurrency, type safety, memory management, error handling, API design |
+| `swiftui-purist` | Declarative architecture, view composition, state, performance, navigation |
+| `go-purist` | Error handling, interface design, goroutine discipline, naming conventions, package structure |
+| `docker-purist` | Layer efficiency, security hardening, image size, signal handling, compose hygiene |
+| `sql-purist` | Query patterns, index design, schema types, migration safety, injection prevention (PostgreSQL) |
+| `android-purist` | Lifecycle correctness, ViewModel patterns, Room, Hilt injection, background work |
+| `cdk-purist` | Construct hierarchy, stack design, IAM least privilege, config management, CDK testing |
+| `bash-purist` | Safety flags, quoting discipline, portability, temp file hygiene, injection prevention |
 
-Each generic purist covers its full domain. During crusades, **70 specialist agents** (4-6 per domain) handle narrower concerns for deeper analysis.
+Each generic purist covers its full domain. During crusades, **121 specialist agents** (4-6 per domain) handle narrower concerns for deeper analysis.
 
 ---
 
@@ -93,6 +102,16 @@ Each crusade performs reconnaissance, forms squads, deploys specialists in paral
 | `/church:adaptive-crusade` | 5 | Foldable seams, state preservation, focus management, DPI/resolution, touch targets |
 | `/church:python-crusade` | 5 | Type hints, style, complexity, test quality, security hardening |
 | `/church:rust-crusade` | 5 | Ownership, error propagation, unsafe blocks, type ergonomics, async correctness |
+| `/church:kotlin-crusade` | 5 | Null safety, coroutines, idiomatic patterns, type design, functional discipline |
+| `/church:compose-crusade` | 5 | Architecture, state management, effects, performance, modifiers |
+| `/church:swift-crusade` | 5 | Concurrency, type safety, memory management, error handling, API design |
+| `/church:swiftui-crusade` | 5 | Architecture, view composition, state, performance, navigation |
+| `/church:go-crusade` | 5 | Error handling, interfaces, goroutines, naming, package structure |
+| `/church:docker-crusade` | 5 | Layer ordering, security, image size, config, compose hygiene |
+| `/church:sql-crusade` | 5 | Queries, indexes, schema types, migrations, injection prevention |
+| `/church:android-crusade` | 5 | Lifecycle, ViewModel, Room, Hilt injection, background work |
+| `/church:cdk-crusade` | 5 | Constructs, stacks, IAM security, config management, testing |
+| `/church:bash-crusade` | 5 | Safety flags, quoting, portability, temp files, injection prevention |
 
 ---
 
@@ -137,13 +156,13 @@ You can also invoke purist agents directly in conversation:
 
 ```bash
 # User scope — yourself, across all projects (default)
-/plugin install church@btachinardi-church --scope user
+/plugin install church@mikelane-church --scope user
 
 # Project scope — all collaborators on this repo
-/plugin install church@btachinardi-church --scope project
+/plugin install church@mikelane-church --scope project
 
 # Local scope — yourself, in this repo only
-/plugin install church@btachinardi-church --scope local
+/plugin install church@mikelane-church --scope local
 ```
 
 ---
@@ -167,7 +186,7 @@ npm run build
 
 The marketing website at **[church.btas.dev](https://church.btas.dev)** includes dedicated landing pages for each crusade at `/crusade/{slug}`:
 
-`type` · `arch` · `test` · `react` · `git` · `dead` · `naming` · `size` · `secret` · `dep` · `observability` · `a11y` · `copy` · `adaptive` · `python` · `rust`
+`type` · `arch` · `test` · `react` · `git` · `dead` · `naming` · `size` · `secret` · `dep` · `observability` · `a11y` · `copy` · `adaptive` · `python` · `rust` · `kotlin` · `compose` · `swift` · `swiftui` · `go` · `docker` · `sql` · `android` · `cdk` · `bash`
 
 ---
 
