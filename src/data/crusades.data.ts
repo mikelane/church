@@ -195,4 +195,15 @@ export const crusades: readonly Crusade[] = [
       "This view fetches data, manages state, AND renders UI? That's not a view — that's a MONOLITH wearing a struct declaration.",
     color: 'from-lime-500 to-emerald-700',
   },
+  {
+    name: 'The CDK Crusade',
+    slug: 'cdk',
+    command: '/cdk-crusade',
+    icon: '☁️',
+    tagline:
+      'No hardcoded ARNs. No * IAM policies. No environment-coupled stacks. Infrastructure is code — treat it like code.',
+    quote:
+      '`iam.PolicyStatement.fromJson({ Action: "*", Resource: "*" })`. You have granted everything to everything. The blast radius is the entire AWS account. This is not infrastructure as code. This is infrastructure as prayer.',
+    color: 'from-orange-500 to-yellow-700',
+  },
 ] as const;
