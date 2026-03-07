@@ -195,4 +195,15 @@ export const crusades: readonly Crusade[] = [
       "This view fetches data, manages state, AND renders UI? That's not a view — that's a MONOLITH wearing a struct declaration.",
     color: 'from-lime-500 to-emerald-700',
   },
+  {
+    name: 'The Bash Crusade',
+    slug: 'bash',
+    command: '/bash-crusade',
+    icon: '🐚',
+    tagline:
+      'Every unquoted variable is a time bomb. Every missing set -e is a silent catastrophe. The shell is not forgiving.',
+    quote:
+      'Line 47. `rm -rf $TMPDIR/$USER`. `$TMPDIR` was empty. You ran `rm -rf /`. The shell did not ask for confirmation. The shell does not have feelings. You have been warned.',
+    color: 'from-zinc-600 to-slate-900',
+  },
 ] as const;
