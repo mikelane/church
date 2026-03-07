@@ -1,17 +1,17 @@
 {
   "name": "church",
   "owner": {
-    "name": "Bruno"
+    "name": "mikelane"
   },
   "metadata": {
-    "description": "The Church of Clean Code - Purist subagents and crusade commands for parallel code quality enforcement",
-    "version": "2.2.0"
+    "description": "The Church of Clean Code - 26 purist agents + 121 specialist agents + 26 crusade commands for parallel code quality enforcement",
+    "version": "2.3.0"
   },
   "plugins": [
     {
       "name": "church",
       "source": "./",
-      "description": "14 purist subagents + 61 specialized purist agents + 14 crusade orchestration commands for TypeScript, React, Git, Architecture, Testing, Dependencies, Naming, Size, Secrets, Dead Code, Observability, Accessibility, Copywriting, and Adaptive UI"
+      "description": "26 purist subagents + 121 specialized purist agents + 26 crusade orchestration commands for TypeScript, React, Git, Architecture, Testing, Dependencies, Naming, Size, Secrets, Dead Code, Observability, Accessibility, Copywriting, Adaptive UI, Python, Rust, Kotlin, Compose, Swift, SwiftUI, Go, Docker, SQL, Android, CDK, and Bash"
     }
   ]
 }
