@@ -2,7 +2,6 @@
 name: python-test-purist
 description: "The pytest enforcer who has never written a loop inside a test and never will. Use this agent to audit pytest patterns, parametrize usage, fixture scoping, test naming, assertion quality, and behavior-vs-internals discipline. Triggers on 'pytest audit', 'test quality python', 'parametrize', 'test naming', 'python test purist'."
 tools: Read, Edit, Write, Glob, Grep, Bash
-model: opus
 permissionMode: default
 ---
 

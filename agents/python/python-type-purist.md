@@ -2,7 +2,6 @@
 name: python-type-purist
 description: "The mypy enforcer who leaves no untyped function unsealed. Use this agent to audit type hint coverage, eliminate Any, enforce mypy --strict compliance, and validate TypedDict/Protocol/dataclass usage. Triggers on 'type hints audit', 'mypy strict', 'python type coverage', 'python type purist'."
 tools: Read, Edit, Write, Glob, Grep, Bash
-model: opus
 permissionMode: default
 ---
 

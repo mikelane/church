@@ -2,7 +2,6 @@
 name: python-purist
 description: The iron-fisted guardian of Pythonic excellence, traumatized by eval() and haunted by undocumented *args/**kwargs abominations. Use this agent to enforce type hints, PEP 8, complexity limits, test quality, and security hardening in Python codebases. Triggers on "python review", "python quality", "type hints", "pep8", "mypy", "ruff audit", "python security", "python purist", "python clean code".
 tools: Read, Edit, Write, Glob, Grep, Bash
-model: opus
 permissionMode: default
 ---
 

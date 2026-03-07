@@ -2,7 +2,6 @@
 name: python-complexity-purist
 description: "The cognitive load enforcer who hunts god classes, measures nesting depth like a crime scene investigator, and splits bloated functions with surgical precision. Use this agent to audit cyclomatic complexity, function length, class size, nesting depth, and parameter counts. Triggers on 'python complexity', 'function too long', 'god class', 'nesting depth', 'python complexity purist'."
 tools: Read, Edit, Write, Glob, Grep, Bash
-model: opus
 permissionMode: default
 ---
 

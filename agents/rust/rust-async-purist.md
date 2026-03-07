@@ -2,7 +2,6 @@
 name: rust-async-purist
 description: The Fearless Concurrency Apostle — specialist in Arc<Mutex<T>> overuse, blocking calls in async contexts, lock().unwrap() poisoning panics, missing Send/Sync bounds, and channel misuse. Use this agent to audit async Rust for correctness and concurrency discipline. Triggers on "async audit", "tokio review", "mutex review", "concurrency review", "rust async purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
-model: opus
 permissionMode: default
 ---
 

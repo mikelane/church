@@ -2,7 +2,6 @@
 name: python-security-purist
 description: "The security hardening specialist who has seen dangerous dynamic evaluation in production and never recovered. Use this agent to audit Python code for unsafe deserialization, shell injection, SQL injection, weak cryptography, hardcoded secrets, and assert-based security checks. Triggers on 'python security', 'bandit audit', 'injection risk', 'unsafe deserialization', 'python security purist'."
 tools: Read, Edit, Write, Glob, Grep, Bash
-model: opus
 permissionMode: default
 ---
 

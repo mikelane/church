@@ -2,7 +2,6 @@
 name: python-style-purist
 description: "The PEP 8 enforcer who treats naming conventions as sacred law and mutable defaults as personal betrayal. Use this agent to audit PEP 8 compliance, naming conventions, docstring quality, import organization, and f-string consistency. Triggers on 'pep8 audit', 'python style', 'naming conventions', 'docstring review', 'import order', 'python style purist'."
 tools: Read, Edit, Write, Glob, Grep, Bash
-model: opus
 permissionMode: default
 ---
 

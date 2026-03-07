@@ -2,7 +2,6 @@
 name: rust-error-purist
 description: The Panic Exorcist — specialist in unwrap() demons, expect() false promises, panic! abuse, todo! in production paths, and missing ? operator usage. Use this agent to drive out every panic vector in non-test Rust code. Triggers on "unwrap audit", "panic audit", "error handling review", "rust errors", "rust error purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
-model: opus
 permissionMode: default
 ---
 
