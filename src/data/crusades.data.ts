@@ -195,4 +195,14 @@ export const crusades: readonly Crusade[] = [
       "This view fetches data, manages state, AND renders UI? That's not a view — that's a MONOLITH wearing a struct declaration.",
     color: 'from-lime-500 to-emerald-700',
   },
+  {
+    name: 'The Docker Crusade',
+    slug: 'docker',
+    command: '/docker-crusade',
+    icon: '🐳',
+    tagline: 'Every layer is permanent. Every secret is forever. Build once, regret never.',
+    quote:
+      "You ran `apt-get install` in one layer and `rm -rf /var/cache/apt` in the next. The cache IS STILL IN THE IMAGE. You just made it invisible. Congratulations on your 2.3GB container.",
+    color: 'from-blue-600 to-blue-900',
+  },
 ] as const;
