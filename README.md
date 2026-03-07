@@ -1,5 +1,20 @@
 <div align="center">
 
+> ## ⚠️ YOU ARE IN THE WRONG PLACE ⚠️
+>
+> **This is a personal fork of [btachinardi/church](https://github.com/btachinardi/church).**
+>
+> Go install [btachinardi's version](https://github.com/btachinardi/church). Go star it. Go use it.
+> The maintainer is building a proper v3 with a monorepo structure and first-class language support
+> that will be far better than this repo. Support him, not me.
+>
+> I got tired of waiting and added what I wanted. That's all this is.
+> When btachinardi ships v3, this fork becomes obsolete and I will happily delete it.
+>
+> **Seriously. [btachinardi/church](https://github.com/btachinardi/church). Go there. ⭐ Star it. Use it.**
+
+---
+
 # The Church of Clean Code
 
 **147 purist agents. 26 crusades. Zero tolerance.**
