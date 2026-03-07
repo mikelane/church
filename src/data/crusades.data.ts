@@ -195,4 +195,15 @@ export const crusades: readonly Crusade[] = [
       "This view fetches data, manages state, AND renders UI? That's not a view — that's a MONOLITH wearing a struct declaration.",
     color: 'from-lime-500 to-emerald-700',
   },
+  {
+    name: 'The SQL Crusade',
+    slug: 'sql',
+    command: '/sql-crusade',
+    icon: '🗄️',
+    tagline:
+      'No SELECT *. No N+1. No VARCHAR(255) when TEXT exists. The query planner sees your shame.',
+    quote:
+      "SELECT * FROM users. You fetched 47 columns. You needed 3. The query planner wept. The network groaned. The junior dev asked why the API is slow and you said \"we're working on it.\"",
+    color: 'from-slate-600 to-blue-900',
+  },
 ] as const;
