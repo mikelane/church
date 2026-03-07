@@ -195,4 +195,15 @@ export const crusades: readonly Crusade[] = [
       "This view fetches data, manages state, AND renders UI? That's not a view — that's a MONOLITH wearing a struct declaration.",
     color: 'from-lime-500 to-emerald-700',
   },
+  {
+    name: 'The Go Crusade',
+    slug: 'go',
+    command: '/go-crusade',
+    icon: '🐹',
+    tagline:
+      'No goroutine leaks. No naked errors. No interface bloat. The compiler is just the beginning.',
+    quote:
+      '`err != nil` on line 47. You checked the error. But you returned nil anyway. The goroutine is still running. The file is still open. Congratulations — you have created a POLTERGEIST.',
+    color: 'from-cyan-700 to-teal-900',
+  },
 ] as const;
