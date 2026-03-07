@@ -195,4 +195,69 @@ export const crusades: readonly Crusade[] = [
       "This view fetches data, manages state, AND renders UI? That's not a view — that's a MONOLITH wearing a struct declaration.",
     color: 'from-lime-500 to-emerald-700',
   },
+  {
+    name: 'The Go Crusade',
+    slug: 'go',
+    command: '/go-crusade',
+    icon: '🐹',
+    tagline:
+      'No goroutine leaks. No naked errors. No interface bloat. The compiler is just the beginning.',
+    quote:
+      '`err != nil` on line 47. You checked the error. But you returned nil anyway. The goroutine is still running. The file is still open. Congratulations — you have created a POLTERGEIST.',
+    color: 'from-cyan-700 to-teal-900',
+  },
+  {
+    name: 'The Docker Crusade',
+    slug: 'docker',
+    command: '/docker-crusade',
+    icon: '🐳',
+    tagline: 'Every layer is permanent. Every secret is forever. Build once, regret never.',
+    quote:
+      "You ran `apt-get install` in one layer and `rm -rf /var/cache/apt` in the next. The cache IS STILL IN THE IMAGE. You just made it invisible. Congratulations on your 2.3GB container.",
+    color: 'from-blue-600 to-blue-900',
+  },
+  {
+    name: 'The SQL Crusade',
+    slug: 'sql',
+    command: '/sql-crusade',
+    icon: '🗄️',
+    tagline:
+      'No SELECT *. No N+1. No VARCHAR(255) when TEXT exists. The query planner sees your shame.',
+    quote:
+      "SELECT * FROM users. You fetched 47 columns. You needed 3. The query planner wept. The network groaned. The junior dev asked why the API is slow and you said \"we're working on it.\"",
+    color: 'from-slate-600 to-blue-900',
+  },
+  {
+    name: 'The Android Crusade',
+    slug: 'android',
+    command: '/android-crusade',
+    icon: '🤖',
+    tagline:
+      'No lifecycle violations. No ViewModel data in Activities. No WorkManager misuse. The Android framework does not forgive.',
+    quote:
+      'You stored a Context reference in your ViewModel. The Activity rotated. The ViewModel survived. The Context did not. You have created a MEMORY LEAK that will haunt users until they force-kill the app.',
+    color: 'from-green-600 to-emerald-900',
+  },
+  {
+    name: 'The CDK Crusade',
+    slug: 'cdk',
+    command: '/cdk-crusade',
+    icon: '☁️',
+    tagline:
+      'No hardcoded ARNs. No * IAM policies. No environment-coupled stacks. Infrastructure is code — treat it like code.',
+    quote:
+      '`iam.PolicyStatement.fromJson({ Action: "*", Resource: "*" })`. You have granted everything to everything. The blast radius is the entire AWS account. This is not infrastructure as code. This is infrastructure as prayer.',
+    color: 'from-orange-500 to-yellow-700',
+  },
+  {
+    name: 'The Bash Crusade',
+    slug: 'bash',
+    command: '/bash-crusade',
+    icon: '🐚',
+    tagline:
+      'Every unquoted variable is a time bomb. Every missing set -e is a silent catastrophe. The shell is not forgiving.',
+    quote:
+      'Line 47. `rm -rf $TMPDIR/$USER`. `$TMPDIR` was empty. You ran `rm -rf /`. The shell did not ask for confirmation. The shell does not have feelings. You have been warned.',
+    color: 'from-zinc-600 to-slate-900',
+  },
 ] as const;

@@ -20,6 +20,12 @@ import { kotlinCrusade } from './kotlin.data';
 import { composeCrusade } from './compose.data';
 import { swiftCrusade } from './swift.data';
 import { swiftuiCrusade } from './swiftui.data';
+import { goCrusade } from './go.data';
+import { dockerCrusade } from './docker.data';
+import { sqlCrusade } from './sql.data';
+import { androidCrusade } from './android.data';
+import { cdkCrusade } from './cdk.data';
+import { bashCrusade } from './bash.data';
 
 export const crusadeDetails: Record<string, CrusadeDetail> = {
   type: typeCrusade,
@@ -42,4 +48,10 @@ export const crusadeDetails: Record<string, CrusadeDetail> = {
   compose: composeCrusade,
   swift: swiftCrusade,
   swiftui: swiftuiCrusade,
+  go: goCrusade,
+  docker: dockerCrusade,
+  sql: sqlCrusade,
+  android: androidCrusade,
+  cdk: cdkCrusade,
+  bash: bashCrusade,
 };
