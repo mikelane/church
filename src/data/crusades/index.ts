@@ -20,6 +20,7 @@ import { kotlinCrusade } from './kotlin.data';
 import { composeCrusade } from './compose.data';
 import { swiftCrusade } from './swift.data';
 import { swiftuiCrusade } from './swiftui.data';
+import { androidCrusade } from './android.data';
 
 export const crusadeDetails: Record<string, CrusadeDetail> = {
   type: typeCrusade,
@@ -42,4 +43,5 @@ export const crusadeDetails: Record<string, CrusadeDetail> = {
   compose: composeCrusade,
   swift: swiftCrusade,
   swiftui: swiftuiCrusade,
+  android: androidCrusade,
 };

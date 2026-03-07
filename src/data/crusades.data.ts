@@ -195,4 +195,15 @@ export const crusades: readonly Crusade[] = [
       "This view fetches data, manages state, AND renders UI? That's not a view — that's a MONOLITH wearing a struct declaration.",
     color: 'from-lime-500 to-emerald-700',
   },
+  {
+    name: 'The Android Crusade',
+    slug: 'android',
+    command: '/android-crusade',
+    icon: '🤖',
+    tagline:
+      'No lifecycle violations. No ViewModel data in Activities. No WorkManager misuse. The Android framework does not forgive.',
+    quote:
+      'You stored a Context reference in your ViewModel. The Activity rotated. The ViewModel survived. The Context did not. You have created a MEMORY LEAK that will haunt users until they force-kill the app.',
+    color: 'from-green-600 to-emerald-900',
+  },
 ] as const;
