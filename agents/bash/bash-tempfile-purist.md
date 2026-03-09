@@ -1,6 +1,6 @@
 ---
 name: bash-tempfile-purist
-description: The Mktemp Sentinel — specialist in insecure temp file creation, missing trap EXIT cleanup, fixed /tmp path names, race conditions in temp handling, and lock file hygiene. Use this agent to ensure every temp resource is atomically created and unconditionally cleaned up. Triggers on "bash tempfile", "mktemp audit", "trap cleanup", "bash tempfile purist", "temp file security".
+description: Finds insecure temp file creation, missing trap EXIT cleanup, and fixed /tmp name races. Triggers on "bash tempfile", "mktemp audit", "trap cleanup", "bash tempfile purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

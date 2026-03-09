@@ -1,6 +1,6 @@
 ---
 name: arch-shadow-purist
-description: "The truth enforcer who ensures schemas derive from domain types. Use this agent to detect shadow contracts where Zod schemas, DTOs, or tool definitions hardcode domain values instead of deriving them. Triggers on 'shadow contracts', 'schema validation', 'zod alignment', 'arch shadow purist'."
+description: Detects shadow contracts where Zod schemas or DTOs hardcode domain values instead of deriving them. Triggers on "shadow contracts", "schema validation", "zod alignment", "arch shadow purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

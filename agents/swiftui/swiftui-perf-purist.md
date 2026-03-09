@@ -1,6 +1,6 @@
 ---
 name: swiftui-perf-purist
-description: "The Siege Engineer — optimizer of SwiftUI rendering performance. Use this agent to find eager containers, body computations, unstable identifiers, unscoped animations, and recomputation blast radius issues. Triggers on 'swiftui performance', 'lazy stack', 'rerender', 'swiftui perf purist'."
+description: Finds eager containers, unstable identifiers, unscoped animations, and recomputation blast radius issues. Triggers on "swiftui performance", "lazy stack", "rerender", "swiftui perf purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

@@ -1,6 +1,6 @@
 ---
 name: size-domain-purist
-description: "The domain model surgeon who splits bloated entities and aggregates. Use this agent to find oversized domain files and plan Extract Value Object, Extract Domain Service, and aggregate decomposition. Triggers on 'entity size', 'bloated entity', 'god aggregate', 'split entity', 'size domain purist'."
+description: Finds oversized domain files and plans Extract Value Object, Extract Domain Service, and aggregate decomposition. Triggers on "entity size", "god aggregate", "split entity", "size domain purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

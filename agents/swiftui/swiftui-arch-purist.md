@@ -1,6 +1,6 @@
 ---
 name: swiftui-arch-purist
-description: "The Castellan — guardian of SwiftUI architecture boundaries. Use this agent to audit MVVM separation, detect god-views, enforce view model patterns, and verify dependency injection. Triggers on 'swiftui architecture', 'god view', 'view model pattern', 'swiftui arch purist'."
+description: Audits MVVM separation, god-views, view model patterns, and dependency injection in SwiftUI. Triggers on "swiftui architecture", "god view", "view model pattern", "swiftui arch purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

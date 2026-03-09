@@ -1,6 +1,6 @@
 ---
 name: docker-config-purist
-description: The Signal Warden — specialist in ENV vs ARG distinction, HEALTHCHECK presence and correctness, ENTRYPOINT vs CMD semantics, PID 1 signal handling (dumb-init/tini), and WORKDIR discipline. Use this agent to audit runtime configuration instructions, fix shell-form CMD that drops SIGTERM, add missing HEALTHCHECKs, and enforce correct ENTRYPOINT/CMD separation. Triggers on "healthcheck", "entrypoint cmd", "signal handling", "pid 1", "workdir", "docker config", "docker config purist".
+description: Audits HEALTHCHECK, ENTRYPOINT vs CMD semantics, shell-form CMD signal handling, and WORKDIR discipline. Triggers on "healthcheck", "entrypoint cmd", "signal handling", "docker config purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

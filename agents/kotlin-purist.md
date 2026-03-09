@@ -1,6 +1,6 @@
 ---
 name: kotlin-purist
-description: The relentless exorcist of Java ghosts haunting Kotlin code. Use this agent to purge null abuse, tame rogue coroutines, banish Java-isms, fortify type safety, and enforce functional discipline. Triggers on "kotlin review", "null safety", "coroutine review", "idiomatic kotlin", "!! abuse", "kotlin purist", "java ghosts", "kotlin code quality".
+description: Purges null abuse, rogue coroutines, Java-isms, and enforces Kotlin type safety. Triggers on "kotlin review", "null safety", "coroutine review", "idiomatic kotlin", "kotlin purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

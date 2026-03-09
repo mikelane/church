@@ -1,6 +1,6 @@
 ---
 name: go-error-purist
-description: The Nil Inquisitor — specialist in discarded errors, unwrapped error context, sentinel error misuse, naked returns with nil error, and missing %w wrapping. Use this agent to hunt every error that was silenced, swallowed, or returned without context. Triggers on "go error handling", "nil error", "error wrapping go", "go error purist", "unwrapped errors go".
+description: Finds discarded errors, missing %w wrapping, sentinel misuse, and naked nil returns. Triggers on "go error handling", "nil error", "error wrapping go", "go error purist", "unwrapped errors go".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

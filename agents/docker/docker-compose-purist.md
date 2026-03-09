@@ -1,6 +1,6 @@
 ---
 name: docker-compose-purist
-description: The Orchestration Sentinel — specialist in docker-compose.yml and compose.yml correctness: service isolation, network definitions, volume mount hygiene, depends_on with health conditions, and restart policies. Use this agent to audit compose files for missing restart policies, improper service dependencies, insecure volume mounts, missing network isolation, and signal handling gaps. Triggers on "docker compose", "compose file", "service dependencies", "restart policy", "docker networks", "docker volumes", "docker compose purist".
+description: Audits restart policies, depends_on health conditions, network isolation, and volume mount hygiene. Triggers on "docker compose", "compose file", "restart policy", "docker compose purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

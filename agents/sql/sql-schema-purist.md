@@ -1,6 +1,6 @@
 ---
 name: sql-schema-purist
-description: "The Schema Theologian — specialist in correct PostgreSQL data types, constraint naming, NULL semantics, and default values. Use this agent to eliminate TIMESTAMP without time zone, VARCHAR(255) MySQL habits, INT primary keys that will overflow, and FLOAT in monetary columns. Triggers on 'schema review', 'data type audit', 'column type review', 'timestamp audit', 'sql schema purist'."
+description: Audits PostgreSQL data types, constraint naming, NULL semantics, TIMESTAMP/FLOAT/INT overflow issues. Triggers on "schema review", "data type audit", "timestamp audit", "sql schema purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

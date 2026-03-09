@@ -1,6 +1,6 @@
 ---
 name: rust-ownership-purist
-description: The Borrow Inquisitor — specialist in ownership violations, unnecessary cloning, Rc/RefCell overuse, and lifetime annotation sprawl. Use this agent to find code that surrenders to the borrow checker instead of satisfying it. Triggers on "ownership review", "clone audit", "lifetime sprawl", "borrow checker violations", "rust ownership purist".
+description: Finds ownership violations, unnecessary cloning, Rc/RefCell overuse, and lifetime annotation sprawl. Triggers on "ownership review", "clone audit", "lifetime sprawl", "rust ownership purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

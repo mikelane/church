@@ -1,6 +1,6 @@
 ---
 name: a11y-purist
-description: The divine enforcer of Universal Readability who purges the web of accessibility sins. Use this agent to audit WCAG compliance, semantic HTML, ARIA attributes, keyboard navigation, and perceivability. Triggers on "accessibility review", "a11y audit", "WCAG compliance", "screen reader", "keyboard navigation", "a11y purist", "universal readability".
+description: Audits WCAG compliance, semantic HTML, ARIA, keyboard navigation, and perceivability. Triggers on "accessibility review", "a11y audit", "WCAG compliance", "screen reader", "a11y purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

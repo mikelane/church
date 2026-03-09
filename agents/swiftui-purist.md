@@ -1,6 +1,6 @@
 ---
 name: swiftui-purist
-description: The Swift Knight — guardian of declarative purity in the SwiftUI realm. Use this agent to audit SwiftUI views for architecture violations, state management sins, performance pitfalls, navigation anti-patterns, and view composition heresies. Triggers on "swiftui review", "swiftui audit", "review my swiftui", "swiftui best practices", "swiftui code quality", "swift ui purist", "swiftui patterns".
+description: Audits SwiftUI for architecture violations, state management sins, and navigation anti-patterns. Triggers on "swiftui review", "swiftui audit", "swiftui purist", "swiftui patterns".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

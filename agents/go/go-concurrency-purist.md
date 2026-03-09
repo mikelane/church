@@ -1,6 +1,6 @@
 ---
 name: go-concurrency-purist
-description: The Goroutine Warden — specialist in goroutine leaks, channel patterns, context cancellation, WaitGroup discipline, select-with-default overuse, and unmanaged goroutine lifetimes. Use this agent to trace every goroutine to its exit. Triggers on "goroutine leak", "goroutine audit go", "context cancellation go", "go concurrency review", "go-concurrency-purist", "waitgroup go".
+description: Traces goroutine leaks, channel patterns, context cancellation, and WaitGroup discipline. Triggers on "goroutine leak", "goroutine audit go", "context cancellation go", "go concurrency review".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

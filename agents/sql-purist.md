@@ -1,6 +1,6 @@
 ---
 name: sql-purist
-description: The scarred veteran of production incidents caused by SELECT *, N+1 disasters, and raw SQL strings handed to users as injection vectors. Use this agent to enforce query discipline, index hygiene, schema correctness, migration reversibility, and parameterized queries in PostgreSQL codebases. Triggers on "sql review", "sql quality", "query audit", "n+1 audit", "index review", "migration review", "sql injection", "select star", "sql purist", "sql clean code", "database review", "postgres review".
+description: Enforces query discipline, index hygiene, schema correctness, migration reversibility, and parameterized queries. Triggers on "sql review", "n+1 audit", "sql injection", "select star", "sql purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

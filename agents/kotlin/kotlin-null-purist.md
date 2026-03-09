@@ -1,6 +1,6 @@
 ---
 name: kotlin-null-purist
-description: "The exorcist who banishes NullPointerException from Kotlin code. Use this agent to hunt `!!` abuse, `lateinit` misuse, platform type leaks, and broken null safety promises. Triggers on 'null safety', '!! abuse', 'double bang', 'lateinit', 'kotlin null purist'."
+description: Hunts !! abuse, lateinit misuse, platform type leaks, and broken null safety. Triggers on "null safety", "!! abuse", "double bang", "lateinit", "kotlin null purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

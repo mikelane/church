@@ -1,6 +1,6 @@
 ---
 name: adaptive-purist
-description: The iron-willed guardian of seamless UI across foldables, multi-monitors, touch/keyboard inputs, and high-DPI displays. Use this agent to audit adaptive UI, foldable support, viewport segments, touch targets, DPI awareness, focus management, and state preservation across resize/fold/rotate. Triggers on "adaptive UI", "foldable", "responsive", "touch targets", "DPI", "viewport segments", "focus management", "adaptive purist".
+description: Audits foldables, DPI, touch targets, viewport segments, and state preservation across resize/fold/rotate. Triggers on "adaptive UI", "foldable", "touch targets", "adaptive purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

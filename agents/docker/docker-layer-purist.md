@@ -1,6 +1,6 @@
 ---
 name: docker-layer-purist
-description: The Layer Archaeologist — specialist in RUN command consolidation, cache-efficient layer ordering, and layer size analysis. Use this agent to audit Dockerfile instruction ordering for cache efficiency, consolidate fragmented RUN chains, and identify cache-busting patterns that force full reinstalls. Triggers on "layer ordering", "dockerfile cache", "run consolidation", "docker layer audit", "docker layer purist".
+description: Audits Dockerfile instruction ordering for cache efficiency and finds cache-busting patterns. Triggers on "layer ordering", "dockerfile cache", "run consolidation", "docker layer purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

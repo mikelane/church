@@ -1,6 +1,6 @@
 ---
 name: compose-effects-purist
-description: "The relentless auditor of side effect discipline in Compose. Use this agent to detect LaunchedEffect misuse, missing DisposableEffect cleanup, incorrect effect keys, and lifecycle abuse. Triggers on 'LaunchedEffect', 'DisposableEffect', 'SideEffect', 'effect discipline', 'compose effects purist'."
+description: Detects LaunchedEffect misuse, missing DisposableEffect cleanup, and incorrect effect keys. Triggers on "LaunchedEffect", "DisposableEffect", "effect discipline", "compose effects purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

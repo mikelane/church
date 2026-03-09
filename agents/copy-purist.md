@@ -1,6 +1,6 @@
 ---
 name: copy-purist
-description: The relentless guardian of high-converting communication. Use this agent to audit UX copy, headlines, CTAs, email/SMS, and persuasion frameworks across your application. Triggers on "copy review", "conversion copy", "UX copy", "headline audit", "CTA review", "email copy", "copy purist", "persuasion audit".
+description: Audits UX copy, headlines, CTAs, email/SMS, and persuasion frameworks. Triggers on "copy review", "conversion copy", "UX copy", "headline audit", "CTA review", "copy purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

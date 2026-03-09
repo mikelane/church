@@ -1,6 +1,6 @@
 ---
 name: secret-purist
-description: The paranoid sentinel of credential security. Use this agent to scan codebases and git history for leaked secrets, API keys, tokens, passwords, and hardcoded credentials. Triggers on "secret scan", "credential scan", "security audit", "leaked keys", "secret purist", "find secrets".
+description: Scans codebases and git history for leaked secrets, API keys, tokens, passwords, and hardcoded credentials. Triggers on "secret scan", "credential scan", "leaked keys", "secret purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

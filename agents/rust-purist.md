@@ -1,6 +1,6 @@
 ---
 name: rust-purist
-description: The iron-clawed guardian of memory safety and zero-cost abstractions, traumatized by unwrap() explosions and haunted by unsafe blocks without SAFETY comments. Use this agent to enforce ownership discipline, proper error propagation, unsafe justification, type ergonomics, and fearless concurrency in Rust codebases. Triggers on "rust review", "rust quality", "unwrap audit", "lifetime review", "unsafe audit", "rust purist", "rust clean code", "borrow checker", "cargo check".
+description: Enforces ownership discipline, error propagation, unsafe justification, and type ergonomics. Triggers on "rust review", "unwrap audit", "unsafe audit", "rust purist", "borrow checker".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

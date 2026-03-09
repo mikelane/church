@@ -1,6 +1,6 @@
 ---
 name: size-purist
-description: The merciless executioner of bloated files. Use this agent to find oversized files, god classes, mega-components, and monolithic modules that have grown beyond reason. Triggers on "file size", "large files", "bloated files", "split file", "god class", "size purist", "too long", "file too big".
+description: Finds oversized files, god classes, mega-components, and monolithic modules. Triggers on "file size", "large files", "god class", "size purist", "file too big".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

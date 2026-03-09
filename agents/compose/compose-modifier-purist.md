@@ -1,6 +1,6 @@
 ---
 name: compose-modifier-purist
-description: "The meticulous enforcer of Modifier chain discipline in Compose. Use this agent to audit modifier ordering, detect incorrect clip/background sequences, enforce Modifier parameter conventions, and evaluate custom modifier patterns. Triggers on 'modifier chain', 'modifier order', 'Modifier parameter', 'compose modifier purist'."
+description: Audits modifier ordering, clip/background sequences, and Modifier parameter conventions. Triggers on "modifier chain", "modifier order", "Modifier parameter", "compose modifier purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

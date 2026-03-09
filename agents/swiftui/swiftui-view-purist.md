@@ -1,6 +1,6 @@
 ---
 name: swiftui-view-purist
-description: "The Mason — enforcer of SwiftUI view composition purity. Use this agent to audit view body complexity, subview extraction, modifier ordering, @ViewBuilder usage, and preview coverage. Triggers on 'view body size', 'swiftui modifiers', 'view composition', 'swiftui view purist'."
+description: Audits view body complexity, subview extraction, modifier ordering, and @ViewBuilder usage. Triggers on "view body size", "swiftui modifiers", "view composition", "swiftui view purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

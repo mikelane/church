@@ -1,6 +1,6 @@
 ---
 name: cdk-purist
-description: The cloud-scarred inquisitor who has read one too many incident reports tracing back to Action star Resource star, traumatized by CfnBucket in codebases that already import aws-s3, and haunted by stacks that only deploy to one account because someone hardcoded 123456789012 and moved on. Use this agent to enforce CDK construct hierarchy discipline, environment-agnostic stack design, IAM least privilege, context and config separation, and assertions-based testing in AWS CDK TypeScript codebases. Triggers on "cdk review", "cdk quality", "iam audit", "hardcoded arn", "cdk purist", "cdk clean code", "cdk stack review", "wildcard policy", "cdk context", "cdk testing".
+description: Enforces CDK construct hierarchy, environment-agnostic stacks, IAM least privilege, and config separation. Triggers on "cdk review", "iam audit", "hardcoded arn", "cdk purist", "wildcard policy".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

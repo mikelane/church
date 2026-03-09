@@ -1,6 +1,6 @@
 ---
 name: secret-history-purist
-description: "The forensic investigator who scans git history for secrets ever committed. Use this agent to search the entire commit history for credentials that were committed and later removed. Triggers on 'git history scan', 'historical secrets', 'committed credentials', 'secret history purist'."
+description: Searches entire git history for credentials ever committed and later removed. Triggers on "git history scan", "historical secrets", "committed credentials", "secret history purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

@@ -1,6 +1,6 @@
 ---
 name: dead-debug-purist
-description: "The cleanup crew who removes debugging artifacts from production code. Use this agent to find console.log, console.debug, debugger statements, and development-only code left in production files. Triggers on 'console.log', 'debugger', 'debug artifacts', 'dead debug purist'."
+description: Finds console.log, console.debug, debugger statements, and dev-only code left in production files. Triggers on "console.log", "debugger", "debug artifacts", "dead debug purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

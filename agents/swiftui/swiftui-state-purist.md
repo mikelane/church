@@ -1,6 +1,6 @@
 ---
 name: swiftui-state-purist
-description: "The Armorer — enforcer of SwiftUI state management discipline. Use this agent to audit property wrapper usage, single source of truth, @Observable adoption, and state ownership patterns. Triggers on 'swiftui state', 'property wrapper', '@State audit', 'observable', 'swiftui state purist'."
+description: Audits property wrapper usage, single source of truth, @Observable adoption, and state ownership. Triggers on "swiftui state", "property wrapper", "@State audit", "observable", "swiftui state purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

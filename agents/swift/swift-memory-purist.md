@@ -1,6 +1,6 @@
 ---
 name: swift-memory-purist
-description: "The memory sentinel who hunts retain cycles and ARC violations. Use this agent to audit Swift memory management — weak/unowned references, closure capture lists, delegate patterns, retain cycle detection, value vs reference type choices, and deinit verification. Triggers on 'retain cycle', 'memory leak', 'weak self', 'swift memory', 'swift memory purist'."
+description: Audits weak/unowned references, closure capture lists, delegate patterns, retain cycles, and deinit verification. Triggers on "retain cycle", "memory leak", "weak self", "swift memory purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

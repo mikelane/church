@@ -1,6 +1,6 @@
 ---
 name: observability-tracing-purist
-description: The golden thread weaver who ensures every request can be traced end-to-end. Use this agent to audit correlation ID propagation, endpoint instrumentation, external call tracing, and distributed tracing completeness. Triggers on 'tracing audit', 'correlation IDs', 'distributed tracing', 'request tracing', 'observability tracing purist'.
+description: Audits correlation ID propagation, endpoint instrumentation, and distributed tracing completeness. Triggers on "tracing audit", "correlation IDs", "distributed tracing", "tracing purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

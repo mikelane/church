@@ -1,6 +1,6 @@
 ---
 name: ts-any-purist
-description: "The exterminator of `any` who leaves no type escape hatch unsealed. Use this agent to find and eliminate all explicit `any`, implicit `any`, and `unknown` misuse across the codebase. Triggers on 'any audit', 'no any', 'eliminate any', 'implicit any', 'ts any purist'."
+description: Finds and eliminates explicit any, implicit any, and unknown misuse. Triggers on "any audit", "no any", "eliminate any", "implicit any", "ts any purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

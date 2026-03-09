@@ -1,6 +1,6 @@
 ---
 name: react-state-purist
-description: "The sovereign enforcer of the Great Separation and the Unifying Lens doctrine. Use this agent to audit server/client state boundaries, detect Cache Hack and Syncing Store violations, and enforce the Computed Derivation pattern for optimistic UI. Triggers on 'state management', 'great separation', 'unifying lens', 'optimistic UI', 'react state purist'."
+description: Audits server/client state boundaries, Cache Hack and Syncing Store violations, and Computed Derivation. Triggers on "state management", "great separation", "optimistic UI", "react state purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

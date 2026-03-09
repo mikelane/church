@@ -1,6 +1,6 @@
 ---
 name: test-assertion-purist
-description: "The quality enforcer who eliminates meaningless assertions. Use this agent to find weak assertions like toBeTruthy, snapshot abuse, vague test names, and tests without assertions. Triggers on 'assertion quality', 'weak assertions', 'snapshot abuse', 'test names', 'test assertion purist'."
+description: Finds weak assertions like toBeTruthy, snapshot abuse, vague test names, and tests without assertions. Triggers on "assertion quality", "weak assertions", "snapshot abuse", "test assertion purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

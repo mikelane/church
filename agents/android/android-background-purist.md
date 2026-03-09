@@ -1,6 +1,6 @@
 ---
 name: android-background-purist
-description: The WorkManager Apostle — specialist in background work correctness, WorkManager vs Service vs coroutine selection, foreground Service notification requirements, battery optimization compliance, Doze mode awareness, and JobScheduler migration patterns. Use this agent to audit every background task for battery, reliability, and API-level compliance. Triggers on "workmanager audit", "background work android", "service audit", "battery optimization", "android background purist".
+description: Audits WorkManager vs coroutine selection, battery optimization, Doze mode, and foreground Service requirements. Triggers on "workmanager audit", "background work", "android background purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

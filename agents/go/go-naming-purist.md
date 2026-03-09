@@ -1,6 +1,6 @@
 ---
 name: go-naming-purist
-description: The MixedCaps Enforcer — specialist in Go naming conventions, exported vs unexported discipline, single-letter receiver names, package naming, MixedCaps not snake_case, and acronym capitalization. Use this agent to enforce idiomatic Go naming throughout a codebase. Triggers on "go naming", "go conventions", "mixedcaps go", "receiver name go", "go naming purist", "go identifier style".
+description: Enforces MixedCaps, exported/unexported discipline, receiver names, and acronym capitalization. Triggers on "go naming", "go conventions", "mixedcaps go", "receiver name go", "go naming purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

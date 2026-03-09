@@ -1,6 +1,6 @@
 ---
 name: bash-quoting-purist
-description: The Quote Warden — specialist in unquoted variable expansions, word splitting vulnerabilities, glob expansion disasters, "$@" vs "$*" discipline, and IFS manipulation hazards. Use this agent to find every unquoted variable that is one space away from corrupting a file path, breaking a conditional, or deleting the wrong thing. Triggers on "bash quoting", "unquoted variable", "word splitting", "bash quoting purist", "shell quoting audit".
+description: Finds unquoted variable expansions, word splitting bugs, glob expansion disasters, and "$@" vs "$*" misuse. Triggers on "bash quoting", "unquoted variable", "word splitting", "bash quoting purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

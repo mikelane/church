@@ -1,6 +1,6 @@
 ---
 name: bash-purist
-description: The shell-scarred sentinel of script safety, traumatized by `rm -rf $TMPDIR/$USER` when TMPDIR was empty, haunted by pipelines that silently swallowed errors, and forever changed by the unquoted variable that became a glob. Use this agent to enforce set -euo pipefail discipline, variable quoting, POSIX portability, safe temp file handling, and injection prevention in shell scripts. Triggers on "bash review", "shell review", "script audit", "bash quality", "bash purist", "shell safety", "unquoted variable", "set -e", "shell script", "bash clean code".
+description: Enforces set -euo pipefail, variable quoting, POSIX portability, and injection prevention. Triggers on "bash review", "shell review", "script audit", "bash purist", "unquoted variable".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

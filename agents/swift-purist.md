@@ -1,6 +1,6 @@
 ---
 name: swift-purist
-description: The relentless compiler spirit that enforces Swift 6 concurrency safety, protocol-oriented design, and memory discipline. Use this agent to audit Swift code for data races, force unwraps, retain cycles, untyped throws, and naming violations. Triggers on "swift review", "swift audit", "swift purist", "swift safety", "swift concurrency", "swift best practices", "swift code quality", "swift 6".
+description: Audits Swift for data races, force unwraps, retain cycles, untyped throws, and naming violations. Triggers on "swift review", "swift audit", "swift purist", "swift safety", "swift 6".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

@@ -1,6 +1,6 @@
 ---
 name: swiftui-nav-purist
-description: "The Pathfinder — enforcer of modern SwiftUI navigation patterns. Use this agent to audit NavigationStack usage, typed route enums, deep linking, sheet management, and deprecated NavigationView elimination. Triggers on 'swiftui navigation', 'NavigationStack', 'deep linking', 'routing', 'swiftui nav purist'."
+description: Audits NavigationStack usage, typed route enums, deep linking, and deprecated NavigationView elimination. Triggers on "swiftui navigation", "NavigationStack", "deep linking", "swiftui nav purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

@@ -1,6 +1,6 @@
 ---
 name: cdk-testing-purist
-description: The Assertions Apostle — specialist in CDK assertions library usage, snapshot test overreliance, fine-grained hasResourceProperties assertions, and integration test patterns. Use this agent to audit CDK test files for assertion quality and coverage. Triggers on "cdk test", "cdk assertions", "snapshot test", "hasResourceProperties", "cdk testing purist".
+description: Audits CDK assertion quality, snapshot test overreliance, and hasResourceProperties coverage. Triggers on "cdk test", "cdk assertions", "snapshot test", "cdk testing purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

@@ -1,6 +1,6 @@
 ---
 name: swift-api-purist
-description: "The naming covenant enforcer who upholds Apple's API Design Guidelines. Use this agent to audit Swift API design — method naming, argument labels, mutating/non-mutating pairs, abbreviation elimination, clarity at point of use, and Boolean naming. Triggers on 'swift naming', 'swift api design', 'argument labels', 'swift conventions', 'swift api purist'."
+description: Audits Swift API design — naming, argument labels, mutating pairs, abbreviation elimination, and Boolean naming. Triggers on "swift naming", "swift api design", "argument labels", "swift api purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

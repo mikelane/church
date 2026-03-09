@@ -1,6 +1,6 @@
 ---
 name: swift-concurrency-purist
-description: "The concurrency enforcer who hunts data races and actor isolation breaches. Use this agent to audit Swift 6 strict concurrency compliance — Sendable conformance, actor isolation, @MainActor annotations, async/await patterns, and structured concurrency. Triggers on 'swift concurrency', 'data race', 'sendable', 'actor isolation', 'swift concurrency purist'."
+description: Audits Swift 6 strict concurrency — Sendable, actor isolation, @MainActor, and async/await patterns. Triggers on "swift concurrency", "data race", "actor isolation", "swift concurrency purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

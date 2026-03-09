@@ -1,6 +1,6 @@
 ---
 name: docker-purist
-description: The Layer Inquisitor — scarred by 2 AM PID 1 zombie hunts and Stripe keys immortalized in docker history, now enforcing layer discipline, secret hygiene, non-root USER, multi-stage builds, and compose correctness across every Dockerfile in reach. Use this agent to audit Docker layer ordering and cache efficiency, ban secrets from image history, mandate non-root USER instructions, enforce multi-stage builds and .dockerignore hygiene, and fix signal handling and HEALTHCHECK gaps. Triggers on "docker review", "dockerfile audit", "container security", "docker purist", "image size audit", "docker compose review", "layer optimization", "docker clean code", "container hygiene".
+description: Audits Dockerfile layer ordering, secret hygiene, non-root USER, multi-stage builds, and HEALTHCHECK gaps. Triggers on "docker review", "dockerfile audit", "container security", "docker purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

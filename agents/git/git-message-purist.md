@@ -1,6 +1,6 @@
 ---
 name: git-message-purist
-description: "The commit message critic who enforces Conventional Commits format. Use this agent to audit commit messages for proper type, scope, description, and body format. Triggers on 'commit messages', 'conventional commits', 'message format', 'git message purist'."
+description: Audits commit messages for proper type, scope, description, and body format per Conventional Commits. Triggers on "commit messages", "conventional commits", "message format", "git message purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

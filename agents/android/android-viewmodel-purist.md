@@ -1,6 +1,6 @@
 ---
 name: android-viewmodel-purist
-description: The ViewModel Theologian — specialist in ViewModel purity, StateFlow/LiveData patterns, Context leak prevention, UI state modeling as sealed classes, viewModelScope usage, and elimination of direct View references from ViewModel subclasses. Use this agent to audit every ViewModel for Android framework reference contamination. Triggers on "viewmodel audit", "livedata patterns", "stateflow", "viewmodel context leak", "android viewmodel purist".
+description: Audits ViewModel purity, StateFlow/LiveData patterns, and sealed UI state modeling. Triggers on "viewmodel audit", "stateflow", "viewmodel context leak", "android viewmodel purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

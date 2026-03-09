@@ -1,6 +1,6 @@
 ---
 name: sql-index-purist
-description: "The Index Architect — specialist in missing indexes on foreign keys and frequently-queried columns, over-indexing, partial indexes, covering indexes, and index naming conventions. Use this agent to ensure every query has the index it deserves and no index exists without justification. Triggers on 'index audit', 'missing index', 'index review', 'foreign key index', 'sql index purist'."
+description: Audits missing indexes on FKs and queried columns, over-indexing, partial indexes, and covering indexes. Triggers on "index audit", "missing index", "foreign key index", "sql index purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

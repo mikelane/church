@@ -1,6 +1,6 @@
 ---
 name: android-lifecycle-purist
-description: The Lifecycle Warden — specialist in Activity and Fragment lifecycle compliance, onSaveInstanceState discipline, configuration change survival, BroadcastReceiver registration symmetry, and leaked resource detection. Use this agent to audit every lifecycle callback pair and ensure no resource outlives its owner. Triggers on "lifecycle audit", "activity lifecycle", "fragment lifecycle", "configuration change", "android lifecycle purist".
+description: Audits Activity/Fragment lifecycle, onSaveInstanceState, BroadcastReceiver symmetry, and leaked resources. Triggers on "lifecycle audit", "activity lifecycle", "android lifecycle purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

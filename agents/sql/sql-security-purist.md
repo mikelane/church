@@ -1,6 +1,6 @@
 ---
 name: sql-security-purist
-description: "The Injection Sentinel — specialist in parameterized queries, row-level security, GRANT/REVOKE discipline, connection string exposure, and safe ORM raw query usage. Use this agent to find every place user input touches a SQL string without going through a parameterized bind. Triggers on 'sql injection', 'injection audit', 'rls review', 'database security', 'sql security purist'."
+description: Finds user input touching SQL strings without parameterized binds, RLS gaps, and GRANT/REVOKE issues. Triggers on "sql injection", "injection audit", "rls review", "sql security purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

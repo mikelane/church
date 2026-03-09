@@ -1,6 +1,6 @@
 ---
 name: sql-migration-purist
-description: "The Migration Warden — specialist in reversible migrations, zero-downtime patterns, idempotency, sequential naming, and safe destructive operations. Use this agent to ensure every migration has a working rollback path and deploys without locking tables in production. Triggers on 'migration review', 'migration audit', 'alembic review', 'flyway review', 'sql migration purist'."
+description: Enforces reversible migrations, zero-downtime patterns, idempotency, and safe destructive ops. Triggers on "migration review", "alembic review", "flyway review", "sql migration purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

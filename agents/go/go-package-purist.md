@@ -1,6 +1,6 @@
 ---
 name: go-package-purist
-description: The Module Architect — specialist in package organization, internal/ boundaries, circular dependency detection, god packages, package cohesion, and go.mod discipline. Use this agent to restructure Go codebases where packages have become landfill sites of unrelated code. Triggers on "go package structure", "circular dependency go", "god package go", "go module review", "go-package-purist", "internal package go".
+description: Audits package organization, internal/ boundaries, circular dependencies, and god packages. Triggers on "go package structure", "circular dependency go", "god package go", "go package purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

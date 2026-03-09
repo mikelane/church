@@ -1,6 +1,6 @@
 ---
 name: copy-transactional-purist
-description: "The guardian of email and SMS deliverability who purges no-reply addresses, vague subject lines, and bloated messages. Use this agent to audit transactional emails, SMS notifications, sender addresses, and compliance. Triggers on 'email copy', 'SMS copy', 'transactional', 'deliverability', 'no-reply', 'copy transactional purist'."
+description: Audits transactional emails and SMS for deliverability, no-reply addresses, and vague subjects. Triggers on "email copy", "SMS copy", "transactional", "copy transactional purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

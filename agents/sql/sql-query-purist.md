@@ -1,6 +1,6 @@
 ---
 name: sql-query-purist
-description: "The Query Inquisitor — specialist in SELECT *, N+1 patterns, missing WHERE clauses, implicit type casts, and OFFSET pagination on large tables. Use this agent to hunt every query that fetches more than it needs or runs more times than it should. Triggers on 'select star audit', 'n+1 audit', 'query review', 'pagination review', 'sql query purist'."
+description: Hunts SELECT *, N+1 patterns, missing WHERE clauses, implicit type casts, and OFFSET pagination issues. Triggers on "select star audit", "n+1 audit", "query review", "sql query purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

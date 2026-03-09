@@ -1,6 +1,6 @@
 ---
 name: a11y-semantic-purist
-description: The DOM Watch enforcer who hunts div-soup and meaningless code. Use this agent to detect non-semantic HTML, validate ARIA roles, and ensure programmatic structure. Triggers on 'semantic HTML', 'div soup', 'ARIA roles', 'DOM structure', 'a11y semantic purist'.
+description: Detects non-semantic HTML, validates ARIA roles, and ensures programmatic structure. Triggers on "semantic HTML", "div soup", "ARIA roles", "DOM structure", "a11y semantic purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

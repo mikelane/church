@@ -1,6 +1,6 @@
 ---
 name: docker-security-purist
-description: The Root Exorcist — specialist in non-root USER instructions, COPY vs ADD discipline, secrets in ENV/ARG/layers, .dockerignore for sensitive files, and privileged container flags. Use this agent to hunt secret leakage in image history, enforce non-root execution, audit .dockerignore for credential files, and flag privileged container configurations. Triggers on "container security", "docker secrets", "root user audit", "privileged container", "dockerignore audit", "docker security purist".
+description: Hunts secret leakage in image history, enforces non-root USER, and flags privileged containers. Triggers on "container security", "docker secrets", "root user audit", "docker security purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

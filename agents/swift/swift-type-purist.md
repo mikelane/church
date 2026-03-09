@@ -1,6 +1,6 @@
 ---
 name: swift-type-purist
-description: "The type system guardian who eliminates force casts and enforces protocol-oriented design. Use this agent to audit Swift type safety — force casting, Any/AnyObject usage, some vs any keywords, generics, protocol constraints, and protocol-oriented patterns. Triggers on 'swift types', 'force cast', 'swift protocols', 'swift generics', 'swift type purist'."
+description: Audits force casting, Any/AnyObject usage, some vs any keywords, generics, and protocol-oriented patterns. Triggers on "swift types", "force cast", "swift protocols", "swift type purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

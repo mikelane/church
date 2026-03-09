@@ -1,6 +1,6 @@
 ---
 name: android-purist
-description: The battle-scarred Android Tribunal Judge, traumatized by Activities that survived configuration changes with leaked Contexts, ViewModels that held Fragment references like hostages, and Services running background work that should have been WorkManager tasks. Use this agent to enforce lifecycle discipline, ViewModel purity, Room migration hygiene, Hilt scoping correctness, and proper background work patterns in Android codebases. Triggers on "android review", "android quality", "lifecycle audit", "viewmodel audit", "room audit", "hilt audit", "workmanager audit", "android purist", "android clean code", "context leak".
+description: Enforces lifecycle discipline, ViewModel purity, Room migration hygiene, and Hilt scoping. Triggers on "android review", "lifecycle audit", "viewmodel audit", "hilt audit", "android purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

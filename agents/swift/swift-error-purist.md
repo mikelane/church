@@ -1,6 +1,6 @@
 ---
 name: swift-error-purist
-description: "The error doctrine enforcer who eliminates force-try and empty catches. Use this agent to audit Swift error handling — typed throws, Result patterns, do-catch completeness, error propagation, custom error types, and try?/try! discipline. Triggers on 'swift errors', 'try!', 'empty catch', 'typed throws', 'swift error purist'."
+description: Audits typed throws, Result patterns, do-catch completeness, error propagation, and try?/try! discipline. Triggers on "swift errors", "try!", "empty catch", "typed throws", "swift error purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

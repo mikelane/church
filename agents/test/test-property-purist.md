@@ -1,6 +1,6 @@
 ---
 name: test-property-purist
-description: "The invariant enforcer who ensures domain entities are proven with property-based tests. Use this agent to find missing property test files, verify serialization roundtrips, and enforce fast-check usage for domain validation. Triggers on 'property tests', 'fast-check', 'invariant tests', 'roundtrip tests', 'test property purist'."
+description: Finds missing property test files, verifies serialization roundtrips, and enforces fast-check usage. Triggers on "property tests", "fast-check", "invariant tests", "test property purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

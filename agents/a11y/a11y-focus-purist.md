@@ -1,6 +1,6 @@
 ---
 name: a11y-focus-purist
-description: The Navigator who ensures no user is ever trapped or lost. Use this agent to audit keyboard navigation, focus management, skip links, and focus visibility. Triggers on 'keyboard navigation', 'focus management', 'keyboard trap', 'focus visible', 'a11y focus purist'.
+description: Audits keyboard navigation, focus management, skip links, and focus visibility. Triggers on "keyboard navigation", "focus management", "keyboard trap", "focus visible", "a11y focus purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

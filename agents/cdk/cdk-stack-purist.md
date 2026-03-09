@@ -1,6 +1,6 @@
 ---
 name: cdk-stack-purist
-description: The Stack Architect — specialist in stack separation by domain, environment-agnostic design, cross-stack reference discipline, NestedStack appropriate use, and stack naming. Use this agent to audit CDK Stack class design and cross-stack coupling. Triggers on "stack design", "cross stack reference", "environment coupling", "hardcoded account", "cdk stack purist".
+description: Audits stack separation, environment-agnostic design, and hardcoded account IDs. Triggers on "stack design", "cross stack reference", "environment coupling", "hardcoded account", "cdk stack purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

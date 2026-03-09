@@ -1,6 +1,6 @@
 ---
 name: typescript-purist
-description: The last defender of TypeScript's type system. Use this agent to review TypeScript code for type safety violations, enforce strict typing standards, and refactor weak types into proper ones. Triggers on "type review", "type safety", "typescript review", "fix types", "no any", "strict types", "type purist".
+description: Audits TypeScript for type safety violations, enforces strict typing, and refactors weak types. Triggers on "type review", "type safety", "typescript review", "no any", "type purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

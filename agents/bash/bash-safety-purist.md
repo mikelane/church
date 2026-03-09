@@ -1,6 +1,6 @@
 ---
 name: bash-safety-purist
-description: The Errexit Enforcer — specialist in missing set -euo pipefail headers, silent failure propagation, missing ERR traps, and exit code blindness. Use this agent to ensure every shell script fails loudly instead of continuing into catastrophe. Triggers on "bash safety", "set -e audit", "pipefail", "bash error handling", "bash safety purist".
+description: Finds missing set -euo pipefail, silent failure propagation, and missing ERR traps. Triggers on "bash safety", "set -e audit", "pipefail", "bash error handling", "bash safety purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

@@ -1,6 +1,6 @@
 ---
 name: kotlin-idiom-purist
-description: "The exorcist who purges Java thinking from Kotlin temples. Use this agent to banish StringBuilder, manual loops, if-else chains, and Java-style accessors from Kotlin code. Triggers on 'idiomatic kotlin', 'java patterns', 'kotlin style', 'StringBuilder', 'kotlin idiom purist'."
+description: Banishes StringBuilder, manual loops, if-else chains, and Java-style accessors from Kotlin code. Triggers on "idiomatic kotlin", "java patterns", "kotlin style", "kotlin idiom purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

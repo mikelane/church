@@ -1,6 +1,6 @@
 ---
 name: kotlin-coroutine-purist
-description: "The warden of structured concurrency who chains rogue coroutines. Use this agent to capture `GlobalScope` escapees, imprison `runBlocking` abusers, and enforce structured concurrency law. Triggers on 'coroutine review', 'GlobalScope', 'runBlocking', 'structured concurrency', 'kotlin coroutine purist'."
+description: Finds GlobalScope misuse, runBlocking abuse, and enforces structured concurrency. Triggers on "coroutine review", "GlobalScope", "runBlocking", "structured concurrency", "kotlin coroutine purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

@@ -1,6 +1,6 @@
 ---
 name: bash-injection-purist
-description: The Injection Exorcist — specialist in eval on untrusted input, command injection via unvalidated variables, find|xargs without null delimiters, dynamic command construction, and SQL/URL concatenation in shell. Use this agent to find every place where external data reaches a shell execution context. Triggers on "bash injection", "eval audit", "command injection", "xargs injection", "bash injection purist", "shell injection".
+description: Finds eval on untrusted input, command injection via unvalidated variables, and find|xargs without -0. Triggers on "bash injection", "eval audit", "command injection", "bash injection purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

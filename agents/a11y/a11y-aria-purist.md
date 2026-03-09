@@ -1,6 +1,6 @@
 ---
 name: a11y-aria-purist
-description: The Dynamic Interpreter who guards live regions and ARIA attributes. Use this agent to audit aria-live, aria-label, aria-describedby, dynamic updates, and status messages. Triggers on 'ARIA attributes', 'live regions', 'dynamic content', 'aria-live', 'a11y aria purist'.
+description: Audits aria-live, aria-label, aria-describedby, dynamic updates, and status messages. Triggers on "ARIA attributes", "live regions", "dynamic content", "aria-live", "a11y aria purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

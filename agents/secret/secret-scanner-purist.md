@@ -1,6 +1,6 @@
 ---
 name: secret-scanner-purist
-description: "The pattern-matching sentinel who scans file contents for leaked credentials. Use this agent to find hardcoded API keys, tokens, passwords, private keys, and connection strings in source code. Triggers on 'secret scan', 'credential scan', 'hardcoded secrets', 'API key scan', 'secret scanner purist'."
+description: Finds hardcoded API keys, tokens, passwords, private keys, and connection strings in source code. Triggers on "secret scan", "hardcoded secrets", "API key scan", "secret scanner purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

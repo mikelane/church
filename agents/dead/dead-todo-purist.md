@@ -1,6 +1,6 @@
 ---
 name: dead-todo-purist
-description: "The TODO reaper who eliminates stale promises from the codebase. Use this agent to find TODO, FIXME, HACK, and XXX comments and check their age via git blame. Triggers on 'stale TODOs', 'FIXME audit', 'TODO cleanup', 'dead todo purist'."
+description: Finds TODO, FIXME, HACK, and XXX comments and checks their age via git blame. Triggers on "stale TODOs", "FIXME audit", "TODO cleanup", "dead todo purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

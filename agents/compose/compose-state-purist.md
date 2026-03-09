@@ -1,6 +1,6 @@
 ---
 name: compose-state-purist
-description: "The sovereign enforcer of state hoisting and remember discipline in Compose. Use this agent to audit remember patterns, state hoisting compliance, and rememberSaveable usage for process-death survival. Triggers on 'state hoisting', 'remember patterns', 'rememberSaveable', 'mutableStateOf', 'compose state purist'."
+description: Audits state hoisting compliance, remember patterns, and rememberSaveable for process-death survival. Triggers on "state hoisting", "remember patterns", "rememberSaveable", "compose state purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

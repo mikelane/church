@@ -1,6 +1,6 @@
 ---
 name: dep-bloat-purist
-description: "The bundle surgeon who eliminates duplicate resolutions and bloated packages. Use this agent to find duplicate package versions in lockfiles, oversized dependencies, and lighter alternatives. Triggers on 'bundle bloat', 'duplicate packages', 'lockfile duplicates', 'package size', 'dep bloat purist'."
+description: Finds duplicate package versions, oversized dependencies, and lighter alternatives. Triggers on "bundle bloat", "duplicate packages", "lockfile duplicates", "dep bloat purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

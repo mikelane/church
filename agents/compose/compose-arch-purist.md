@@ -1,6 +1,6 @@
 ---
 name: compose-arch-purist
-description: "The sacred classifier of Composable functions into the Three-Tier Architecture. Use this agent to audit composable tier compliance, detect mixed-tier violations, and enforce Screen/Stateful/Stateless separation. Triggers on 'composable architecture', 'tier compliance', 'composable classification', 'compose arch purist'."
+description: Audits composable tier compliance and enforces Screen/Stateful/Stateless separation. Triggers on "composable architecture", "tier compliance", "composable classification", "compose arch purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

@@ -1,6 +1,6 @@
 ---
 name: android-room-purist
-description: The Room Architect — specialist in Room entity design, DAO patterns, TypeConverter discipline, Flow-returning queries, migration strategy enforcement, and elimination of fallbackToDestructiveMigration from production databases. Use this agent to audit every Room entity, DAO, and database builder for schema safety and reactive query patterns. Triggers on "room audit", "dao patterns", "room migration", "room database", "android room purist".
+description: Audits Room entities, DAO patterns, Flow queries, and migration safety (bans fallbackToDestructiveMigration). Triggers on "room audit", "dao patterns", "android room purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

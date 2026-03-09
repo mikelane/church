@@ -1,6 +1,6 @@
 ---
 name: observability-metrics-purist
-description: The vital signs monitor who ensures every system has health checks and business metrics. Use this agent to audit health check endpoints, business metric instrumentation, error rate tracking, latency percentiles, and alert threshold definitions. Triggers on 'metrics review', 'health checks', 'business metrics', 'latency percentiles', 'observability metrics purist'.
+description: Audits health checks, business metric instrumentation, error rates, latency percentiles, and alert thresholds. Triggers on "metrics review", "health checks", "observability metrics purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

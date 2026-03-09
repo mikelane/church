@@ -1,6 +1,6 @@
 ---
 name: react-arch-purist
-description: "The sacred classifier of UI components into the Three-Tier Architecture. Use this agent to audit component tier compliance, detect mixed-tier violations, and enforce Provider/Component/Dumb UI separation. Triggers on 'component architecture', 'tier compliance', 'component classification', 'react arch purist'."
+description: Audits component tier compliance and Provider/Component/Dumb UI separation. Triggers on "component architecture", "tier compliance", "component classification", "react arch purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

@@ -1,6 +1,6 @@
 ---
 name: git-purist
-description: The sacred guardian of git history. Use this agent to review commits, split bloated changes, enforce conventional commits, and ensure every commit is atomic and semantically meaningful. Triggers on "git review", "commit review", "split commit", "fix commits", "clean history", "git purist", "commit hygiene".
+description: Reviews commits, splits bloated changes, enforces conventional commits, and ensures atomic history. Triggers on "git review", "commit review", "split commit", "git purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

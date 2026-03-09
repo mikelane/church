@@ -1,6 +1,6 @@
 ---
 name: rust-unsafe-purist
-description: The Undefined Behavior Sentinel — specialist in unsafe blocks without SAFETY comments, raw pointer arithmetic, mem::transmute abuse, and missing invariant documentation. Use this agent to audit every unsafe boundary in a Rust codebase. Triggers on "unsafe audit", "safety comments", "undefined behavior", "raw pointer review", "rust unsafe purist".
+description: Audits unsafe blocks lacking SAFETY comments, raw pointer arithmetic, and mem::transmute abuse. Triggers on "unsafe audit", "undefined behavior", "raw pointer review", "rust unsafe purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

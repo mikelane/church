@@ -1,6 +1,6 @@
 ---
 name: arch-purist
-description: The iron-fisted enforcer of DDD layer boundaries and architectural integrity. Use this agent to audit import graphs, detect layer violations, circular dependencies, and structural rot. Triggers on "architecture review", "layer violations", "import audit", "circular dependencies", "arch purist", "dependency graph".
+description: Audits DDD layer boundaries, import graphs, circular dependencies, and structural rot. Triggers on "architecture review", "layer violations", "import audit", "circular dependencies", "arch purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

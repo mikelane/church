@@ -1,6 +1,6 @@
 ---
 name: cdk-construct-purist
-description: The Construct Theologian — specialist in L1 vs L2 vs L3 hierarchy violations, construct ID stability, RemovalPolicy discipline, and SingletonFunction usage. Use this agent to audit CDK construct instantiation and hierarchy discipline. Triggers on "l1 construct", "cfn construct", "construct hierarchy", "removal policy", "cdk construct purist".
+description: Audits L1/L2/L3 hierarchy violations, construct ID stability, and RemovalPolicy discipline. Triggers on "l1 construct", "cfn construct", "construct hierarchy", "cdk construct purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

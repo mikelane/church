@@ -1,6 +1,6 @@
 ---
 name: rust-type-purist
-description: The Type Hierophant — specialist in String vs &str confusion, dyn Trait overuse, missing derives on public types, god traits, and unergonomic API surfaces. Use this agent to enforce type discipline across Rust public APIs. Triggers on "type ergonomics", "string vs str", "missing derives", "dyn trait", "rust type purist".
+description: Audits String vs &str confusion, dyn Trait overuse, missing derives, god traits, and unergonomic API surfaces. Triggers on "type ergonomics", "string vs str", "dyn trait", "rust type purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

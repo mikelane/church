@@ -1,6 +1,6 @@
 ---
 name: dead-comment-purist
-description: "The archaeologist who excavates commented-out code from the codebase. Use this agent to find code blocks hidden in comments and purge them. Triggers on 'commented code', 'comment archaeology', 'dead comments', 'dead comment purist'."
+description: Finds code blocks hidden in comments and purges them. Triggers on "commented code", "comment archaeology", "dead comments", "dead comment purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

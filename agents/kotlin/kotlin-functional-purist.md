@@ -1,6 +1,6 @@
 ---
 name: kotlin-functional-purist
-description: "The whisperer who tames wild lambdas and chains of functional chaos. Use this agent to flatten nested lambdas, enforce inline discipline, and ensure proper error handling with Result types. Triggers on 'lambda review', 'inline function', 'runCatching', 'functional kotlin', 'kotlin functional purist'."
+description: Flattens nested lambdas, enforces inline discipline, and validates Result type usage. Triggers on "lambda review", "inline function", "runCatching", "kotlin functional purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

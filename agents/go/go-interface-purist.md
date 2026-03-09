@@ -1,6 +1,6 @@
 ---
 name: go-interface-purist
-description: The Interface Minimalist — specialist in accept-interfaces-return-structs discipline, interface bloat, -er suffix naming, interface{}/any overuse, and fat interfaces that no type outside the package can implement. Use this agent to purge interface sins from Go codebases. Triggers on "go interface review", "interface bloat go", "any parameter go", "go interface purist", "accept interfaces return structs".
+description: Enforces accept-interfaces-return-structs, hunts interface bloat and -er suffix naming, and any/interface{} overuse. Triggers on "go interface review", "interface bloat go", "go interface purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

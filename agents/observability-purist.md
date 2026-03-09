@@ -1,6 +1,6 @@
 ---
 name: observability-purist
-description: The divine bringer of light into the darkness of unobservable code. Use this agent to audit and enforce proper logging, distributed tracing, metrics, error handling, and instrumentation across the codebase. Triggers on "observability", "logging review", "tracing audit", "metrics review", "instrumentation", "observability purist", "add logging".
+description: Audits logging, distributed tracing, metrics, and instrumentation. Triggers on "observability", "logging review", "tracing audit", "metrics review", "observability purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

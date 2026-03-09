@@ -1,6 +1,6 @@
 ---
 name: android-injection-purist
-description: The Hilt Inquisitor — specialist in Hilt and Dagger injection patterns, component scoping correctness, @Provides vs @Binds discipline, module organization, and elimination of manual dependency construction in Android components. Use this agent to audit every @Module, @Inject, and @HiltAndroidApp for scoping violations and manual DI heresy. Triggers on "hilt audit", "dependency injection android", "hilt scoping", "dagger android", "android injection purist".
+description: Audits Hilt/Dagger injection patterns, component scoping, and @Provides vs @Binds discipline. Triggers on "hilt audit", "dependency injection android", "hilt scoping", "android injection purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

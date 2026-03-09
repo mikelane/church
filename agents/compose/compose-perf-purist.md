@@ -1,6 +1,6 @@
 ---
 name: compose-perf-purist
-description: "The performance sentinel who eliminates recomposition waste in Compose. Use this agent to audit stability annotations, detect unstable lambda captures, identify missing keys in lazy lists, and enforce derivedStateOf for computed state. Triggers on 'recomposition', 'stability', '@Immutable', '@Stable', 'compose performance', 'compose perf purist'."
+description: Audits stability annotations, unstable lambda captures, missing lazy list keys, and derivedStateOf usage. Triggers on "recomposition", "stability", "@Immutable", "@Stable", "compose perf purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

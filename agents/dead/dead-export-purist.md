@@ -1,6 +1,6 @@
 ---
 name: dead-export-purist
-description: "The contract auditor who finds exports with zero importers. Use this agent to cross-reference all exports with all imports and identify dead exports across the codebase. Triggers on 'unused exports', 'dead exports', 'export audit', 'dead export purist'."
+description: Cross-references all exports against imports to identify dead exports across the codebase. Triggers on "unused exports", "dead exports", "export audit", "dead export purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

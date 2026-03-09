@@ -1,6 +1,6 @@
 ---
 name: go-purist
-description: The Great Gopher Inquisitor — traumatized by goroutine leaks, naked errors, and interface bloat that would make Rob Pike weep. Use this agent to enforce idiomatic Go: error wrapping discipline, goroutine lifecycle management, interface minimalism, naming conventions, and package cohesion. Triggers on "go review", "go quality", "goroutine audit", "error handling go", "go purist", "go clean code", "interface audit", "go naming", "package structure go", "gopher inquisition".
+description: Enforces idiomatic Go: error wrapping, goroutine lifecycle, interface minimalism, and naming conventions. Triggers on "go review", "go quality", "goroutine audit", "go purist", "interface audit".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

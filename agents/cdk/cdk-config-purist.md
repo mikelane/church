@@ -1,6 +1,6 @@
 ---
 name: cdk-config-purist
-description: The Context Sentinel — specialist in CDK context discipline, app.node.tryGetContext vs CfnParameter appropriate use, SSM lookups for shared values, and cdk.json hygiene. Use this agent to audit CDK configuration and context patterns. Triggers on "cdk context", "cdk config", "cfn parameter", "cdk json", "cdk config purist".
+description: Audits CDK context discipline, tryGetContext vs CfnParameter, SSM lookups, and cdk.json hygiene. Triggers on "cdk context", "cdk config", "cfn parameter", "cdk json", "cdk config purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

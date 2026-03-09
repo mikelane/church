@@ -1,6 +1,6 @@
 ---
 name: cdk-security-purist
-description: The IAM Inquisitor — specialist in IAM least privilege, wildcard action and resource elimination, CDK Nag suppression justification, public S3 access, and security group discipline. Use this agent to audit CDK IAM policies, roles, and security configurations. Triggers on "iam audit", "wildcard policy", "iam least privilege", "public bucket", "cdk security purist".
+description: Audits IAM least privilege, wildcard actions/resources, CDK Nag suppressions, public S3 access, and security groups. Triggers on "iam audit", "wildcard policy", "public bucket", "cdk security purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

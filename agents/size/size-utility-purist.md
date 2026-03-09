@@ -1,6 +1,6 @@
 ---
 name: size-utility-purist
-description: "The utility surgeon who splits bloated helper files and infrastructure modules. Use this agent to find oversized utility, helper, mapper, and adapter files. Triggers on 'utility size', 'bloated helpers', 'large utils', 'split utilities', 'size utility purist'."
+description: Finds oversized utility, helper, mapper, and adapter files. Triggers on "utility size", "bloated helpers", "large utils", "size utility purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

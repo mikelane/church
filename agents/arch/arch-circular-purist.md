@@ -1,6 +1,6 @@
 ---
 name: arch-circular-purist
-description: "The cycle-breaking sentinel who untangles import loops. Use this agent to detect circular dependencies at file, module, and domain levels. Triggers on 'circular dependencies', 'import cycles', 'dependency loops', 'arch circular purist'."
+description: Detects circular dependencies at file, module, and domain levels. Triggers on "circular dependencies", "import cycles", "dependency loops", "arch circular purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

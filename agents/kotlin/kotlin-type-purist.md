@@ -1,6 +1,6 @@
 ---
 name: kotlin-type-purist
-description: "The architect who designs impenetrable type fortresses. Use this agent to eliminate `Any` parameters, unsafe casts, mutable data classes, and missing sealed hierarchies. Triggers on 'type safety', 'Any parameter', 'unsafe cast', 'sealed class', 'kotlin type purist'."
+description: Eliminates Any parameters, unsafe casts, mutable data classes, and missing sealed class hierarchies. Triggers on "type safety", "Any parameter", "unsafe cast", "sealed class", "kotlin type purist".
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---
