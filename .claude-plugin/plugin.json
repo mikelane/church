@@ -1,7 +1,7 @@
 {
   "name": "church",
   "description": "The Church of Clean Code - Purist subagents and crusade commands for code quality enforcement",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "author": {
     "name": "Bruno Tachinardi (fork by mikelane)"
   },
