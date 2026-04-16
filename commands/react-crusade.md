@@ -600,18 +600,11 @@ grep -rn "eslint-disable.*exhaustive-deps" --include="*.tsx" --include="*.ts" | 
 ```
 
 ### Step 4: Deploy Squads in Parallel
-Use `Task` tool to spawn 5 specialist agents simultaneously:
 
-```typescript
-// ALL squads deployed in a single message for true parallelism
-Task({ agent: 'react-arch-purist', task: architectureMission })
-Task({ agent: 'react-hooks-purist', task: hooksMission })
-Task({ agent: 'react-state-purist', task: stateMission })
-Task({ agent: 'react-data-purist', task: dataFlowMission })
-Task({ agent: 'react-perf-purist', task: performanceMission })
-```
+**Follow the Specialist Dispatch Protocol at the top of this file.**
+For each squad, `Read` the specialist file listed in the preamble for that squad's concern, strip its YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`.
 
-**CRITICAL**: All 5 Task calls MUST be in a single message for true parallelism.
+**CRITICAL: ALL 5 Task calls MUST be in a SINGLE message for true parallelism.**
 
 ### Step 5: Wait for All Squads
 Monitor all squad tasks until completion.

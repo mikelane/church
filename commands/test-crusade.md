@@ -458,38 +458,11 @@ pnpm test:coverage
 ```
 
 ### Step 4: Deploy Squads in Parallel
-Use `Task` tool to spawn 4 specialist agents in background mode:
 
-```typescript
-// All squads run in parallel
-Task({
-  agent: 'test-coverage-purist',
-  background: true,
-  task: coverageGapMission,
-  absolutePath: resolvedPath
-})
+**Follow the Specialist Dispatch Protocol at the top of this file.**
+For each squad, `Read` the specialist file listed in the preamble for that squad's concern, strip its YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`.
 
-Task({
-  agent: 'test-assertion-purist',
-  background: true,
-  task: assertionQualityMission,
-  absolutePath: resolvedPath
-})
-
-Task({
-  agent: 'test-property-purist',
-  background: true,
-  task: propertyTestMission,
-  absolutePath: resolvedPath
-})
-
-Task({
-  agent: 'test-hygiene-purist',
-  background: true,
-  task: testHygieneMission,
-  absolutePath: resolvedPath
-})
-```
+**CRITICAL: ALL 4 Task calls MUST be in a SINGLE message for true parallelism.**
 
 ### Step 5: Wait for All Squads
 Monitor background tasks until all complete.

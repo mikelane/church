@@ -164,36 +164,10 @@ Deploying 4 Naming Purist squads in parallel:
 Each squad operates independently. Results will be reconciled after completion.
 ```
 
-Use `Task` tool to spawn each squad:
-```typescript
-// Squad 1 - File Naming
-await Task({
-  agent: 'naming-file-purist',
-  objective: 'Audit file names in {paths} against [name].[component-type].ts convention. For each violation, provide current name, suggested name, and architectural layer rationale.',
-  background: true
-});
+**Follow the Specialist Dispatch Protocol at the top of this file.**
+For each squad, `Read` the specialist file listed in the preamble for that squad's concern, strip its YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`.
 
-// Squad 2 - Variable Naming
-await Task({
-  agent: 'naming-variable-purist',
-  objective: 'Audit variable naming in {paths}. Focus on: boolean prefixes, plural/singular collections, banned generic names, single-letter variables. Provide specific rename suggestions.',
-  background: true
-});
-
-// Squad 3 - Function Naming
-await Task({
-  agent: 'naming-function-purist',
-  objective: 'Audit function names in {paths}. Identify vague verbs (handle, process, manage, do). Suggest specific, action-oriented names.',
-  background: true
-});
-
-// Squad 4 - Type/Constant/Event Naming
-await Task({
-  agent: 'naming-type-purist',
-  objective: 'Audit types, interfaces, constants, and events in {paths}. Check PascalCase types, SCREAMING_SNAKE constants, past-tense events. Flag violations.',
-  background: true
-});
-```
+**CRITICAL: ALL 4 Task calls MUST be in a SINGLE message for true parallelism.**
 
 ### Phase 3: Reconciliation (Consolidate Results)
 
