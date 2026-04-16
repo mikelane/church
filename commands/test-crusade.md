@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope domain|app|all] [--write]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `test-assertion-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/test/test-assertion-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/test/test-assertion-purist.md`
+- `specialists/test/test-coverage-purist.md`
+- `specialists/test/test-hygiene-purist.md`
+- `specialists/test/test-property-purist.md`
+
+---
+
 # Test Crusade: The War Against Untested Code
 
 Deploy parallel Test Purist agents to audit every corner of the codebase. No untested function escapes. No weak assertion survives. No coverage gap remains hidden.
@@ -436,38 +458,11 @@ pnpm test:coverage
 ```
 
 ### Step 4: Deploy Squads in Parallel
-Use `Task` tool to spawn 4 specialist agents in background mode:
 
-```typescript
-// All squads run in parallel
-Task({
-  agent: 'test-coverage-purist',
-  background: true,
-  task: coverageGapMission,
-  absolutePath: resolvedPath
-})
+**Follow the Specialist Dispatch Protocol at the top of this file.**
+For each squad, `Read` the specialist file listed in the preamble for that squad's concern, strip its YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`.
 
-Task({
-  agent: 'test-assertion-purist',
-  background: true,
-  task: assertionQualityMission,
-  absolutePath: resolvedPath
-})
-
-Task({
-  agent: 'test-property-purist',
-  background: true,
-  task: propertyTestMission,
-  absolutePath: resolvedPath
-})
-
-Task({
-  agent: 'test-hygiene-purist',
-  background: true,
-  task: testHygieneMission,
-  absolutePath: resolvedPath
-})
-```
+**CRITICAL: ALL 4 Task calls MUST be in a SINGLE message for true parallelism.**
 
 ### Step 5: Wait for All Squads
 Monitor background tasks until all complete.

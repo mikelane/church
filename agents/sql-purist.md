@@ -1,6 +1,6 @@
 ---
 name: sql-purist
-description: Enforces query discipline, index hygiene, schema correctness, migration reversibility, and parameterized queries. Triggers on "sql review", "n+1 audit", "sql injection", "select star", "sql purist".
+description: Enforces query discipline, index hygiene, schema correctness, migration reversibility, and parameterized queries.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

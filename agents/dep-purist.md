@@ -1,6 +1,6 @@
 ---
 name: dep-purist
-description: Finds outdated, vulnerable, duplicate, unused, and bloated npm packages. Triggers on "dependency audit", "dep review", "outdated packages", "npm audit", "dep purist", "package bloat".
+description: Finds outdated, vulnerable, duplicate, unused, and bloated npm packages.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

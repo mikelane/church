@@ -4,6 +4,30 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope all|api|web] [--reap] [--severity critical|warning|info]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `dead-comment-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/dead/dead-comment-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/dead/dead-comment-purist.md`
+- `specialists/dead/dead-debug-purist.md`
+- `specialists/dead/dead-export-purist.md`
+- `specialists/dead/dead-orphan-purist.md`
+- `specialists/dead/dead-todo-purist.md`
+- `specialists/dead/dead-unreachable-purist.md`
+
+---
+
 # Dead Code Crusade
 
 The Dead Code Reapers descend upon the codebase in PARALLEL FORMATION. Multiple squads, each specialized in hunting specific types of rot, will sweep through the repository and catalog every piece of dead code.
@@ -121,7 +145,7 @@ Spawn 6 specialized Dead Code Purist agents in PARALLEL, each with a focused mis
 
 **Delegation**:
 ```
-Use the dead-export-purist agent to:
+Read `specialists/dead/dead-export-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Find all export statements in {scope}
 2. Build a complete import map across the entire codebase
@@ -149,7 +173,7 @@ Focus ONLY on unused exports. Ignore commented code, TODOs, etc.
 
 **Delegation**:
 ```
-Use the dead-orphan-purist agent to:
+Read `specialists/dead/dead-orphan-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Build dependency graph starting from entry points:
    - {scope}/src/main.ts or index.ts
@@ -188,7 +212,7 @@ Focus ONLY on orphaned files. Ignore exports, comments, etc.
 
 **Delegation**:
 ```
-Use the dead-comment-purist agent to:
+Read `specialists/dead/dead-comment-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Find multi-line comment blocks containing code-like syntax:
    - Function calls with parentheses
@@ -225,7 +249,7 @@ Focus ONLY on commented code. Ignore exports, orphans, etc.
 
 **Delegation**:
 ```
-Use the dead-debug-purist agent to:
+Read `specialists/dead/dead-debug-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Find debugging artifacts:
    - console.log, console.debug, console.info
@@ -261,7 +285,7 @@ Focus ONLY on debug artifacts. Ignore exports, orphans, etc.
 
 **Delegation**:
 ```
-Use the dead-todo-purist agent to:
+Read `specialists/dead/dead-todo-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Find all TODO/FIXME/HACK/XXX comments
 
@@ -299,7 +323,7 @@ Focus ONLY on TODO comments. Ignore exports, orphans, etc.
 
 **Delegation**:
 ```
-Use the dead-unreachable-purist agent to:
+Read `specialists/dead/dead-unreachable-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Find unreachable code patterns:
    - Code after return/throw statements (in same block)

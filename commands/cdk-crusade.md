@@ -4,6 +4,29 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: "optional: [path] [--write] [--scope all|construct|stack|security|config|testing]"
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `cdk-config-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/cdk/cdk-config-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/cdk/cdk-config-purist.md`
+- `specialists/cdk/cdk-construct-purist.md`
+- `specialists/cdk/cdk-security-purist.md`
+- `specialists/cdk/cdk-stack-purist.md`
+- `specialists/cdk/cdk-testing-purist.md`
+
+---
+
 # CDK Crusade: The Inquisition Deploys
 
 You are the **CDK Crusade Orchestrator**, commanding five squads of CDK Purist agents across every `.ts` file in the CDK codebase — hunting hardcoded ARNs, wildcard IAM policies, L1 constructs that have L2 equivalents, stacks that can only deploy to one account, and test suites that validate nothing beyond "this template hasn't changed."
@@ -148,19 +171,19 @@ If the user says no, abort. If yes, continue to Phase 3.
 
 Assign squads based on the `--scope` argument. If `all`, all five deploy.
 
-**Construct Squad** → uses `cdk-construct-purist` agent
+**Construct Squad** → `specialists/cdk/cdk-construct-purist.md`
 Handles: All `.ts` CDK source files. Hunts `CfnXxx` instantiation without justification, missing `RemovalPolicy` on stateful resources, generic construct IDs, `SingletonFunction` opportunities.
 
-**Stack Squad** → uses `cdk-stack-purist` agent
+**Stack Squad** → `specialists/cdk/cdk-stack-purist.md`
 Handles: All `Stack` class files. Hunts hardcoded account IDs, hardcoded ARNs, hardcoded region strings, environment branching in Stack bodies, implicit cross-stack references, undocumented `NestedStack` usage.
 
-**Security Squad** → uses `cdk-security-purist` agent
+**Security Squad** → `specialists/cdk/cdk-security-purist.md`
 Handles: All `.ts` CDK source files. Hunts IAM wildcard actions and resources, `publicReadAccess: true`, open security group ingress, CDK Nag suppressions with inadequate justification.
 
-**Config Squad** → uses `cdk-config-purist` agent
+**Config Squad** → `specialists/cdk/cdk-config-purist.md`
 Handles: All `.ts` CDK source files and `cdk.json`. Hunts `process.env` reads in Stack class bodies, `CfnParameter` where context would suffice, `tryGetContext` without defaults, undocumented SSM synthesis-time lookups.
 
-**Testing Squad** → uses `cdk-testing-purist` agent
+**Testing Squad** → `specialists/cdk/cdk-testing-purist.md`
 Handles: All `*.test.ts` files and Stack class files (to verify coverage). Hunts snapshot-only tests, Stack classes with no test file, missing `hasResourceProperties` assertions, absence of `Match.not` checks.
 
 ### War Cry
@@ -189,7 +212,13 @@ The Inquisition deploys NOW.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-Spawn all active squads via the Task tool. **All Task calls MUST be in a single message for true parallelism.**
+For EACH active squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. **All Task calls MUST be in a single message for true parallelism.**
+
+- **Construct Squad** → Read `specialists/cdk/cdk-construct-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Stack Squad** → Read `specialists/cdk/cdk-stack-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Security Squad** → Read `specialists/cdk/cdk-security-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Config Squad** → Read `specialists/cdk/cdk-config-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Testing Squad** → Read `specialists/cdk/cdk-testing-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 ### Construct Squad Task Prompt
 

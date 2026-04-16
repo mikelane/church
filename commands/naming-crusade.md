@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope all|api|web] [--fix]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `naming-file-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/naming/naming-file-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/naming/naming-file-purist.md`
+- `specialists/naming/naming-function-purist.md`
+- `specialists/naming/naming-type-purist.md`
+- `specialists/naming/naming-variable-purist.md`
+
+---
+
 # The Naming Crusade
 
 The Naming Purists march across your codebase, reading every identifier, scrutinizing every file name, and judging every variable against the sacred commandments of clarity. This is not a gentle code review. This is a PURGE of linguistic laziness.
@@ -142,36 +164,10 @@ Deploying 4 Naming Purist squads in parallel:
 Each squad operates independently. Results will be reconciled after completion.
 ```
 
-Use `Task` tool to spawn each squad:
-```typescript
-// Squad 1 - File Naming
-await Task({
-  agent: 'naming-file-purist',
-  objective: 'Audit file names in {paths} against [name].[component-type].ts convention. For each violation, provide current name, suggested name, and architectural layer rationale.',
-  background: true
-});
+**Follow the Specialist Dispatch Protocol at the top of this file.**
+For each squad, `Read` the specialist file listed in the preamble for that squad's concern, strip its YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`.
 
-// Squad 2 - Variable Naming
-await Task({
-  agent: 'naming-variable-purist',
-  objective: 'Audit variable naming in {paths}. Focus on: boolean prefixes, plural/singular collections, banned generic names, single-letter variables. Provide specific rename suggestions.',
-  background: true
-});
-
-// Squad 3 - Function Naming
-await Task({
-  agent: 'naming-function-purist',
-  objective: 'Audit function names in {paths}. Identify vague verbs (handle, process, manage, do). Suggest specific, action-oriented names.',
-  background: true
-});
-
-// Squad 4 - Type/Constant/Event Naming
-await Task({
-  agent: 'naming-type-purist',
-  objective: 'Audit types, interfaces, constants, and events in {paths}. Check PascalCase types, SCREAMING_SNAKE constants, past-tense events. Flag violations.',
-  background: true
-});
-```
+**CRITICAL: ALL 4 Task calls MUST be in a SINGLE message for true parallelism.**
 
 ### Phase 3: Reconciliation (Consolidate Results)
 

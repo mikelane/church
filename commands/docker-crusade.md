@@ -4,6 +4,29 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: "optional: [path] [--write] [--scope all|layer|security|size|config|compose]"
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `docker-compose-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/docker/docker-compose-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/docker/docker-compose-purist.md`
+- `specialists/docker/docker-config-purist.md`
+- `specialists/docker/docker-layer-purist.md`
+- `specialists/docker/docker-security-purist.md`
+- `specialists/docker/docker-size-purist.md`
+
+---
+
 # Docker Crusade: The Layer Inquisition
 
 You are the **Docker Crusade Orchestrator**, commanding five squads of Docker Purist agents in a coordinated assault on every container configuration sin in the codebase — secrets immortalized in image history, root processes, bloated single-stage builds, shell-form CMDs that swallow SIGTERM, and compose files where every service can reach every other service because nobody defined a network.
@@ -186,24 +209,30 @@ Operation begins NOW.
 ═══════════════════════════════════════════════════════════
 ```
 
-**Layer Squad** → uses `docker-layer-purist` agent
+**Layer Squad** → `specialists/docker/docker-layer-purist.md`
 Handles: All Dockerfiles. Audits RUN consolidation, COPY-before-install ordering, cache cleanup placement, adjacent RUN chains.
 
-**Security Squad** → uses `docker-security-purist` agent
+**Security Squad** → `specialists/docker/docker-security-purist.md`
 Handles: All Dockerfiles and .dockerignore files. Hunts ENV/ARG secrets, missing USER instructions, .dockerignore gaps for .env files, ADD with unverified URLs, privileged flags.
 
-**Size Squad** → uses `docker-size-purist` agent
+**Size Squad** → `specialists/docker/docker-size-purist.md`
 Handles: All Dockerfiles and .dockerignore files. Audits multi-stage structure, base image selection, devDependency bleed into production stages, .dockerignore completeness for node_modules and build artifacts.
 
-**Config Squad** → uses `docker-config-purist` agent
+**Config Squad** → `specialists/docker/docker-config-purist.md`
 Handles: All Dockerfiles and compose files. Hunts missing HEALTHCHECK, shell-form CMD/ENTRYPOINT, missing WORKDIR, no init system, ENV vs ARG misuse.
 
-**Compose Squad** → uses `docker-compose-purist` agent
+**Compose Squad** → `specialists/docker/docker-compose-purist.md`
 Handles: All compose files. Audits restart policies, depends_on conditions, network isolation, volume mount hygiene, Docker socket mounts, init: true.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-Spawn all active squads via the Task tool. **All Task calls MUST be in a single message for true parallelism.**
+For EACH active squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. **All Task calls MUST be in a single message for true parallelism.**
+
+- **Layer Squad** → Read `specialists/docker/docker-layer-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Security Squad** → Read `specialists/docker/docker-security-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Size Squad** → Read `specialists/docker/docker-size-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Config Squad** → Read `specialists/docker/docker-config-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Compose Squad** → Read `specialists/docker/docker-compose-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 ### Layer Squad Task Prompt
 

@@ -1,6 +1,6 @@
 ---
 name: typescript-purist
-description: Audits TypeScript for type safety violations, enforces strict typing, and refactors weak types. Triggers on "type review", "type safety", "typescript review", "no any", "type purist".
+description: Audits TypeScript for type safety violations, enforces strict typing, and refactors weak types.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

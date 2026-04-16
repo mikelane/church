@@ -4,6 +4,29 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope arch|state|effects|perf|modifiers|all] [--write]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `compose-arch-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/compose/compose-arch-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/compose/compose-arch-purist.md`
+- `specialists/compose/compose-effects-purist.md`
+- `specialists/compose/compose-modifier-purist.md`
+- `specialists/compose/compose-perf-purist.md`
+- `specialists/compose/compose-state-purist.md`
+
+---
+
 # Compose Crusade: The War Against Impure Composables
 
 Deploy parallel Compose Purist agents to audit every composable, every state holder, every side effect. No tier violation escapes. No rogue LaunchedEffect survives. No modifier ordering sin remains hidden.
@@ -93,28 +116,30 @@ AskUserQuestion: Write mode will REFACTOR composable files, extract state holder
 
 Deploy squads based on scope. If `--scope all`, deploy all five. Otherwise deploy only the matching squad.
 
-**Architecture Squad** → `compose-arch-purist`
+**Architecture Squad** → `specialists/compose/compose-arch-purist.md`
 Handles: Composable tier classification (Screen/Stateful/Stateless), ViewModel coupling, navigation args, parameter conventions
 
-**State Squad** → `compose-state-purist`
+**State Squad** → `specialists/compose/compose-state-purist.md`
 Handles: remember/rememberSaveable, state hoisting, derivedStateOf, snapshotFlow, MutableState exposure, ViewModel state patterns
 
-**Effects Squad** → `compose-effects-purist`
+**Effects Squad** → `specialists/compose/compose-effects-purist.md`
 Handles: LaunchedEffect keys, DisposableEffect cleanup, SideEffect idempotency, rememberCoroutineScope vs LaunchedEffect, produceState
 
-**Performance Squad** → `compose-perf-purist`
+**Performance Squad** → `specialists/compose/compose-perf-purist.md`
 Handles: @Stable/@Immutable annotations, lambda stability, lazy list keys, remember for computations, recomposition scope
 
-**Modifier Squad** → `compose-modifier-purist`
+**Modifier Squad** → `specialists/compose/compose-modifier-purist.md`
 Handles: Modifier ordering, modifier parameter conventions, composed{} vs Modifier.Node, chain extraction, accessibility modifiers
 
 ---
 
 ### Phase 4: Parallel Deployment
 
+For EACH task below, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + the task block below separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`.
+
 **CRITICAL: All 5 Task tool calls MUST be in a SINGLE message for true parallelism.**
 
-#### Architecture Task (`compose-arch-purist`)
+#### Architecture Task — Read `specialists/compose/compose-arch-purist.md`
 ```
 You are the Architecture Squad of the Compose Crusade.
 Target: {absolute_path} | Scope: {arch|all} | Write Mode: {true|false}
@@ -138,7 +163,7 @@ MISSION: Classify every composable into the Three-Tier Architecture.
 Report findings with classification and violations.
 ```
 
-#### State Task (`compose-state-purist`)
+#### State Task — Read `specialists/compose/compose-state-purist.md`
 ```
 You are the State Squad of the Compose Crusade.
 Target: {absolute_path} | Scope: {state|all} | Write Mode: {true|false}
@@ -159,7 +184,7 @@ MISSION: Enforce the Doctrine of State Hoisting.
 Report with file:line references and code snippets.
 ```
 
-#### Effects Task (`compose-effects-purist`)
+#### Effects Task — Read `specialists/compose/compose-effects-purist.md`
 ```
 You are the Effects Squad of the Compose Crusade.
 Target: {absolute_path} | Scope: {effects|all} | Write Mode: {true|false}
@@ -182,7 +207,7 @@ MISSION: Purge every effect heresy from the composition.
 Report with file:line references and code snippets.
 ```
 
-#### Performance Task (`compose-perf-purist`)
+#### Performance Task — Read `specialists/compose/compose-perf-purist.md`
 ```
 You are the Performance Squad of the Compose Crusade.
 Target: {absolute_path} | Scope: {perf|all} | Write Mode: {true|false}
@@ -202,7 +227,7 @@ MISSION: Eliminate unnecessary recompositions and enforce stability.
 Report with estimated recomposition impact.
 ```
 
-#### Modifier Task (`compose-modifier-purist`)
+#### Modifier Task — Read `specialists/compose/compose-modifier-purist.md`
 ```
 You are the Modifier Squad of the Compose Crusade.
 Target: {absolute_path} | Scope: {modifiers|all} | Write Mode: {true|false}

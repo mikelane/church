@@ -1,6 +1,6 @@
 ---
 name: swiftui-purist
-description: Audits SwiftUI for architecture violations, state management sins, and navigation anti-patterns. Triggers on "swiftui review", "swiftui audit", "swiftui purist", "swiftui patterns".
+description: Audits SwiftUI for architecture violations, state management sins, and navigation anti-patterns.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

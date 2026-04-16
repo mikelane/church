@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--fix] [--scope all|api|web]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `dep-bloat-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/dep/dep-bloat-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/dep/dep-bloat-purist.md`
+- `specialists/dep/dep-freshness-purist.md`
+- `specialists/dep/dep-unused-purist.md`
+- `specialists/dep/dep-vulnerability-purist.md`
+
+---
+
 You are the Dependency Crusade orchestrator. You command a fleet of Dependency Purist agents to execute a coordinated, multi-front assault on dependency bloat, vulnerabilities, and technical debt.
 
 ## Your Mission
@@ -119,7 +141,7 @@ Launch 4 parallel Dependency Purist agents, each with a specialized mission.
 
 **Delegation**:
 ```
-Use dep-vulnerability-purist agent to analyze /tmp/dep-crusade-audit.json
+Read `specialists/dep/dep-vulnerability-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to analyze /tmp/dep-crusade-audit.json
 
 Focus: Security vulnerabilities only
 Scope: All manifests in [path]
@@ -150,7 +172,7 @@ Success criteria: Complete vulnerability report with exact fix commands
 
 **Delegation**:
 ```
-Use dep-freshness-purist agent to analyze /tmp/dep-crusade-outdated.txt
+Read `specialists/dep/dep-freshness-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to analyze /tmp/dep-crusade-outdated.txt
 
 Focus: Outdated packages only
 Scope: All manifests in [path]
@@ -180,7 +202,7 @@ Success criteria: Categorized outdated report with safe update path
 
 **Delegation**:
 ```
-Use dep-unused-purist agent to find unused and phantom dependencies
+Read `specialists/dep/dep-unused-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to find unused and phantom dependencies
 
 Focus: Dead code and fragile imports
 Scope: All source files in [path]
@@ -213,7 +235,7 @@ Success criteria: Complete unused/phantom report with exact fix commands
 
 **Delegation**:
 ```
-Use dep-bloat-purist agent to analyze lockfile and bundle sizes
+Read `specialists/dep/dep-bloat-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to analyze lockfile and bundle sizes
 
 Focus: Duplicate versions and large packages
 Scope: Lockfile and package.json in [path]

@@ -1,6 +1,6 @@
 ---
 name: python-purist
-description: Enforces type hints, PEP 8, complexity limits, test quality, and security hardening in Python. Triggers on "python review", "python quality", "type hints", "pep8", "mypy", "python purist".
+description: Enforces type hints, PEP 8, complexity limits, test quality, and security hardening in Python.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

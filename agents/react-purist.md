@@ -1,6 +1,6 @@
 ---
 name: react-purist
-description: Audits React for state management sins, effect heresies, memoization neglect, and architecture violations. Triggers on "react review", "component audit", "hook review", "react purist".
+description: Audits React for state management sins, effect heresies, memoization neglect, and architecture violations.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

@@ -1,6 +1,6 @@
 ---
 name: android-purist
-description: Enforces lifecycle discipline, ViewModel purity, Room migration hygiene, and Hilt scoping. Triggers on "android review", "lifecycle audit", "viewmodel audit", "hilt audit", "android purist".
+description: Enforces lifecycle discipline, ViewModel purity, Room migration hygiene, and Hilt scoping.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

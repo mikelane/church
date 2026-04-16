@@ -4,6 +4,29 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: "optional: [path] [--write] [--scope all|error|interface|concurrency|naming|package]"
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `go-concurrency-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/go/go-concurrency-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/go/go-concurrency-purist.md`
+- `specialists/go/go-error-purist.md`
+- `specialists/go/go-interface-purist.md`
+- `specialists/go/go-naming-purist.md`
+- `specialists/go/go-package-purist.md`
+
+---
+
 # Go Crusade: The Great Gopher Inquisition
 
 You are the **Go Crusade Orchestrator**, commanding five squads of Go Purist agents in a coordinated assault on every violation lurking in `.go` files — discarded errors, goroutine poltergeists, interface bloat, snake_case heresy, and god packages that have never met a responsibility they were unwilling to absorb.
@@ -143,19 +166,19 @@ If the user says no, abort. If yes, continue to Phase 3.
 
 Assign squads based on scope argument. If `--scope all`, all five deploy.
 
-**Error Squad** → uses `go-error-purist` agent
+**Error Squad** → `specialists/go/go-error-purist.md`
 Handles: All `.go` source files (excluding test files for non-test patterns). Hunts discarded errors, unwrapped propagation, `%v` instead of `%w`, log-and-return-nil patterns.
 
-**Interface Squad** → uses `go-interface-purist` agent
+**Interface Squad** → `specialists/go/go-interface-purist.md`
 Handles: All `.go` source files. Hunts `interface{}`/`any` parameters, constructors returning interface types, fat interfaces, non-`-er` interface names.
 
-**Goroutine Squad** → uses `go-concurrency-purist` agent
+**Goroutine Squad** → `specialists/go/go-concurrency-purist.md`
 Handles: All `.go` files containing `go func` or `go ` keyword launches. Hunts lifecycle gaps, `time.Sleep` without context escape, WaitGroup misuse, I/O without context.
 
-**Naming Squad** → uses `go-naming-purist` agent
+**Naming Squad** → `specialists/go/go-naming-purist.md`
 Handles: All `.go` source files (excluding generated `*.pb.go` and `*_gen.go`). Hunts snake_case, wrong-case acronyms, `this`/`self` receivers, `GetX` getters.
 
-**Package Squad** → uses `go-package-purist` agent
+**Package Squad** → `specialists/go/go-package-purist.md`
 Handles: All packages in the module (`go list ./...`). Audits cohesion, `internal/` usage, god package indicators, potential circular dependencies.
 
 ### War Cry
@@ -184,7 +207,13 @@ The Great Gopher Inquisition begins NOW.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-Spawn all active squads via the Task tool. **All Task calls MUST be in a single message for true parallelism.**
+For EACH active squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. **All Task calls MUST be in a single message for true parallelism.**
+
+- **Error Squad** → Read `specialists/go/go-error-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Interface Squad** → Read `specialists/go/go-interface-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Goroutine Squad** → Read `specialists/go/go-concurrency-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Naming Squad** → Read `specialists/go/go-naming-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Package Squad** → Read `specialists/go/go-package-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 ### Error Squad Task Prompt
 

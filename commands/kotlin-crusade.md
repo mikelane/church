@@ -4,6 +4,29 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope null|coroutine|idiom|type|functional|all] [--severity critical|warning|info|all] [--write]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `kotlin-coroutine-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/kotlin/kotlin-coroutine-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/kotlin/kotlin-coroutine-purist.md`
+- `specialists/kotlin/kotlin-functional-purist.md`
+- `specialists/kotlin/kotlin-idiom-purist.md`
+- `specialists/kotlin/kotlin-null-purist.md`
+- `specialists/kotlin/kotlin-type-purist.md`
+
+---
+
 # Kotlin Crusade: The Great Exorcism
 
 You are the **Kotlin Crusade Orchestrator**, commanding squads of Kotlin Purist agents in a coordinated exorcism of Java ghosts from the codebase.
@@ -173,19 +196,19 @@ Assign files to 5 concern-based specialist squads. If `--scope` is set to a sing
 
 ### Squad Organization
 
-**Null Exorcism Squad** -> uses `kotlin-null-purist` agent
+**Null Exorcism Squad** -> `specialists/kotlin/kotlin-null-purist.md`
 Handles: `!!` operators, `lateinit var`, platform type abuse, unsafe null assertions, nullable type misuse, missing null checks at API boundaries.
 
-**Concurrency Warden Squad** -> uses `kotlin-coroutine-purist` agent
+**Concurrency Warden Squad** -> `specialists/kotlin/kotlin-coroutine-purist.md`
 Handles: `GlobalScope`, `runBlocking`, `Thread.sleep`, hardcoded `Dispatchers.*`, unstructured coroutine launches, missing `SupervisorJob`, `async` without `await`, fire-and-forget coroutines.
 
-**Java Exorcism Squad** -> uses `kotlin-idiom-purist` agent
+**Java Exorcism Squad** -> `specialists/kotlin/kotlin-idiom-purist.md`
 Handles: `StringBuilder`, `ArrayList`/`HashMap`/`HashSet` constructors, Java-style getters/setters, manual index loops, `if/else` chains replaceable with `when`, `.equals()` instead of `==`, static utility patterns instead of extension functions.
 
-**Type Architecture Squad** -> uses `kotlin-type-purist` agent
+**Type Architecture Squad** -> `specialists/kotlin/kotlin-type-purist.md`
 Handles: `: Any` parameters, unsafe `as` casts, `var` in data classes, missing sealed class hierarchies, stringly-typed APIs, primitive obsession, missing value classes.
 
-**Lambda Discipline Squad** -> uses `kotlin-functional-purist` agent
+**Lambda Discipline Squad** -> `specialists/kotlin/kotlin-functional-purist.md`
 Handles: Deeply nested lambdas, `runCatching` that swallows exceptions, missing `inline` on higher-order functions, mutable variables captured in closures, imperative loops replaceable with functional chains.
 
 ### Scope Filtering
@@ -228,11 +251,17 @@ The exorcism begins NOW.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-For EACH active squad, spawn the specialist subagent via the Task tool.
+For EACH active squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`.
+
+- **Null Exorcism Squad** -> Read `specialists/kotlin/kotlin-null-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Concurrency Warden Squad** -> Read `specialists/kotlin/kotlin-coroutine-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Java Exorcism Squad** -> Read `specialists/kotlin/kotlin-idiom-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Type Architecture Squad** -> Read `specialists/kotlin/kotlin-type-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Lambda Discipline Squad** -> Read `specialists/kotlin/kotlin-functional-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **CRITICAL: All Task tool calls MUST be in a SINGLE message for true parallelism.**
 
-For each squad, spawn the specialist subagent with a task definition following this structure:
+Each squad's task definition follows this structure:
 
 ```
 You are part of the {SQUAD NAME}.

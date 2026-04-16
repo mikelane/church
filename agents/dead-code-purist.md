@@ -1,6 +1,6 @@
 ---
-name: dead-code-purist
-description: Finds dead code, unreachable branches, unused exports, orphaned files, and commented-out blocks. Triggers on "dead code", "unused code", "orphaned files", "dead code purist".
+name: dead-purist
+description: Finds dead code, unreachable branches, unused exports, orphaned files, and commented-out blocks.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

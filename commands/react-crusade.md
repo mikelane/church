@@ -4,6 +4,29 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope architecture|effects|state|all] [--write]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `react-arch-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/react/react-arch-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/react/react-arch-purist.md`
+- `specialists/react/react-data-purist.md`
+- `specialists/react/react-hooks-purist.md`
+- `specialists/react/react-perf-purist.md`
+- `specialists/react/react-state-purist.md`
+
+---
+
 # React Crusade: The War Against Impure Components
 
 Deploy parallel React Purist agents to audit every component, every hook, every effect. No tier violation escapes. No rogue effect survives. No state management sin remains hidden.
@@ -577,18 +600,11 @@ grep -rn "eslint-disable.*exhaustive-deps" --include="*.tsx" --include="*.ts" | 
 ```
 
 ### Step 4: Deploy Squads in Parallel
-Use `Task` tool to spawn 5 specialist agents simultaneously:
 
-```typescript
-// ALL squads deployed in a single message for true parallelism
-Task({ agent: 'react-arch-purist', task: architectureMission })
-Task({ agent: 'react-hooks-purist', task: hooksMission })
-Task({ agent: 'react-state-purist', task: stateMission })
-Task({ agent: 'react-data-purist', task: dataFlowMission })
-Task({ agent: 'react-perf-purist', task: performanceMission })
-```
+**Follow the Specialist Dispatch Protocol at the top of this file.**
+For each squad, `Read` the specialist file listed in the preamble for that squad's concern, strip its YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`.
 
-**CRITICAL**: All 5 Task calls MUST be in a single message for true parallelism.
+**CRITICAL: ALL 5 Task calls MUST be in a SINGLE message for true parallelism.**
 
 ### Step 5: Wait for All Squads
 Monitor all squad tasks until completion.

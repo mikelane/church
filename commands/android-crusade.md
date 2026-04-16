@@ -4,6 +4,29 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: "optional: [path] [--write] [--scope all|lifecycle|viewmodel|room|injection|background]"
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `android-background-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/android/android-background-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/android/android-background-purist.md`
+- `specialists/android/android-injection-purist.md`
+- `specialists/android/android-lifecycle-purist.md`
+- `specialists/android/android-room-purist.md`
+- `specialists/android/android-viewmodel-purist.md`
+
+---
+
 # Android Crusade: The Tribunal of the Framework
 
 You are the **Android Crusade Orchestrator**, commanding five squads of Android Purist agents in a coordinated assault on every violation hiding in `.kt` and `.java` files — Context references leaking Activities through ViewModel fields, missing `onSaveInstanceState` overrides crashing on rotation, `fallbackToDestructiveMigration` silently deleting user data, `IntentService` still running in codebases that haven't opened the release notes since 2019, and `@Singleton` components holding `Activity` references long past the Activity's rightful death.
@@ -157,19 +180,19 @@ If the user says no, abort. If yes, continue to Phase 3.
 
 Assign files to squads based on scope argument. If `--scope all`, all five squads deploy.
 
-**Lifecycle Squad** → uses `android-lifecycle-purist` agent
+**Lifecycle Squad** → `specialists/android/android-lifecycle-purist.md`
 Handles: All Activity and Fragment subclasses. Audits `registerReceiver`/`unregisterReceiver` symmetry, `.observe(this` in Fragments, binding nulling in `onDestroyView`, and `onSaveInstanceState` coverage for stateful Activities.
 
-**ViewModel Squad** → uses `android-viewmodel-purist` agent
+**ViewModel Squad** → `specialists/android/android-viewmodel-purist.md`
 Handles: All ViewModel subclasses. Hunts Context/Activity/Fragment/View fields, `GlobalScope`, exposed `MutableStateFlow`/`MutableLiveData`, and missing sealed UI state classes.
 
-**Room Squad** → uses `android-room-purist` agent
+**Room Squad** → `specialists/android/android-room-purist.md`
 Handles: All `@Entity`, `@Dao`, `@Database`, and `Migration` files. Audits `fallbackToDestructiveMigration`, synchronous DAO methods, missing migrations, and null-unsafe TypeConverters.
 
-**Injection Squad** → uses `android-injection-purist` agent
+**Injection Squad** → `specialists/android/android-injection-purist.md`
 Handles: All `@Module`, `@HiltAndroidApp`, `@AndroidEntryPoint`, and `@HiltViewModel` files. Audits scope mismatches, `@Provides` vs `@Binds` opportunities, and manual dependency construction.
 
-**Background Squad** → uses `android-background-purist` agent
+**Background Squad** → `specialists/android/android-background-purist.md`
 Handles: All `Service`, `IntentService`, `Worker`, and `BroadcastReceiver` files. Audits foreground service requirements, `AlarmManager` misuse, deprecated `IntentService`, and `Thread {}` anti-patterns.
 
 ### War Cry
@@ -198,7 +221,13 @@ The Tribunal is in session.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-Spawn all active squads via the Task tool. **All Task calls MUST be in a single message for true parallelism.**
+For EACH active squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. **All Task calls MUST be in a single message for true parallelism.**
+
+- **Lifecycle Squad** → Read `specialists/android/android-lifecycle-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **ViewModel Squad** → Read `specialists/android/android-viewmodel-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Room Squad** → Read `specialists/android/android-room-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Injection Squad** → Read `specialists/android/android-injection-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Background Squad** → Read `specialists/android/android-background-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 ### Lifecycle Squad Task Prompt
 

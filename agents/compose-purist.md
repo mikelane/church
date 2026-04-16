@@ -1,6 +1,6 @@
 ---
 name: compose-purist
-description: Audits Jetpack Compose for architecture violations, state hoisting sins, effect heresies, and recomposition waste. Triggers on "compose review", "composable audit", "recomposition", "compose purist".
+description: Audits Jetpack Compose for architecture violations, state hoisting sins, effect heresies, and recomposition waste.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

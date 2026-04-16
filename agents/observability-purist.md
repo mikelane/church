@@ -1,6 +1,6 @@
 ---
 name: observability-purist
-description: Audits logging, distributed tracing, metrics, and instrumentation. Triggers on "observability", "logging review", "tracing audit", "metrics review", "observability purist".
+description: Audits logging, distributed tracing, metrics, and instrumentation.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

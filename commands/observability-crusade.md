@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope all|api|web] [--illuminate]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `observability-error-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/observability/observability-error-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/observability/observability-error-purist.md`
+- `specialists/observability/observability-logging-purist.md`
+- `specialists/observability/observability-metrics-purist.md`
+- `specialists/observability/observability-tracing-purist.md`
+
+---
+
 # The Observability Crusade
 
 **"In the beginning, there was darkness upon the codebase. And the Observability Purists said: LET THERE BE LIGHT."**
@@ -211,12 +233,12 @@ Deploy specialized squads to eliminate each category of sin:
 
 **Squad prompts:**
 
-Each squad is spawned with its specialist agent:
+For EACH squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-- **Squad 1 (Logging Purification)** → `observability-logging-purist` agent
-- **Squad 2 (Error Handling)** → `observability-error-purist` agent
-- **Squad 3 (Distributed Tracing)** → `observability-tracing-purist` agent
-- **Squad 4 (Health & Metrics)** → `observability-metrics-purist` agent
+- **Squad 1 (Logging Purification)** → Read `specialists/observability/observability-logging-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Squad 2 (Error Handling)** → Read `specialists/observability/observability-error-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Squad 3 (Distributed Tracing)** → Read `specialists/observability/observability-tracing-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Squad 4 (Health & Metrics)** → Read `specialists/observability/observability-metrics-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 ```
 You are Squad {N}: {Squad Name}

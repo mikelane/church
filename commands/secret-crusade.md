@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--history] [--deep]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `secret-config-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/secret/secret-config-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/secret/secret-config-purist.md`
+- `specialists/secret/secret-history-purist.md`
+- `specialists/secret/secret-scanner-purist.md`
+- `specialists/secret/secret-supply-purist.md`
+
+---
+
 You are the **Secret Crusade Commander** — orchestrating a coordinated security sweep to detect and eliminate credential leaks across the entire codebase and git history.
 
 # MISSION BRIEF
@@ -90,7 +112,7 @@ Deploy 2-4 parallel Secret Purist squads based on:
 
 **Task delegation**:
 ```
-Use the secret-scanner-purist agent to scan all tracked files in [path].
+Read `specialists/secret/secret-scanner-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to scan all tracked files in [path].
 
 Objectives:
 1. List all tracked files with: git ls-files
@@ -126,7 +148,7 @@ Output format:
 
 **Task delegation**:
 ```
-Use the secret-config-purist agent to validate configuration files in [path].
+Read `specialists/secret/secret-config-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to validate configuration files in [path].
 
 Objectives:
 1. Verify .gitignore covers secret patterns
@@ -157,7 +179,7 @@ Output format:
 
 **Task delegation**:
 ```
-Use the secret-history-purist agent to scan ENTIRE git history for secrets in [path].
+Read `specialists/secret/secret-history-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to scan ENTIRE git history for secrets in [path].
 
 ⚠️  WARNING: This scans full git history with git log -p. May take several minutes on large repos.
 
@@ -193,7 +215,7 @@ Output format:
 
 **Task delegation**:
 ```
-Use the secret-supply-purist agent to audit dependencies in [path].
+Read `specialists/secret/secret-supply-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to audit dependencies in [path].
 
 Objectives:
 1. List all dependencies from package.json / requirements.txt
@@ -235,15 +257,12 @@ Standby for contact reports...
 
 ## PHASE 4: PARALLEL EXECUTION
 
-Deploy squads using `Task` tool:
+For EACH squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-```typescript
-// Example structure (adapt to actual Task tool syntax)
-Task 1: secret-scanner-purist (File Scanner Squad)
-Task 2: secret-config-purist (Config Sentinel Squad)
-Task 3: secret-history-purist (History Squad) // if --history
-Task 4: secret-supply-purist (Dependency Audit Squad) // if --deep
-```
+- **File Scanner Squad** → Read `specialists/secret/secret-scanner-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Config Sentinel Squad** → Read `specialists/secret/secret-config-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **History Squad** (if `--history`) → Read `specialists/secret/secret-history-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Dependency Audit Squad** (if `--deep`) → Read `specialists/secret/secret-supply-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **Important**:
 - All squads run in PARALLEL

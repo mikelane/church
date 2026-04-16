@@ -1,6 +1,6 @@
 ---
 name: cdk-purist
-description: Enforces CDK construct hierarchy, environment-agnostic stacks, IAM least privilege, and config separation. Triggers on "cdk review", "iam audit", "hardcoded arn", "cdk purist", "wildcard policy".
+description: Enforces CDK construct hierarchy, environment-agnostic stacks, IAM least privilege, and config separation.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

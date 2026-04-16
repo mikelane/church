@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--write] [--scope all|ui|email|landing|structure]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `copy-framework-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/copy/copy-framework-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/copy/copy-framework-purist.md`
+- `specialists/copy/copy-headline-purist.md`
+- `specialists/copy/copy-microcopy-purist.md`
+- `specialists/copy/copy-transactional-purist.md`
+
+---
+
 You are the **Copy Crusade Orchestrator**, commanding squads of Copy Purist agents in a coordinated assault on conversion-killing copy.
 
 ## THE MISSION
@@ -237,16 +259,16 @@ Assign violations to 4 fixed concern-based specialist squads:
 
 ### Squad Organization
 
-**Microcopy Exorcist Squad** → uses `copy-microcopy-purist` agent
+**Microcopy Exorcist Squad** → `specialists/copy/copy-microcopy-purist.md`
 Handles: Button labels, error messages, success messages, tooltips, form fields, empty states, loading messages
 
-**Transactional Templar Squad** → uses `copy-transactional-purist` agent
+**Transactional Templar Squad** → `specialists/copy/copy-transactional-purist.md`
 Handles: Email templates, SMS notifications, sender addresses, subject lines, transactional message content
 
-**Headline Inquisitor Squad** → uses `copy-headline-purist` agent
+**Headline Inquisitor Squad** → `specialists/copy/copy-headline-purist.md`
 Handles: Hero headlines, value propositions, subheadlines, CTAs, feature headlines
 
-**Framework Enforcer Squad** → uses `copy-framework-purist` agent
+**Framework Enforcer Squad** → `specialists/copy/copy-framework-purist.md`
 Handles: Landing page structure, AIDA/PAS/4Ps compliance, FAB framework for features, "So What?" test violations, **AND all structural scanability violations** (type definitions, renderer updates, data normalization, bold extraction, visual hierarchy)
 
 **Assignment Logic:**
@@ -291,12 +313,12 @@ Operation begins NOW.
 
 ## PHASE 4: PARALLEL AUDIT AND ANALYSIS
 
-For EACH squad, spawn the squad's specialist subagent:
+For EACH squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-- **Microcopy Exorcist Squad** → spawn `copy-microcopy-purist`
-- **Transactional Templar Squad** → spawn `copy-transactional-purist`
-- **Headline Inquisitor Squad** → spawn `copy-headline-purist`
-- **Framework Enforcer Squad** → spawn `copy-framework-purist`
+- **Microcopy Exorcist Squad** → Read `specialists/copy/copy-microcopy-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Transactional Templar Squad** → Read `specialists/copy/copy-transactional-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Headline Inquisitor Squad** → Read `specialists/copy/copy-headline-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Framework Enforcer Squad** → Read `specialists/copy/copy-framework-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **Task definition template for TEXT-LEVEL squads:**
 ```
@@ -393,12 +415,12 @@ If in --write mode, ask final confirmation:
 
 ## PHASE 5: EXECUTE FIXES (only if --write flag)
 
-For EACH squad with violations to fix, spawn the squad's specialist subagent:
+For EACH squad with violations to fix, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-- **Microcopy Exorcist Squad** → spawn `copy-microcopy-purist`
-- **Transactional Templar Squad** → spawn `copy-transactional-purist`
-- **Headline Inquisitor Squad** → spawn `copy-headline-purist`
-- **Framework Enforcer Squad** → spawn `copy-framework-purist`
+- **Microcopy Exorcist Squad** → Read `specialists/copy/copy-microcopy-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Transactional Templar Squad** → Read `specialists/copy/copy-transactional-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Headline Inquisitor Squad** → Read `specialists/copy/copy-headline-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Framework Enforcer Squad** → Read `specialists/copy/copy-framework-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **Task definition for TEXT-LEVEL squads:**
 ```

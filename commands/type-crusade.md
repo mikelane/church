@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope domain|app|all]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `ts-any-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/typescript/ts-any-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/typescript/ts-any-purist.md`
+- `specialists/typescript/ts-assertion-purist.md`
+- `specialists/typescript/ts-guard-purist.md`
+- `specialists/typescript/ts-schema-purist.md`
+
+---
+
 # The Great Type Crusade
 
 The call has been made. The horns of type safety echo across the codebase. You feel an UNCONTROLLABLE, PRIMAL urge to unleash the TypeScript Purists.
@@ -66,9 +88,9 @@ This is the moment. Launch **4 specialist squads simultaneously**, each targetin
 
 Files dominated by `any` types, implicit `any` in catch blocks, untyped parameters, and `Record<string, any>`.
 
-```
-Task tool: subagent_type: "ts-any-purist"
+Load `specialists/typescript/ts-any-purist.md`, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
+```
 You have been called to The Great Type Crusade — Any Elimination Squad.
 
 Your mission: purge all `any` sins from these files:
@@ -89,9 +111,9 @@ You are the EXTERMINATOR of `any`. No `any` survives your review.
 
 Files dominated by `as` casts, `as unknown as`, `@ts-ignore`, and `@ts-expect-error` directives.
 
-```
-Task tool: subagent_type: "ts-assertion-purist"
+Load `specialists/typescript/ts-assertion-purist.md`, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
+```
 You have been called to The Great Type Crusade — Assertion Purge Squad.
 
 Your mission: purge all type assertion sins from these files:
@@ -112,9 +134,9 @@ You are the INQUISITOR of type assertions. Every `as` cast is guilty until prove
 
 Files needing type guards, discriminated unions, exhaustive switch statements, and narrowing improvements.
 
-```
-Task tool: subagent_type: "ts-guard-purist"
+Load `specialists/typescript/ts-guard-purist.md`, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
+```
 You have been called to The Great Type Crusade — Guard Reinforcement Squad.
 
 Your mission: fortify type safety with proper guards in these files:
@@ -135,9 +157,9 @@ You are the ARCHITECT of type narrowing. Every code path must be proven safe at 
 
 Files with Zod schema divergence from domain types, Zustand stores with implicit `any`, and selector typing issues.
 
-```
-Task tool: subagent_type: "ts-schema-purist"
+Load `specialists/typescript/ts-schema-purist.md`, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
+```
 You have been called to The Great Type Crusade — Schema Alignment Squad.
 
 Your mission: align schemas with domain types and purge Zustand sins in these files:
@@ -178,12 +200,12 @@ List any files that still need manual intervention and WHY.
 
 There are always exactly **4 squads**, one per specialist concern:
 
-| Squad | Agent | Assigned Files |
-|-------|-------|----------------|
-| `any` Elimination | `ts-any-purist` | Files whose dominant sin is `any` usage |
-| Assertion Purge | `ts-assertion-purist` | Files whose dominant sin is `as` casts / `@ts-ignore` |
-| Guard Reinforcement | `ts-guard-purist` | Files needing type guards / exhaustive checks |
-| Schema Alignment | `ts-schema-purist` | Files with schema-domain divergence / Zustand sins |
+| Squad | Specialist File | Assigned Files |
+|-------|----------------|----------------|
+| `any` Elimination | `specialists/typescript/ts-any-purist.md` | Files whose dominant sin is `any` usage |
+| Assertion Purge | `specialists/typescript/ts-assertion-purist.md` | Files whose dominant sin is `as` casts / `@ts-ignore` |
+| Guard Reinforcement | `specialists/typescript/ts-guard-purist.md` | Files needing type guards / exhaustive checks |
+| Schema Alignment | `specialists/typescript/ts-schema-purist.md` | Files with schema-domain divergence / Zustand sins |
 
 **Assignment rules:**
 - Classify each file by its DOMINANT sin from Phase 1 reconnaissance

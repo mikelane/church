@@ -1,6 +1,6 @@
 ---
 name: size-purist
-description: Finds oversized files, god classes, mega-components, and monolithic modules. Triggers on "file size", "large files", "god class", "size purist", "file too big".
+description: Finds oversized files, god classes, mega-components, and monolithic modules.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

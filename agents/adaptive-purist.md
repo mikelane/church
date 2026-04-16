@@ -1,6 +1,6 @@
 ---
 name: adaptive-purist
-description: Audits foldables, DPI, touch targets, viewport segments, and state preservation across resize/fold/rotate. Triggers on "adaptive UI", "foldable", "touch targets", "adaptive purist".
+description: Audits foldables, DPI, touch targets, viewport segments, and state preservation across resize/fold/rotate.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

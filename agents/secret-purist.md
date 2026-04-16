@@ -1,6 +1,6 @@
 ---
 name: secret-purist
-description: Scans codebases and git history for leaked secrets, API keys, tokens, passwords, and hardcoded credentials. Triggers on "secret scan", "credential scan", "leaked keys", "secret purist".
+description: Scans codebases and git history for leaked secrets, API keys, tokens, passwords, and hardcoded credentials.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---
