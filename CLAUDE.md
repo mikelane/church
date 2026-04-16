@@ -4,15 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-The Church of Clean Code is a Claude Code plugin providing 16 **generic purist subagents**, 70 **specialized purist agents**, and 16 **crusade orchestration commands** for parallel code quality enforcement. It includes a marketing website deployed to Netlify.
+The Church of Clean Code is a Claude Code plugin providing 26 **generic purist subagents**, 121 **specialist purist bodies**, and 26 **crusade orchestration commands** for parallel code quality enforcement. It includes a marketing website deployed to Netlify.
 
 ## Repository Structure
 
 ```
 church/
-├── agents/              # Purist subagent definitions (*.md)
-│   ├── react-purist.md  # Generic purists (16 total, for direct invocation)
-│   ├── react/           # Specialized purists (70 total, for crusade deployment)
+├── agents/              # Registered generic purist subagents (*.md, 26 total)
+│   ├── react-purist.md  # One generic per domain, for direct invocation
+│   └── ...              # size-purist.md, typescript-purist.md, etc.
+├── specialists/         # Un-registered specialist bodies (*.md, 121 total)
+│   ├── react/           # Loaded on-demand by crusade commands, not by agent registry
 │   │   ├── react-arch-purist.md
 │   │   ├── react-hooks-purist.md
 │   │   ├── react-state-purist.md
@@ -33,8 +35,8 @@ church/
 │   ├── adaptive/        # 5 adaptive UI specialists
 │   ├── python/          # 5 python specialists
 │   └── rust/            # 5 rust specialists
-├── commands/            # Crusade orchestration commands (*.md)
-│   ├── react-crusade.md # 16 crusade commands total
+├── commands/            # Crusade orchestration commands (*.md, 26 total)
+│   ├── react-crusade.md # Reads specialists/ bodies, dispatches via general-purpose Task
 │   └── ...
 ├── skills/              # Auto-discovered skills (SKILL.md)
 ├── .claude-plugin/      # Plugin manifest (plugin.json, marketplace.json)
@@ -69,7 +71,7 @@ claude --plugin-dir ./church
 
 ## Plugin Components
 
-### Subagents (agents/)
+### Subagents (agents/) and Specialists (specialists/)
 
 Subagent definitions follow Claude Code agent format with YAML frontmatter:
 - `name`: Agent identifier used in Task tool's `subagent_type`
@@ -78,8 +80,8 @@ Subagent definitions follow Claude Code agent format with YAML frontmatter:
 - `model`: Model to use (opus recommended for code quality tasks)
 
 **Two tiers of agents:**
-- **Generic purists** (`agents/*.md`): 13 broad agents for direct invocation. Each covers a full domain (e.g., `react-purist` covers all React concerns).
-- **Specialist purists** (`agents/<domain>/*.md`): 55 focused agents for crusade deployment. Each covers one narrow concern (e.g., `react-arch-purist` covers only component tier classification).
+- **Generic purists** (`agents/*.md`): 26 broad agents for direct invocation, registered with Claude Code. Each covers a full domain (e.g., `react-purist` covers all React concerns).
+- **Specialist purists** (`specialists/<domain>/*.md`): 121 focused agents for crusade deployment. These live outside `agents/` and are NOT registered with Claude Code — crusade commands load their bodies from disk and dispatch them via `general-purpose` Task calls. Each covers one narrow concern (e.g., `react-arch-purist` covers only component tier classification).
 
 ### Commands (commands/)
 
@@ -99,13 +101,13 @@ Auto-discovered knowledge that Claude Code loads when relevant. Each skill has a
 All crusades follow the same parallel deployment pattern:
 
 1. **Reconnaissance** - Scan codebase for violations using Grep/Glob
-2. **Squad Formation** - Assign concern-based squads to specialist agents
-3. **Parallel Deployment** - Launch specialist purist agents via Task tool in a single message
+2. **Squad Formation** - Assign concern-based squads to specialist bodies in `specialists/<domain>/`
+3. **Parallel Deployment** - For each squad, `Read` the specialist file, strip its YAML frontmatter, and dispatch the body (plus the squad's task block) via `Task(subagent_type: "general-purpose")`. All Task calls go in a single message.
 4. **Victory Report** - Aggregate results and report findings
 
 Key rule: All Task tool calls MUST be in a single message for true parallelism.
 
-Each crusade deploys **specialist agents** (not generic purists) so each squad carries only the doctrine it needs. Generic purists remain available for direct invocation outside crusades.
+Specialists are intentionally NOT registered in the Claude Code agent registry — loading them inline keeps the per-conversation token cost low while preserving full parallel dispatch. Generic purists in `agents/` remain registered and available for direct invocation outside crusades.
 
 ## File Naming Conventions
 
@@ -144,8 +146,8 @@ Use an existing crusade as your reference template throughout. The **Size Crusad
 | # | Asset | Path | Auto-discovered? |
 |---|-------|------|:-:|
 | 1 | Generic purist agent | `agents/{domain}-purist.md` | Yes |
-| 2 | Specialist agent directory | `agents/{domain}/` | Yes |
-| 3 | Specialist agent files (4-6) | `agents/{domain}/{domain}-{concern}-purist.md` | Yes |
+| 2 | Specialist body directory | `specialists/{domain}/` | No (loaded on-demand by crusade) |
+| 3 | Specialist body files (4-6) | `specialists/{domain}/{domain}-{concern}-purist.md` | No |
 | 4 | Crusade command | `commands/{domain}-crusade.md` | Yes |
 | 5 | Crusade detail data (landing page) | `src/data/crusades/{slug}.data.ts` | No |
 | 6 | Barrel export registration | `src/data/crusades/index.ts` | No |
@@ -206,12 +208,12 @@ Follow this section order (see `agents/size-purist.md` for full reference):
 
 ---
 
-### Step 2: Specialist Agent Directory and Files
+### Step 2: Specialist Body Directory and Files
 
-**Directory:** `agents/{domain}/`
-**Files:** `agents/{domain}/{domain}-{concern}-purist.md` (create 4-6 specialists)
+**Directory:** `specialists/{domain}/`
+**Files:** `specialists/{domain}/{domain}-{concern}-purist.md` (create 4-6 specialists)
 
-Specialists are narrow-focus agents deployed ONLY by the crusade command. Each covers one specific concern within the domain.
+Specialists are narrow-focus agent bodies. They live OUTSIDE `agents/` so Claude Code does NOT register them — crusade commands `Read` the file and dispatch the body inline via `Task(subagent_type: "general-purpose")`. Each covers one specific concern within the domain.
 
 #### How to Decompose a Domain into Specialists
 
@@ -486,7 +488,7 @@ Update these sections in `README.md`:
 Update these sections in this file:
 
 1. **Project Overview** — Update generic purist count, specialist count, and crusade command count
-2. **Repository Structure** — Add the new specialist directory under `agents/` with the specialist count comment
+2. **Repository Structure** — Add the new specialist directory under `specialists/` with the specialist count comment
 3. **Crusade Commands table** (if one is present) — Add the new command
 
 ---
@@ -513,7 +515,7 @@ All names must be consistent across every asset:
 | URL slug | Same as domain (or abbreviated) | `size`, `dead`, `type` |
 | Generic agent name | `{domain}-purist` | `size-purist` |
 | Specialist agent name | `{domain}-{concern}-purist` | `size-component-purist` |
-| Specialist directory | `agents/{domain}/` | `agents/size/` |
+| Specialist directory | `specialists/{domain}/` | `specialists/size/` |
 | Crusade command file | `{domain}-crusade.md` | `size-crusade.md` |
 | Crusade data file | `{slug}.data.ts` | `size.data.ts` |
 | Exported variable | `{slug}Crusade` | `sizeCrusade` |
