@@ -54,7 +54,7 @@ A Claude Code plugin that deploys specialized AI agents in parallel to enforce c
 - **Two-Tier Agent System** — 26 generic purists for direct invocation + 121 specialists for crusade deployment
 - **26 Crusade Commands** — One `/church:*-crusade` command per domain, each orchestrating 4-6 specialist agents
 - **Actionable Fixes** — Every finding includes exact file locations and remediation steps
-- **Zero Configuration** — Install and run. No config files, no setup, no dependencies
+- **Zero Configuration** — Install and run. No config files, no setup beyond Claude Code v1.0.33+
 
 ---
 

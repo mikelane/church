@@ -102,7 +102,7 @@ All crusades follow the same parallel deployment pattern:
 
 1. **Reconnaissance** - Scan codebase for violations using Grep/Glob
 2. **Squad Formation** - Assign concern-based squads to specialist bodies in `specialists/<domain>/`
-3. **Parallel Deployment** - For each squad, `Read` the specialist file, strip its YAML frontmatter, and dispatch the body (plus the squad's task block) via `Task(subagent_type: "general-purpose")`. All Task calls go in a single message.
+3. **Parallel Deployment** - For each squad, `Read` the specialist file from `specialists/<domain>/`, strip its YAML frontmatter, append the squad's task block (file list and mission instructions) separated by a blank line and a `---` divider, then dispatch via `Task(subagent_type: "general-purpose")`. All Task calls go in a single message.
 4. **Victory Report** - Aggregate results and report findings
 
 Key rule: All Task tool calls MUST be in a single message for true parallelism.

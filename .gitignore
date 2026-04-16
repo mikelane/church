@@ -12,6 +12,30 @@ out/
 .env.*
 !.env.example
 
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.crt
+*.cer
+
+# Credential files
+credentials.json
+service-account.json
+google-credentials.json
+*-credentials.json
+
+# SSH keys
+id_rsa
+id_ecdsa
+id_ed25519
+id_rsa.pub
+id_ecdsa.pub
+id_ed25519.pub
+
 # IDE
 .idea/
 .vscode/

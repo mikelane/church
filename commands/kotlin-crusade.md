@@ -6,17 +6,17 @@ argument-hint: [path] [--scope null|coroutine|idiom|type|functional|all] [--seve
 
 ## Specialist Dispatch Protocol (Read + general-purpose Task)
 
-**The squad specialist names referenced in this crusade (e.g. `kotlin-coroutine-purist`) are no longer registered Claude Code subagents.** Their definitions live on disk at `specialists/kotlin/<name>.md` and are loaded ONLY when a crusade runs.
+**Specialist agents in this crusade (e.g. `kotlin-coroutine-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
 
 For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
 
 1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/kotlin/kotlin-coroutine-purist.md`).
 2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
-3. **Compose the subagent prompt** by concatenating: `{specialist body}\n\n---\n\n{the squad's task block with assigned files}`.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
 4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
 5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
 
-Wherever this crusade says "spawn `kotlin-coroutine-purist`", "uses `kotlin-coroutine-purist` agent", "Task tool: subagent_type: `kotlin-coroutine-purist`", or "Use the `kotlin-coroutine-purist` agent", it means: **load `specialists/kotlin/kotlin-coroutine-purist.md` via the protocol above and dispatch via `general-purpose`.** The squad mission text and assigned files are unchanged — only the dispatch mechanism has moved from registered subagent to inline body.
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
 
 Specialist files for this crusade:
 - `specialists/kotlin/kotlin-coroutine-purist.md`
