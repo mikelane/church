@@ -1,6 +1,6 @@
 ---
 name: naming-purist
-description: Enforces naming conventions, file naming patterns, and semantic variable/function naming. Triggers on "naming review", "naming conventions", "rename audit", "file naming", "naming purist".
+description: Enforces naming conventions, file naming patterns, and semantic variable/function naming.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

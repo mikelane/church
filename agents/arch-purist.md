@@ -1,6 +1,6 @@
 ---
 name: arch-purist
-description: Audits DDD layer boundaries, import graphs, circular dependencies, and structural rot. Triggers on "architecture review", "layer violations", "import audit", "circular dependencies", "arch purist".
+description: Audits DDD layer boundaries, import graphs, circular dependencies, and structural rot.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

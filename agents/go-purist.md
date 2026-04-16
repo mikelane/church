@@ -1,6 +1,6 @@
 ---
 name: go-purist
-description: Enforces idiomatic Go: error wrapping, goroutine lifecycle, interface minimalism, and naming conventions. Triggers on "go review", "go quality", "goroutine audit", "go purist", "interface audit".
+description: Enforces idiomatic Go: error wrapping, goroutine lifecycle, interface minimalism, and naming conventions.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

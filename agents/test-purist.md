@@ -1,6 +1,6 @@
 ---
 name: test-purist
-description: Finds untested code, meaningless assertions, missing property tests, and coverage gaps. Triggers on "test review", "coverage audit", "test quality", "test purist".
+description: Finds untested code, meaningless assertions, missing property tests, and coverage gaps.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

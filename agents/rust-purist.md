@@ -1,6 +1,6 @@
 ---
 name: rust-purist
-description: Enforces ownership discipline, error propagation, unsafe justification, and type ergonomics. Triggers on "rust review", "unwrap audit", "unsafe audit", "rust purist", "borrow checker".
+description: Enforces ownership discipline, error propagation, unsafe justification, and type ergonomics.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

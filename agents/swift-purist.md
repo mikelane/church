@@ -1,6 +1,6 @@
 ---
 name: swift-purist
-description: Audits Swift for data races, force unwraps, retain cycles, untyped throws, and naming violations. Triggers on "swift review", "swift audit", "swift purist", "swift safety", "swift 6".
+description: Audits Swift for data races, force unwraps, retain cycles, untyped throws, and naming violations.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

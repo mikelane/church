@@ -1,6 +1,6 @@
 ---
 name: a11y-purist
-description: Audits WCAG compliance, semantic HTML, ARIA, keyboard navigation, and perceivability. Triggers on "accessibility review", "a11y audit", "WCAG compliance", "screen reader", "a11y purist".
+description: Audits WCAG compliance, semantic HTML, ARIA, keyboard navigation, and perceivability.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

@@ -1,6 +1,6 @@
 ---
 name: kotlin-purist
-description: Purges null abuse, rogue coroutines, Java-isms, and enforces Kotlin type safety. Triggers on "kotlin review", "null safety", "coroutine review", "idiomatic kotlin", "kotlin purist".
+description: Purges null abuse, rogue coroutines, Java-isms, and enforces Kotlin type safety.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---

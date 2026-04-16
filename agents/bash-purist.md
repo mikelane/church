@@ -1,6 +1,6 @@
 ---
 name: bash-purist
-description: Enforces set -euo pipefail, variable quoting, POSIX portability, and injection prevention. Triggers on "bash review", "shell review", "script audit", "bash purist", "unquoted variable".
+description: Enforces set -euo pipefail, variable quoting, POSIX portability, and injection prevention.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
 ---
