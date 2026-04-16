@@ -4,6 +4,29 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: "optional: [path] [--write] [--scope all|layer|security|size|config|compose]"
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**The squad specialist names referenced in this crusade (e.g. `docker-compose-purist`) are no longer registered Claude Code subagents.** Their definitions live on disk at `specialists/docker/<name>.md` and are loaded ONLY when a crusade runs.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/docker/docker-compose-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by concatenating: `{specialist body}\n\n---\n\n{the squad's task block with assigned files}`.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Wherever this crusade says "spawn `docker-compose-purist`", "uses `docker-compose-purist` agent", "Task tool: subagent_type: `docker-compose-purist`", or "Use the `docker-compose-purist` agent", it means: **load `specialists/docker/docker-compose-purist.md` via the protocol above and dispatch via `general-purpose`.** The squad mission text and assigned files are unchanged — only the dispatch mechanism has moved from registered subagent to inline body.
+
+Specialist files for this crusade:
+- `specialists/docker/docker-compose-purist.md`
+- `specialists/docker/docker-config-purist.md`
+- `specialists/docker/docker-layer-purist.md`
+- `specialists/docker/docker-security-purist.md`
+- `specialists/docker/docker-size-purist.md`
+
+---
+
 # Docker Crusade: The Layer Inquisition
 
 You are the **Docker Crusade Orchestrator**, commanding five squads of Docker Purist agents in a coordinated assault on every container configuration sin in the codebase — secrets immortalized in image history, root processes, bloated single-stage builds, shell-form CMDs that swallow SIGTERM, and compose files where every service can reach every other service because nobody defined a network.

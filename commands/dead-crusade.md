@@ -4,6 +4,30 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope all|api|web] [--reap] [--severity critical|warning|info]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**The squad specialist names referenced in this crusade (e.g. `dead-comment-purist`) are no longer registered Claude Code subagents.** Their definitions live on disk at `specialists/dead/<name>.md` and are loaded ONLY when a crusade runs.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/dead/dead-comment-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by concatenating: `{specialist body}\n\n---\n\n{the squad's task block with assigned files}`.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Wherever this crusade says "spawn `dead-comment-purist`", "uses `dead-comment-purist` agent", "Task tool: subagent_type: `dead-comment-purist`", or "Use the `dead-comment-purist` agent", it means: **load `specialists/dead/dead-comment-purist.md` via the protocol above and dispatch via `general-purpose`.** The squad mission text and assigned files are unchanged — only the dispatch mechanism has moved from registered subagent to inline body.
+
+Specialist files for this crusade:
+- `specialists/dead/dead-comment-purist.md`
+- `specialists/dead/dead-debug-purist.md`
+- `specialists/dead/dead-export-purist.md`
+- `specialists/dead/dead-orphan-purist.md`
+- `specialists/dead/dead-todo-purist.md`
+- `specialists/dead/dead-unreachable-purist.md`
+
+---
+
 # Dead Code Crusade
 
 The Dead Code Reapers descend upon the codebase in PARALLEL FORMATION. Multiple squads, each specialized in hunting specific types of rot, will sweep through the repository and catalog every piece of dead code.

@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--write] [--scope all|ui|email|landing|structure]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**The squad specialist names referenced in this crusade (e.g. `copy-framework-purist`) are no longer registered Claude Code subagents.** Their definitions live on disk at `specialists/copy/<name>.md` and are loaded ONLY when a crusade runs.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/copy/copy-framework-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by concatenating: `{specialist body}\n\n---\n\n{the squad's task block with assigned files}`.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Wherever this crusade says "spawn `copy-framework-purist`", "uses `copy-framework-purist` agent", "Task tool: subagent_type: `copy-framework-purist`", or "Use the `copy-framework-purist` agent", it means: **load `specialists/copy/copy-framework-purist.md` via the protocol above and dispatch via `general-purpose`.** The squad mission text and assigned files are unchanged — only the dispatch mechanism has moved from registered subagent to inline body.
+
+Specialist files for this crusade:
+- `specialists/copy/copy-framework-purist.md`
+- `specialists/copy/copy-headline-purist.md`
+- `specialists/copy/copy-microcopy-purist.md`
+- `specialists/copy/copy-transactional-purist.md`
+
+---
+
 You are the **Copy Crusade Orchestrator**, commanding squads of Copy Purist agents in a coordinated assault on conversion-killing copy.
 
 ## THE MISSION

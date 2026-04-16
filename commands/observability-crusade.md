@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope all|api|web] [--illuminate]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**The squad specialist names referenced in this crusade (e.g. `observability-error-purist`) are no longer registered Claude Code subagents.** Their definitions live on disk at `specialists/observability/<name>.md` and are loaded ONLY when a crusade runs.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/observability/observability-error-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by concatenating: `{specialist body}\n\n---\n\n{the squad's task block with assigned files}`.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Wherever this crusade says "spawn `observability-error-purist`", "uses `observability-error-purist` agent", "Task tool: subagent_type: `observability-error-purist`", or "Use the `observability-error-purist` agent", it means: **load `specialists/observability/observability-error-purist.md` via the protocol above and dispatch via `general-purpose`.** The squad mission text and assigned files are unchanged — only the dispatch mechanism has moved from registered subagent to inline body.
+
+Specialist files for this crusade:
+- `specialists/observability/observability-error-purist.md`
+- `specialists/observability/observability-logging-purist.md`
+- `specialists/observability/observability-metrics-purist.md`
+- `specialists/observability/observability-tracing-purist.md`
+
+---
+
 # The Observability Crusade
 
 **"In the beginning, there was darkness upon the codebase. And the Observability Purists said: LET THERE BE LIGHT."**

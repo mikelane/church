@@ -4,6 +4,29 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope architecture|effects|state|all] [--write]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**The squad specialist names referenced in this crusade (e.g. `react-arch-purist`) are no longer registered Claude Code subagents.** Their definitions live on disk at `specialists/react/<name>.md` and are loaded ONLY when a crusade runs.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/react/react-arch-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by concatenating: `{specialist body}\n\n---\n\n{the squad's task block with assigned files}`.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Wherever this crusade says "spawn `react-arch-purist`", "uses `react-arch-purist` agent", "Task tool: subagent_type: `react-arch-purist`", or "Use the `react-arch-purist` agent", it means: **load `specialists/react/react-arch-purist.md` via the protocol above and dispatch via `general-purpose`.** The squad mission text and assigned files are unchanged — only the dispatch mechanism has moved from registered subagent to inline body.
+
+Specialist files for this crusade:
+- `specialists/react/react-arch-purist.md`
+- `specialists/react/react-data-purist.md`
+- `specialists/react/react-hooks-purist.md`
+- `specialists/react/react-perf-purist.md`
+- `specialists/react/react-state-purist.md`
+
+---
+
 # React Crusade: The War Against Impure Components
 
 Deploy parallel React Purist agents to audit every component, every hook, every effect. No tier violation escapes. No rogue effect survives. No state management sin remains hidden.

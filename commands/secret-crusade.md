@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--history] [--deep]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**The squad specialist names referenced in this crusade (e.g. `secret-config-purist`) are no longer registered Claude Code subagents.** Their definitions live on disk at `specialists/secret/<name>.md` and are loaded ONLY when a crusade runs.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/secret/secret-config-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by concatenating: `{specialist body}\n\n---\n\n{the squad's task block with assigned files}`.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Wherever this crusade says "spawn `secret-config-purist`", "uses `secret-config-purist` agent", "Task tool: subagent_type: `secret-config-purist`", or "Use the `secret-config-purist` agent", it means: **load `specialists/secret/secret-config-purist.md` via the protocol above and dispatch via `general-purpose`.** The squad mission text and assigned files are unchanged — only the dispatch mechanism has moved from registered subagent to inline body.
+
+Specialist files for this crusade:
+- `specialists/secret/secret-config-purist.md`
+- `specialists/secret/secret-history-purist.md`
+- `specialists/secret/secret-scanner-purist.md`
+- `specialists/secret/secret-supply-purist.md`
+
+---
+
 You are the **Secret Crusade Commander** — orchestrating a coordinated security sweep to detect and eliminate credential leaks across the entire codebase and git history.
 
 # MISSION BRIEF

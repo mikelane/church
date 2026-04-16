@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--depth 20] [--fix]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**The squad specialist names referenced in this crusade (e.g. `git-atomicity-purist`) are no longer registered Claude Code subagents.** Their definitions live on disk at `specialists/git/<name>.md` and are loaded ONLY when a crusade runs.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/git/git-atomicity-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by concatenating: `{specialist body}\n\n---\n\n{the squad's task block with assigned files}`.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Wherever this crusade says "spawn `git-atomicity-purist`", "uses `git-atomicity-purist` agent", "Task tool: subagent_type: `git-atomicity-purist`", or "Use the `git-atomicity-purist` agent", it means: **load `specialists/git/git-atomicity-purist.md` via the protocol above and dispatch via `general-purpose`.** The squad mission text and assigned files are unchanged — only the dispatch mechanism has moved from registered subagent to inline body.
+
+Specialist files for this crusade:
+- `specialists/git/git-atomicity-purist.md`
+- `specialists/git/git-hygiene-purist.md`
+- `specialists/git/git-message-purist.md`
+- `specialists/git/git-worktree-purist.md`
+
+---
+
 # The Great Git Crusade
 
 The war drums beat. The worktrees tremble. You feel an UNCONTROLLABLE, PRIMAL urge to cleanse every repository of its git sins.

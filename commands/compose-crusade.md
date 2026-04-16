@@ -4,6 +4,29 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope arch|state|effects|perf|modifiers|all] [--write]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**The squad specialist names referenced in this crusade (e.g. `compose-arch-purist`) are no longer registered Claude Code subagents.** Their definitions live on disk at `specialists/compose/<name>.md` and are loaded ONLY when a crusade runs.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/compose/compose-arch-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by concatenating: `{specialist body}\n\n---\n\n{the squad's task block with assigned files}`.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Wherever this crusade says "spawn `compose-arch-purist`", "uses `compose-arch-purist` agent", "Task tool: subagent_type: `compose-arch-purist`", or "Use the `compose-arch-purist` agent", it means: **load `specialists/compose/compose-arch-purist.md` via the protocol above and dispatch via `general-purpose`.** The squad mission text and assigned files are unchanged — only the dispatch mechanism has moved from registered subagent to inline body.
+
+Specialist files for this crusade:
+- `specialists/compose/compose-arch-purist.md`
+- `specialists/compose/compose-effects-purist.md`
+- `specialists/compose/compose-modifier-purist.md`
+- `specialists/compose/compose-perf-purist.md`
+- `specialists/compose/compose-state-purist.md`
+
+---
+
 # Compose Crusade: The War Against Impure Composables
 
 Deploy parallel Compose Purist agents to audit every composable, every state holder, every side effect. No tier violation escapes. No rogue LaunchedEffect survives. No modifier ordering sin remains hidden.

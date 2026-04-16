@@ -4,6 +4,28 @@ allowed-tools: Read, Glob, Grep, Bash, Task, AskUserQuestion
 argument-hint: [path] [--scope domain|app|all] [--write]
 ---
 
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**The squad specialist names referenced in this crusade (e.g. `test-assertion-purist`) are no longer registered Claude Code subagents.** Their definitions live on disk at `specialists/test/<name>.md` and are loaded ONLY when a crusade runs.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/test/test-assertion-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by concatenating: `{specialist body}\n\n---\n\n{the squad's task block with assigned files}`.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Wherever this crusade says "spawn `test-assertion-purist`", "uses `test-assertion-purist` agent", "Task tool: subagent_type: `test-assertion-purist`", or "Use the `test-assertion-purist` agent", it means: **load `specialists/test/test-assertion-purist.md` via the protocol above and dispatch via `general-purpose`.** The squad mission text and assigned files are unchanged — only the dispatch mechanism has moved from registered subagent to inline body.
+
+Specialist files for this crusade:
+- `specialists/test/test-assertion-purist.md`
+- `specialists/test/test-coverage-purist.md`
+- `specialists/test/test-hygiene-purist.md`
+- `specialists/test/test-property-purist.md`
+
+---
+
 # Test Crusade: The War Against Untested Code
 
 Deploy parallel Test Purist agents to audit every corner of the codebase. No untested function escapes. No weak assertion survives. No coverage gap remains hidden.
