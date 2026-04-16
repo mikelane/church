@@ -139,7 +139,7 @@ Users install via:
 
 Creating a new crusade requires **10 coordinated assets** across the plugin and website. This section is a complete step-by-step guide. Follow every step — missing any asset will leave the crusade incomplete.
 
-Use an existing crusade as your reference template throughout. The **Size Crusade** (`size`) is the canonical example.
+Use an existing crusade as your reference template throughout. The **Git Crusade** (`git`) is the canonical example, as it is fully migrated to the Specialist Dispatch Protocol.
 
 ### Overview: Complete Asset Checklist
 
@@ -287,9 +287,30 @@ argument-hint: [path] [--flag1] [--flag2] [--scope all|api|web]
 
 #### Markdown Body Structure (The Battle Plan)
 
-Follow this phase structure exactly (see `commands/size-crusade.md` for full reference):
+Follow this phase structure exactly (see `commands/git-crusade.md` for full reference):
 
 ```
+## Specialist Dispatch Protocol (Read + general-purpose Task)
+
+**Specialist agents in this crusade (e.g. `{domain}-{concern1}-purist`) are NOT registered with Claude Code.** They live on disk in `specialists/` and are loaded on demand — never at startup.
+
+For every squad you deploy in Phase 4 (and any later `--fix`/`--write` phase), use this protocol:
+
+1. **`Read` the specialist file** at the path listed for that squad (e.g. `specialists/{domain}/{domain}-{concern1}-purist.md`).
+2. **Strip the YAML frontmatter** — discard everything up to and including the second `---` line. The remainder is the specialist body.
+3. **Compose the subagent prompt** by appending the squad's task block (the file list and mission instructions) to the specialist body, separated by a blank line and a `---` divider.
+4. **Call `Task(subagent_type: "general-purpose", description: "<squad name>", prompt: <composed>)`** — one call per squad.
+5. **All `Task` calls MUST be issued in a SINGLE message** for true parallelism. This is non-negotiable.
+
+Any squad name referenced in this crusade means: read the corresponding file from the list above, strip its YAML frontmatter, and dispatch via `general-purpose` Task. The squad mission text and assigned files are unchanged.
+
+Specialist files for this crusade:
+- `specialists/{domain}/{domain}-{concern1}-purist.md`
+- `specialists/{domain}/{domain}-{concern2}-purist.md`
+{... one bullet per specialist}
+
+---
+
 # {Domain} Crusade: {Dramatic Subtitle}
 
 You are the **{Domain} Crusade Orchestrator**, commanding squads of {Domain} Purist agents...
@@ -317,19 +338,19 @@ You are the **{Domain} Crusade Orchestrator**, commanding squads of {Domain} Pur
 {Map findings to specialist squads by concern}
 
 ### Squad Organization
-**{Squad 1 Name}** → uses `{domain}-{concern1}-purist` agent
+**{Squad 1 Name}** → `specialists/{domain}/{domain}-{concern1}-purist.md`
 Handles: {file types/patterns}
 
-**{Squad 2 Name}** → uses `{domain}-{concern2}-purist` agent
+**{Squad 2 Name}** → `specialists/{domain}/{domain}-{concern2}-purist.md`
 Handles: {file types/patterns}
 
 {... repeat for each specialist}
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-For EACH squad, spawn the specialist subagent via Task tool.
+For EACH squad, follow the Specialist Dispatch Protocol: Read the specialist file, strip YAML frontmatter, compose prompt, dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-**Task definition template:**
+**Task definition template (appended after the stripped specialist body, separated by a `---` divider):**
 ```
 You are part of the {SQUAD NAME}.
 {Mission description}
