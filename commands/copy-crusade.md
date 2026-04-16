@@ -259,16 +259,16 @@ Assign violations to 4 fixed concern-based specialist squads:
 
 ### Squad Organization
 
-**Microcopy Exorcist Squad** → uses `copy-microcopy-purist` agent
+**Microcopy Exorcist Squad** → `specialists/copy/copy-microcopy-purist.md`
 Handles: Button labels, error messages, success messages, tooltips, form fields, empty states, loading messages
 
-**Transactional Templar Squad** → uses `copy-transactional-purist` agent
+**Transactional Templar Squad** → `specialists/copy/copy-transactional-purist.md`
 Handles: Email templates, SMS notifications, sender addresses, subject lines, transactional message content
 
-**Headline Inquisitor Squad** → uses `copy-headline-purist` agent
+**Headline Inquisitor Squad** → `specialists/copy/copy-headline-purist.md`
 Handles: Hero headlines, value propositions, subheadlines, CTAs, feature headlines
 
-**Framework Enforcer Squad** → uses `copy-framework-purist` agent
+**Framework Enforcer Squad** → `specialists/copy/copy-framework-purist.md`
 Handles: Landing page structure, AIDA/PAS/4Ps compliance, FAB framework for features, "So What?" test violations, **AND all structural scanability violations** (type definitions, renderer updates, data normalization, bold extraction, visual hierarchy)
 
 **Assignment Logic:**
@@ -313,12 +313,12 @@ Operation begins NOW.
 
 ## PHASE 4: PARALLEL AUDIT AND ANALYSIS
 
-For EACH squad, spawn the squad's specialist subagent:
+For EACH squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-- **Microcopy Exorcist Squad** → spawn `copy-microcopy-purist`
-- **Transactional Templar Squad** → spawn `copy-transactional-purist`
-- **Headline Inquisitor Squad** → spawn `copy-headline-purist`
-- **Framework Enforcer Squad** → spawn `copy-framework-purist`
+- **Microcopy Exorcist Squad** → Read `specialists/copy/copy-microcopy-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Transactional Templar Squad** → Read `specialists/copy/copy-transactional-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Headline Inquisitor Squad** → Read `specialists/copy/copy-headline-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Framework Enforcer Squad** → Read `specialists/copy/copy-framework-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **Task definition template for TEXT-LEVEL squads:**
 ```
@@ -415,12 +415,12 @@ If in --write mode, ask final confirmation:
 
 ## PHASE 5: EXECUTE FIXES (only if --write flag)
 
-For EACH squad with violations to fix, spawn the squad's specialist subagent:
+For EACH squad with violations to fix, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-- **Microcopy Exorcist Squad** → spawn `copy-microcopy-purist`
-- **Transactional Templar Squad** → spawn `copy-transactional-purist`
-- **Headline Inquisitor Squad** → spawn `copy-headline-purist`
-- **Framework Enforcer Squad** → spawn `copy-framework-purist`
+- **Microcopy Exorcist Squad** → Read `specialists/copy/copy-microcopy-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Transactional Templar Squad** → Read `specialists/copy/copy-transactional-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Headline Inquisitor Squad** → Read `specialists/copy/copy-headline-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Framework Enforcer Squad** → Read `specialists/copy/copy-framework-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **Task definition for TEXT-LEVEL squads:**
 ```

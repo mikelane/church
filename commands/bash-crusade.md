@@ -173,19 +173,19 @@ If the user says no, abort. If yes, continue to Phase 3.
 
 Assign scripts to squads based on scope argument. If `--scope all`, all five squads deploy.
 
-**Safety Squad** → uses `bash-safety-purist` agent
+**Safety Squad** → `specialists/bash/bash-safety-purist.md`
 Handles: All shell scripts. Hunts missing `set -euo pipefail`, `|| true` patterns masking failures, `2>/dev/null` on critical commands, missing ERR traps.
 
-**Quoting Squad** → uses `bash-quoting-purist` agent
+**Quoting Squad** → `specialists/bash/bash-quoting-purist.md`
 Handles: All shell scripts. Hunts unquoted `$variable` expansions in file operations, `$*` usage, unquoted `$@`, global `IFS` modification, unquoted array expansion.
 
-**Portability Squad** → uses `bash-portability-purist` agent
+**Portability Squad** → `specialists/bash/bash-portability-purist.md`
 Handles: All shell scripts. Checks shebang correctness, `[ ]` vs `[[ ]]`, `echo -e`/`echo -n`, function declaration style, bashisms in `#!/bin/sh` scripts.
 
-**Tempfile Squad** → uses `bash-tempfile-purist` agent
+**Tempfile Squad** → `specialists/bash/bash-tempfile-purist.md`
 Handles: All shell scripts. Hunts hardcoded `/tmp` paths, PID-based temp names, `mktemp` usage without `trap EXIT`, non-atomic lock creation.
 
-**Injection Squad** → uses `bash-injection-purist` agent
+**Injection Squad** → `specialists/bash/bash-injection-purist.md`
 Handles: All shell scripts. Hunts `eval` usage, dynamic command string construction, `find|xargs` without null delimiters, URL/SQL concatenation with external variables.
 
 ### War Cry
@@ -215,7 +215,13 @@ The Inquisition begins NOW.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-Spawn all active squads via the Task tool. **All Task calls MUST be in a single message for true parallelism.**
+For EACH active squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. **All Task calls MUST be in a single message for true parallelism.**
+
+- **Safety Squad** → Read `specialists/bash/bash-safety-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Quoting Squad** → Read `specialists/bash/bash-quoting-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Portability Squad** → Read `specialists/bash/bash-portability-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Tempfile Squad** → Read `specialists/bash/bash-tempfile-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Injection Squad** → Read `specialists/bash/bash-injection-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 ### Safety Squad Task Prompt
 

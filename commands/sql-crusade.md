@@ -187,19 +187,19 @@ If the user says no, abort. If yes, continue to Phase 3.
 
 ## PHASE 3: SQUAD ORGANIZATION
 
-**Query Squad** → uses `sql-query-purist` agent
+**Query Squad** → `specialists/sql/sql-query-purist.md`
 Handles: All SQL files, ORM query files, TypeScript/JavaScript database access layers. Hunts SELECT *, N+1 patterns, OFFSET pagination, COUNT(*) where EXISTS is appropriate, implicit type casts.
 
-**Index Squad** → uses `sql-index-purist` agent
+**Index Squad** → `specialists/sql/sql-index-purist.md`
 Handles: Schema files, migration files, ORM model definitions. Cross-references foreign key declarations against index declarations. Flags unindexed foreign keys and redundant indexes.
 
-**Schema Squad** → uses `sql-schema-purist` agent
+**Schema Squad** → `specialists/sql/sql-schema-purist.md`
 Handles: CREATE TABLE statements, ORM column definitions, Prisma schema files. Audits every column type for TIMESTAMP, VARCHAR, INT/SERIAL, FLOAT violations.
 
-**Migration Squad** → uses `sql-migration-purist` agent
+**Migration Squad** → `specialists/sql/sql-migration-purist.md`
 Handles: All files in `migrations/` directories. Checks for downgrade functions, risky operations (DROP TABLE, ADD COLUMN NOT NULL), table-locking patterns, non-timestamped filenames.
 
-**Security Squad** → uses `sql-security-purist` agent
+**Security Squad** → `specialists/sql/sql-security-purist.md`
 Handles: All Python, TypeScript, and JavaScript files that touch the database. Hunts string-formatted SQL, hardcoded connection strings, missing RLS on multi-tenant tables, GRANT ALL statements.
 
 ### War Cry
@@ -229,7 +229,13 @@ The Inquisition begins NOW.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-Spawn all active squads via the Task tool. **All Task calls MUST be in a single message for true parallelism.**
+For EACH active squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. **All Task calls MUST be in a single message for true parallelism.**
+
+- **Query Squad** → Read `specialists/sql/sql-query-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Index Squad** → Read `specialists/sql/sql-index-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Schema Squad** → Read `specialists/sql/sql-schema-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Migration Squad** → Read `specialists/sql/sql-migration-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Security Squad** → Read `specialists/sql/sql-security-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 ### Query Squad Task Prompt
 

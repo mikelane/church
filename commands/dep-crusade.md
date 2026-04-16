@@ -141,7 +141,7 @@ Launch 4 parallel Dependency Purist agents, each with a specialized mission.
 
 **Delegation**:
 ```
-Use dep-vulnerability-purist agent to analyze /tmp/dep-crusade-audit.json
+Read `specialists/dep/dep-vulnerability-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to analyze /tmp/dep-crusade-audit.json
 
 Focus: Security vulnerabilities only
 Scope: All manifests in [path]
@@ -172,7 +172,7 @@ Success criteria: Complete vulnerability report with exact fix commands
 
 **Delegation**:
 ```
-Use dep-freshness-purist agent to analyze /tmp/dep-crusade-outdated.txt
+Read `specialists/dep/dep-freshness-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to analyze /tmp/dep-crusade-outdated.txt
 
 Focus: Outdated packages only
 Scope: All manifests in [path]
@@ -202,7 +202,7 @@ Success criteria: Categorized outdated report with safe update path
 
 **Delegation**:
 ```
-Use dep-unused-purist agent to find unused and phantom dependencies
+Read `specialists/dep/dep-unused-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to find unused and phantom dependencies
 
 Focus: Dead code and fragile imports
 Scope: All source files in [path]
@@ -235,7 +235,7 @@ Success criteria: Complete unused/phantom report with exact fix commands
 
 **Delegation**:
 ```
-Use dep-bloat-purist agent to analyze lockfile and bundle sizes
+Read `specialists/dep/dep-bloat-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to analyze lockfile and bundle sizes
 
 Focus: Duplicate versions and large packages
 Scope: Lockfile and package.json in [path]

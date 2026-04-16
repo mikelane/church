@@ -167,7 +167,7 @@ If `--write` not provided, inform user this is a report-only run.
 ## PHASE 3: SQUAD ORGANIZATION
 
 ### Squad 1: Semantic Enforcers (DOM Watch)
-**Agent**: `a11y-semantic-purist`
+**Specialist**: `specialists/a11y/a11y-semantic-purist.md`
 
 **Mission**: Hunt div-soup, validate heading hierarchy, ensure landmark regions exist.
 
@@ -183,7 +183,7 @@ If `--write` not provided, inform user this is a report-only run.
 ---
 
 ### Squad 2: Focus Pathfinders (The Navigators)
-**Agent**: `a11y-focus-purist`
+**Specialist**: `specialists/a11y/a11y-focus-purist.md`
 
 **Mission**: Ensure keyboard navigation is fully operational with visible focus indicators.
 
@@ -199,7 +199,7 @@ If `--write` not provided, inform user this is a report-only run.
 ---
 
 ### Squad 3: ARIA Oracles (Dynamic Interpreters)
-**Agent**: `a11y-aria-purist`
+**Specialist**: `specialists/a11y/a11y-aria-purist.md`
 
 **Mission**: Ensure dynamic content is announced to assistive technologies.
 
@@ -216,7 +216,7 @@ If `--write` not provided, inform user this is a report-only run.
 ---
 
 ### Squad 4: Perceivability Guardians (Sensory Watch)
-**Agent**: `a11y-perceivable-purist`
+**Specialist**: `specialists/a11y/a11y-perceivable-purist.md`
 
 **Mission**: Ensure all content is perceivable through multiple sensory channels.
 
@@ -236,7 +236,12 @@ If `--write` not provided, inform user this is a report-only run.
 
 **CRITICAL**: All Task tool calls MUST be in a SINGLE message for true parallelism.
 
-Deploy all four specialist squads simultaneously via the Task tool:
+For EACH squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`.
+
+- **Semantic Enforcer Squad** → Read `specialists/a11y/a11y-semantic-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Focus Pathfinder Squad** → Read `specialists/a11y/a11y-focus-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **ARIA Oracle Squad** → Read `specialists/a11y/a11y-aria-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Perceivability Guardian Squad** → Read `specialists/a11y/a11y-perceivable-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 ### Squad 1: Semantic Enforcer
 ```

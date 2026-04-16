@@ -174,19 +174,19 @@ If the user says no, abort. If yes, continue to Phase 3.
 
 Assign files to squads based on scope argument. If `--scope all`, all five squads deploy.
 
-**Ownership Squad** → uses `rust-ownership-purist` agent
+**Ownership Squad** → `specialists/rust/rust-ownership-purist.md`
 Handles: All `.rs` source files. Hunts `.clone()` calls that silence the borrow checker, `Rc<RefCell>` nesting, and lifetime annotation sprawl.
 
-**Error Squad** → uses `rust-error-purist` agent
+**Error Squad** → `specialists/rust/rust-error-purist.md`
 Handles: All `.rs` source files excluding test-only files. Hunts `.unwrap()`, `.expect()`, `panic!()`, `todo!()`, `unimplemented!()`, and `Box<dyn Error>` in library Results.
 
-**Unsafe Squad** → uses `rust-unsafe-purist` agent
+**Unsafe Squad** → `specialists/rust/rust-unsafe-purist.md`
 Handles: All `.rs` files containing `unsafe`. Audits every block for `// SAFETY:` comments and every `unsafe fn` for `# Safety` doc sections.
 
-**Type Squad** → uses `rust-type-purist` agent
+**Type Squad** → `specialists/rust/rust-type-purist.md`
 Handles: All `.rs` source files. Hunts `String` parameters, `Box<dyn Trait>` in return position, public types missing `#[derive(Debug)]`, and god traits.
 
-**Async Squad** → uses `rust-async-purist` agent
+**Async Squad** → `specialists/rust/rust-async-purist.md`
 Handles: All `.rs` files containing `async fn`. Hunts `std::thread::sleep`, `Arc<Mutex<Vec>>` patterns, `.lock().unwrap()`, and unmanaged `tokio::spawn`.
 
 ### War Cry
@@ -215,7 +215,13 @@ Operation begins NOW.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-Spawn all active squads via the Task tool. **All Task calls MUST be in a single message for true parallelism.**
+For EACH active squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. **All Task calls MUST be in a single message for true parallelism.**
+
+- **Ownership Squad** → Read `specialists/rust/rust-ownership-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Error Squad** → Read `specialists/rust/rust-error-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Unsafe Squad** → Read `specialists/rust/rust-unsafe-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Type Squad** → Read `specialists/rust/rust-type-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Async Squad** → Read `specialists/rust/rust-async-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 ### Ownership Squad Task Prompt
 

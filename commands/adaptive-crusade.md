@@ -185,19 +185,19 @@ Assign violations to 5 concern-based specialist squads. Each violation maps to e
 
 ### Squad Organization
 
-**Seam Sentinels** -> uses `adaptive-seam-purist` agent
+**Seam Sentinels** -> `specialists/adaptive/adaptive-seam-purist.md`
 Handles: Hardcoded viewports (100vw, 100vh), fixed pixel widths, missing viewport segments, hinge-spanning layouts, viewport meta, canonical layout adoption
 
-**State Preservation Clerics** -> uses `adaptive-state-purist` agent
+**State Preservation Clerics** -> `specialists/adaptive/adaptive-state-purist.md`
 Handles: Forms without draft persistence, resize/orientation handlers without debounce, scroll position loss, navigation state reset, viewport-dependent state loss
 
-**Focus Trackers** -> uses `adaptive-focus-purist` agent
+**Focus Trackers** -> `specialists/adaptive/adaptive-focus-purist.md`
 Handles: outline:none without replacement, missing focus-visible, positive tabIndex, modals without focus trap, missing skip navigation, custom widgets without keyboard handlers
 
-**DPI Crusaders** -> uses `adaptive-dpi-purist` agent
+**DPI Crusaders** -> `specialists/adaptive/adaptive-dpi-purist.md`
 Handles: Images without srcset, canvas without devicePixelRatio, raster icons (should be SVG), missing viewport meta, missing resolution media queries
 
-**Touch Target Templars** -> uses `adaptive-touch-purist` agent
+**Touch Target Templars** -> `specialists/adaptive/adaptive-touch-purist.md`
 Handles: Interactive elements under 44x44px, hover-only interactions, mouse handlers without touch alternatives, drag-and-drop without feedback, hover-gated visibility
 
 ### War Cry
@@ -227,13 +227,13 @@ Operation begins NOW.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-For EACH squad with violations to analyze, spawn the squad's specialist subagent:
+For EACH squad with violations to analyze, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-- **Seam Sentinels** -> spawn `adaptive-seam-purist`
-- **State Preservation Clerics** -> spawn `adaptive-state-purist`
-- **Focus Trackers** -> spawn `adaptive-focus-purist`
-- **DPI Crusaders** -> spawn `adaptive-dpi-purist`
-- **Touch Target Templars** -> spawn `adaptive-touch-purist`
+- **Seam Sentinels** -> Read `specialists/adaptive/adaptive-seam-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **State Preservation Clerics** -> Read `specialists/adaptive/adaptive-state-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Focus Trackers** -> Read `specialists/adaptive/adaptive-focus-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **DPI Crusaders** -> Read `specialists/adaptive/adaptive-dpi-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Touch Target Templars** -> Read `specialists/adaptive/adaptive-touch-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **Task definition:**
 ```

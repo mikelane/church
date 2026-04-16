@@ -182,19 +182,19 @@ Assign files to 4 fixed concern-based specialist squads. Every bloated file maps
 
 ### Squad Organization
 
-**Component Surgery Squad** → uses `size-component-purist` agent
+**Component Surgery Squad** → `specialists/size/size-component-purist.md`
 Handles: .tsx component files, .page.tsx, .layout.tsx, .section.tsx, .hook.ts files
 
-**Service Surgery Squad** → uses `size-service-purist` agent
+**Service Surgery Squad** → `specialists/size/size-service-purist.md`
 Handles: .service.ts, .controller.ts, .handler.ts, .use-case.ts, .command.ts, .query.ts files
 
-**Domain Surgery Squad** → uses `size-domain-purist` agent
+**Domain Surgery Squad** → `specialists/size/size-domain-purist.md`
 Handles: .entity.ts, .aggregate.ts, .repository.ts, .value-object.ts files
 
-**Utility Surgery Squad** → uses `size-utility-purist` agent
+**Utility Surgery Squad** → `specialists/size/size-utility-purist.md`
 Handles: .util.ts, .helper.ts, .mapper.ts, .adapter.ts, .repository-impl.ts, .config.ts files
 
-**Overflow rule**: Files that do not match any squad suffix (e.g., .spec.ts, generic .ts) are assigned to the **Utility Surgery Squad** (`size-utility-purist`).
+**Overflow rule**: Files that do not match any squad suffix (e.g., .spec.ts, generic .ts) are assigned to the **Utility Surgery Squad** (`specialists/size/size-utility-purist.md`).
 
 ### War Cry
 
@@ -224,12 +224,12 @@ Operation begins NOW.
 
 ## PHASE 4: PARALLEL SURGICAL ANALYSIS
 
-For EACH squad, spawn the squad's specialist subagent:
+For EACH squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-- **Component Surgery Squad** → spawn `size-component-purist`
-- **Service Surgery Squad** → spawn `size-service-purist`
-- **Domain Surgery Squad** → spawn `size-domain-purist`
-- **Utility Surgery Squad** → spawn `size-utility-purist`
+- **Component Surgery Squad** → Read `specialists/size/size-component-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Service Surgery Squad** → Read `specialists/size/size-service-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Domain Surgery Squad** → Read `specialists/size/size-domain-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Utility Surgery Squad** → Read `specialists/size/size-utility-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **Task definition:**
 ```
@@ -293,12 +293,12 @@ If in --split mode, ask final confirmation:
 
 ## PHASE 5: EXECUTE SURGERY (only if --split flag)
 
-For EACH squad with files to split, spawn the squad's specialist subagent:
+For EACH squad with files to split, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-- **Component Surgery Squad** → spawn `size-component-purist`
-- **Service Surgery Squad** → spawn `size-service-purist`
-- **Domain Surgery Squad** → spawn `size-domain-purist`
-- **Utility Surgery Squad** → spawn `size-utility-purist`
+- **Component Surgery Squad** → Read `specialists/size/size-component-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Service Surgery Squad** → Read `specialists/size/size-service-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Domain Surgery Squad** → Read `specialists/size/size-domain-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Utility Surgery Squad** → Read `specialists/size/size-utility-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **Task definition:**
 ```

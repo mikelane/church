@@ -179,19 +179,19 @@ Assign violations to 5 fixed concern-based specialist squads. Each file's violat
 
 ### Squad Organization
 
-**Concurrency Enforcement Squad** → uses `swift-concurrency-purist` agent
+**Concurrency Enforcement Squad** → `specialists/swift/swift-concurrency-purist.md`
 Handles: Sendable violations, actor isolation gaps, @MainActor omissions, unstructured Task {}, @unchecked Sendable, nonisolated misuse, DispatchQueue legacy patterns
 
-**Type Safety Inquisition Squad** → uses `swift-type-purist` agent
+**Type Safety Inquisition Squad** → `specialists/swift/swift-type-purist.md`
 Handles: Force casts (as!), Any/AnyObject usage, [String: Any] dictionaries, some vs any, protocol design, generic constraints, inheritance abuse
 
-**Memory Vigilance Squad** → uses `swift-memory-purist` agent
+**Memory Vigilance Squad** → `specialists/swift/swift-memory-purist.md`
 Handles: Missing [weak self], strong delegates, unowned misuse, class vs struct, retain cycles, observer cleanup, timer lifecycle
 
-**Error Doctrine Squad** → uses `swift-error-purist` agent
+**Error Doctrine Squad** → `specialists/swift/swift-error-purist.md`
 Handles: try!, empty catch blocks, bare throws, try? without justification, missing error types, generic catch patterns, Result with untyped failure
 
-**API Purity Squad** → uses `swift-api-purist` agent
+**API Purity Squad** → `specialists/swift/swift-api-purist.md`
 Handles: Abbreviated names, missing argument labels, mutating without pair, Boolean naming, factory method naming, method naming conventions
 
 **Scope filtering:** If `--scope` is provided, only deploy the matching squad.
@@ -224,13 +224,13 @@ Operation begins NOW.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-For EACH squad with assigned files, spawn the squad's specialist subagent:
+For EACH squad with assigned files, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-- **Concurrency Enforcement Squad** → spawn `swift-concurrency-purist`
-- **Type Safety Inquisition Squad** → spawn `swift-type-purist`
-- **Memory Vigilance Squad** → spawn `swift-memory-purist`
-- **Error Doctrine Squad** → spawn `swift-error-purist`
-- **API Purity Squad** → spawn `swift-api-purist`
+- **Concurrency Enforcement Squad** → Read `specialists/swift/swift-concurrency-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Type Safety Inquisition Squad** → Read `specialists/swift/swift-type-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Memory Vigilance Squad** → Read `specialists/swift/swift-memory-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Error Doctrine Squad** → Read `specialists/swift/swift-error-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **API Purity Squad** → Read `specialists/swift/swift-api-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **Task definition:**
 ```

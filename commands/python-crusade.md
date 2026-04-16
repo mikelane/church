@@ -184,19 +184,19 @@ If the user says no, abort. If yes, continue.
 
 Assign files to squads based on scope argument. If `--scope all`, all five squads deploy.
 
-**Type Squad** → uses `python-type-purist` agent
+**Type Squad** → `specialists/python/python-type-purist.md`
 Handles: All `.py` source files (not test files). Runs mypy --strict. Fixes missing annotations, unjustified Any, bare dict/list returns.
 
-**Style Squad** → uses `python-style-purist` agent
+**Style Squad** → `specialists/python/python-style-purist.md`
 Handles: All `.py` files. Runs ruff check. Fixes PEP 8 violations, naming, docstrings, import order, mutable defaults, old-style string formatting.
 
-**Complexity Squad** → uses `python-complexity-purist` agent
+**Complexity Squad** → `specialists/python/python-complexity-purist.md`
 Handles: All `.py` source files. Hunts functions >50 lines, classes >200 lines, cyclomatic complexity >10 (via ruff C901), nesting >3 levels.
 
-**Test Squad** → uses `python-test-purist` agent
+**Test Squad** → `specialists/python/python-test-purist.md`
 Handles: All `test_*.py` and `*_test.py` files. Hunts loops in tests, weak assertions, bad names, private attribute access, missing parametrize.
 
-**Security Squad** → uses `python-security-purist` agent
+**Security Squad** → `specialists/python/python-security-purist.md`
 Handles: All `.py` files. Runs bandit. Hunts injection vectors, unsafe deserialization, weak crypto, assert-based security checks, hardcoded secrets.
 
 ### War Cry
@@ -225,7 +225,13 @@ Operation begins NOW.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-Spawn all active squads via the Task tool. **All Task calls MUST be in a single message for true parallelism.**
+For EACH active squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. **All Task calls MUST be in a single message for true parallelism.**
+
+- **Type Squad** → Read `specialists/python/python-type-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Style Squad** → Read `specialists/python/python-style-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Complexity Squad** → Read `specialists/python/python-complexity-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Test Squad** → Read `specialists/python/python-test-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Security Squad** → Read `specialists/python/python-security-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 For each squad, the task prompt follows this template:
 

@@ -98,47 +98,40 @@ RECONNAISSANCE COMPLETE
 
 **Squad Assignment**:
 
-#### **Layer Violation Squad** (arch-layer-purist agent)
+#### **Layer Violation Squad** → `specialists/arch/arch-layer-purist.md`
 - **Target**: Domain purity, upward dependencies, repository pattern violations
 - **Scope**: All `*/domain/` directories
 - **Deliverable**: List of domain files importing from infrastructure/presentation/application
 
-#### **Circular Dependency Squad** (arch-circular-purist agent)
+#### **Circular Dependency Squad** → `specialists/arch/arch-circular-purist.md`
 - **Target**: Circular import cycles at all levels (file, module, domain)
 - **Scope**: Complete dependency graph
 - **Deliverable**: All detected cycles with full import chains (A→B→C→A)
 
-#### **Cross-Domain Squad** (arch-cross-domain-purist agent)
+#### **Cross-Domain Squad** → `specialists/arch/arch-cross-domain-purist.md`
 - **Target**: Direct imports between domain modules
 - **Scope**: All domain module boundaries
 - **Deliverable**: Cross-domain import violations with suggested event-driven alternatives
 
-#### **Pattern Compliance Squad** (arch-pattern-purist agent)
+#### **Pattern Compliance Squad** → `specialists/arch/arch-pattern-purist.md`
 - **Target**: Layer skipping, interface segregation, type duplication
 - **Scope**: Application and presentation layers
 - **Deliverable**: Pattern violations with fix proposals
 
-#### **Shadow Contract Squad** (arch-shadow-purist agent)
+#### **Shadow Contract Squad** → `specialists/arch/arch-shadow-purist.md`
 - **Target**: Schemas, DTOs, and tool definitions that hardcode subsets of domain enums or state machines
 - **Scope**: All Zod schemas, DTOs, and tool/API definitions cross-referenced with domain entities
 - **Deliverable**: Schema-domain divergence violations with derivation fixes
 
 **Deployment Strategy**:
-```typescript
-// Conceptual parallel execution
-const squads = [
-  { name: "Layer Violation", agent: "arch-layer-purist", focus: "domain-purity", domains: allDomains },
-  { name: "Circular Dependency", agent: "arch-circular-purist", focus: "cycles", domains: allDomains },
-  { name: "Cross-Domain", agent: "arch-cross-domain-purist", focus: "domain-isolation", domains: allDomains },
-  { name: "Pattern Compliance", agent: "arch-pattern-purist", focus: "patterns", domains: allDomains },
-  { name: "Shadow Contract", agent: "arch-shadow-purist", focus: "schema-domain-alignment", domains: allDomains }
-]
 
-// Each squad gets its own specialist agent
-await Promise.all(squads.map(squad =>
-  Task(squad.agent, { focus: squad.focus, domains: squad.domains })
-))
-```
+Follow the Specialist Dispatch Protocol at the top of this file. For each squad, Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
+
+- **Layer Violation Squad** → Read `specialists/arch/arch-layer-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Circular Dependency Squad** → Read `specialists/arch/arch-circular-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Cross-Domain Squad** → Read `specialists/arch/arch-cross-domain-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Pattern Compliance Squad** → Read `specialists/arch/arch-pattern-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Shadow Contract Squad** → Read `specialists/arch/arch-shadow-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **War Room Updates**:
 ```
@@ -508,22 +501,22 @@ If `--domain` flag provided, filter to that domain only.
 
 ### Step 3: Deploy Parallel Squads
 
-Use `Task` to spawn specialist arch-purist agents with different focus areas:
+Follow the Specialist Dispatch Protocol at the top of this file. For each squad, Read the specialist file, strip YAML frontmatter, and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
 ```
-Squad 1 Focus: domain-purity
+Squad 1 (specialists/arch/arch-layer-purist.md): domain-purity
   Input: All files in */domain/ directories
   Output: Domain import violations
 
-Squad 2 Focus: circular-dependencies
+Squad 2 (specialists/arch/arch-circular-purist.md): circular-dependencies
   Input: Complete dependency graph
   Output: All cycles detected
 
-Squad 3 Focus: cross-domain-imports
+Squad 3 (specialists/arch/arch-cross-domain-purist.md): cross-domain-imports
   Input: All domain module boundaries
   Output: Cross-domain violations
 
-Squad 4 Focus: pattern-compliance
+Squad 4 (specialists/arch/arch-pattern-purist.md): pattern-compliance
   Input: Application and presentation layers
   Output: Pattern violations
 ```

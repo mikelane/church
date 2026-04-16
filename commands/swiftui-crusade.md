@@ -160,19 +160,19 @@ Assign findings to 5 fixed concern-based specialist squads. Every SwiftUI file m
 
 ### Squad Organization
 
-**Castellan Squad** → uses `swiftui-arch-purist` agent
+**Castellan Squad** → `specialists/swiftui/swiftui-arch-purist.md`
 Handles: Architecture patterns, MVVM separation, god-view detection, dependency injection, service/repository abstraction
 
-**Mason Squad** → uses `swiftui-view-purist` agent
+**Mason Squad** → `specialists/swiftui/swiftui-view-purist.md`
 Handles: View body complexity, subview extraction, modifier ordering, @ViewBuilder usage, nesting depth, preview coverage
 
-**Armorer Squad** → uses `swiftui-state-purist` agent
+**Armorer Squad** → `specialists/swiftui/swiftui-state-purist.md`
 Handles: Property wrapper usage, @State/@Binding/@Observable correctness, single source of truth, derived state detection
 
-**Siege Squad** → uses `swiftui-perf-purist` agent
+**Siege Squad** → `specialists/swiftui/swiftui-perf-purist.md`
 Handles: Lazy containers, body computation, stable Identifiable, scoped animations, .task vs .onAppear, recomputation blast radius
 
-**Pathfinder Squad** → uses `swiftui-nav-purist` agent
+**Pathfinder Squad** → `specialists/swiftui/swiftui-nav-purist.md`
 Handles: NavigationStack vs NavigationView, typed route enums, deep linking, sheet management, centralized router
 
 ### War Cry
@@ -207,13 +207,13 @@ The declarative kingdom will be PURIFIED.
 
 ## PHASE 4: PARALLEL DEPLOYMENT
 
-For EACH squad, spawn the squad's specialist subagent via the Task tool:
+For EACH squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-- **Castellan Squad** → spawn `swiftui-arch-purist`
-- **Mason Squad** → spawn `swiftui-view-purist`
-- **Armorer Squad** → spawn `swiftui-state-purist`
-- **Siege Squad** → spawn `swiftui-perf-purist`
-- **Pathfinder Squad** → spawn `swiftui-nav-purist`
+- **Castellan Squad** → Read `specialists/swiftui/swiftui-arch-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Mason Squad** → Read `specialists/swiftui/swiftui-view-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Armorer Squad** → Read `specialists/swiftui/swiftui-state-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Siege Squad** → Read `specialists/swiftui/swiftui-perf-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Pathfinder Squad** → Read `specialists/swiftui/swiftui-nav-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **Task definition template:**
 ```

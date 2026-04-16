@@ -145,7 +145,7 @@ Spawn 6 specialized Dead Code Purist agents in PARALLEL, each with a focused mis
 
 **Delegation**:
 ```
-Use the dead-export-purist agent to:
+Read `specialists/dead/dead-export-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Find all export statements in {scope}
 2. Build a complete import map across the entire codebase
@@ -173,7 +173,7 @@ Focus ONLY on unused exports. Ignore commented code, TODOs, etc.
 
 **Delegation**:
 ```
-Use the dead-orphan-purist agent to:
+Read `specialists/dead/dead-orphan-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Build dependency graph starting from entry points:
    - {scope}/src/main.ts or index.ts
@@ -212,7 +212,7 @@ Focus ONLY on orphaned files. Ignore exports, comments, etc.
 
 **Delegation**:
 ```
-Use the dead-comment-purist agent to:
+Read `specialists/dead/dead-comment-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Find multi-line comment blocks containing code-like syntax:
    - Function calls with parentheses
@@ -249,7 +249,7 @@ Focus ONLY on commented code. Ignore exports, orphans, etc.
 
 **Delegation**:
 ```
-Use the dead-debug-purist agent to:
+Read `specialists/dead/dead-debug-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Find debugging artifacts:
    - console.log, console.debug, console.info
@@ -285,7 +285,7 @@ Focus ONLY on debug artifacts. Ignore exports, orphans, etc.
 
 **Delegation**:
 ```
-Use the dead-todo-purist agent to:
+Read `specialists/dead/dead-todo-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Find all TODO/FIXME/HACK/XXX comments
 
@@ -323,7 +323,7 @@ Focus ONLY on TODO comments. Ignore exports, orphans, etc.
 
 **Delegation**:
 ```
-Use the dead-unreachable-purist agent to:
+Read `specialists/dead/dead-unreachable-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`. Squad prompt:
 
 1. Find unreachable code patterns:
    - Code after return/throw statements (in same block)

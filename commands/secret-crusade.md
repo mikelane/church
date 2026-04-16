@@ -112,7 +112,7 @@ Deploy 2-4 parallel Secret Purist squads based on:
 
 **Task delegation**:
 ```
-Use the secret-scanner-purist agent to scan all tracked files in [path].
+Read `specialists/secret/secret-scanner-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to scan all tracked files in [path].
 
 Objectives:
 1. List all tracked files with: git ls-files
@@ -148,7 +148,7 @@ Output format:
 
 **Task delegation**:
 ```
-Use the secret-config-purist agent to validate configuration files in [path].
+Read `specialists/secret/secret-config-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to validate configuration files in [path].
 
 Objectives:
 1. Verify .gitignore covers secret patterns
@@ -179,7 +179,7 @@ Output format:
 
 **Task delegation**:
 ```
-Use the secret-history-purist agent to scan ENTIRE git history for secrets in [path].
+Read `specialists/secret/secret-history-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to scan ENTIRE git history for secrets in [path].
 
 ⚠️  WARNING: This scans full git history with git log -p. May take several minutes on large repos.
 
@@ -215,7 +215,7 @@ Output format:
 
 **Task delegation**:
 ```
-Use the secret-supply-purist agent to audit dependencies in [path].
+Read `specialists/secret/secret-supply-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")` to audit dependencies in [path].
 
 Objectives:
 1. List all dependencies from package.json / requirements.txt
@@ -257,15 +257,12 @@ Standby for contact reports...
 
 ## PHASE 4: PARALLEL EXECUTION
 
-Deploy squads using `Task` tool:
+For EACH squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-```typescript
-// Example structure (adapt to actual Task tool syntax)
-Task 1: secret-scanner-purist (File Scanner Squad)
-Task 2: secret-config-purist (Config Sentinel Squad)
-Task 3: secret-history-purist (History Squad) // if --history
-Task 4: secret-supply-purist (Dependency Audit Squad) // if --deep
-```
+- **File Scanner Squad** → Read `specialists/secret/secret-scanner-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Config Sentinel Squad** → Read `specialists/secret/secret-config-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **History Squad** (if `--history`) → Read `specialists/secret/secret-history-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Dependency Audit Squad** (if `--deep`) → Read `specialists/secret/secret-supply-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 **Important**:
 - All squads run in PARALLEL

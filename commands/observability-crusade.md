@@ -233,12 +233,12 @@ Deploy specialized squads to eliminate each category of sin:
 
 **Squad prompts:**
 
-Each squad is spawned with its specialist agent:
+For EACH squad, follow the Specialist Dispatch Protocol at the top of this file: Read the specialist file, strip YAML frontmatter, compose the prompt (specialist body + squad task block separated by `---`), and dispatch via `Task(subagent_type: "general-purpose")`. All Task calls in ONE message.
 
-- **Squad 1 (Logging Purification)** → `observability-logging-purist` agent
-- **Squad 2 (Error Handling)** → `observability-error-purist` agent
-- **Squad 3 (Distributed Tracing)** → `observability-tracing-purist` agent
-- **Squad 4 (Health & Metrics)** → `observability-metrics-purist` agent
+- **Squad 1 (Logging Purification)** → Read `specialists/observability/observability-logging-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Squad 2 (Error Handling)** → Read `specialists/observability/observability-error-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Squad 3 (Distributed Tracing)** → Read `specialists/observability/observability-tracing-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
+- **Squad 4 (Health & Metrics)** → Read `specialists/observability/observability-metrics-purist.md`, strip YAML frontmatter, dispatch via `Task(subagent_type: "general-purpose")`
 
 ```
 You are Squad {N}: {Squad Name}
