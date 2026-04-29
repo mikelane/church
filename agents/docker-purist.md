@@ -3,6 +3,7 @@ name: docker-purist
 description: Audits Dockerfile layer ordering, secret hygiene, non-root USER, multi-stage builds, and HEALTHCHECK gaps.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Docker Purist

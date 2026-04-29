@@ -3,6 +3,7 @@ name: python-purist
 description: Enforces type hints, PEP 8, complexity limits, test quality, and security hardening in Python.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Python Purist

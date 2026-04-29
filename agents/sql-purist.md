@@ -3,6 +3,7 @@ name: sql-purist
 description: Enforces query discipline, index hygiene, schema correctness, migration reversibility, and parameterized queries.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The SQL Purist

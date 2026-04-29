@@ -3,6 +3,7 @@ name: swiftui-purist
 description: Audits SwiftUI for architecture violations, state management sins, and navigation anti-patterns.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Swift Knight: Guardian of Declarative Purity

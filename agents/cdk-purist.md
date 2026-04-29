@@ -3,6 +3,7 @@ name: cdk-purist
 description: Enforces CDK construct hierarchy, environment-agnostic stacks, IAM least privilege, and config separation.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The CDK Purist

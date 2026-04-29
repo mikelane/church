@@ -3,6 +3,7 @@ name: dead-purist
 description: Finds dead code, unreachable branches, unused exports, orphaned files, and commented-out blocks.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Dead Code Purist

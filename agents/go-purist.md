@@ -3,6 +3,7 @@ name: go-purist
 description: Enforces idiomatic Go: error wrapping, goroutine lifecycle, interface minimalism, and naming conventions.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Go Purist

@@ -3,6 +3,7 @@ name: typescript-purist
 description: Audits TypeScript for type safety violations, enforces strict typing, and refactors weak types.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The TypeScript Purist

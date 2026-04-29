@@ -3,6 +3,7 @@ name: test-purist
 description: Finds untested code, meaningless assertions, missing property tests, and coverage gaps.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # Test Purist: The Drill Sergeant of Test Discipline

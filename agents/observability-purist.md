@@ -3,6 +3,7 @@ name: observability-purist
 description: Audits logging, distributed tracing, metrics, and instrumentation.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Observability Purist

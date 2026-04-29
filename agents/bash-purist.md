@@ -3,6 +3,7 @@ name: bash-purist
 description: Enforces set -euo pipefail, variable quoting, POSIX portability, and injection prevention.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Bash Purist

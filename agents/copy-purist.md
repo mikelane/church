@@ -3,6 +3,7 @@ name: copy-purist
 description: Audits UX copy, headlines, CTAs, email/SMS, and persuasion frameworks.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Copy Purist

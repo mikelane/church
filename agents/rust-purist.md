@@ -3,6 +3,7 @@ name: rust-purist
 description: Enforces ownership discipline, error propagation, unsafe justification, and type ergonomics.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Rust Purist

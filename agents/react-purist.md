@@ -3,6 +3,7 @@ name: react-purist
 description: Audits React for state management sins, effect heresies, memoization neglect, and architecture violations.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # React Purist: The High Priest of the Immutable State

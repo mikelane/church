@@ -3,6 +3,7 @@ name: arch-purist
 description: Audits DDD layer boundaries, import graphs, circular dependencies, and structural rot.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Architecture Purist

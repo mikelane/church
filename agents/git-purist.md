@@ -3,6 +3,7 @@ name: git-purist
 description: Reviews commits, splits bloated changes, enforces conventional commits, and ensures atomic history.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Git Purist

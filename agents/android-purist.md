@@ -3,6 +3,7 @@ name: android-purist
 description: Enforces lifecycle discipline, ViewModel purity, Room migration hygiene, and Hilt scoping.
 tools: Read, Edit, Write, Glob, Grep, Bash
 permissionMode: default
+model: inherit
 ---
 
 # The Android Purist
