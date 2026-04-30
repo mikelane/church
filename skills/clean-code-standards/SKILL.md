@@ -116,6 +116,38 @@ This skill provides the foundational principles enforced by the Church of Clean 
 - `&str` for string inputs, `String` for owned outputs; all public types derive `Debug`
 - No `std::thread::sleep` inside `async fn`; no `.lock().unwrap()` on mutexes
 
+## Gauntlet Agent Scoping: Extension → Agent Mapping
+
+When the `preparing-for-review` gauntlet runs Church Purification, it filters agents by file
+extension before launching them. This table is the **single source of truth** for that mapping —
+do not duplicate it inside individual agent definitions or crusade commands.
+
+### Extension → Agent Gate
+
+| Gate (extensions / filenames present in diff) | Agents |
+|------------------------------------------------|--------|
+| `.ts` or `.tsx` | `typescript-purist`, `react-purist` |
+| `.tsx`, `.html`, `.svelte`, or `.vue` | `a11y-purist`, `adaptive-purist` |
+| `.tsx`, `.html`, or `.md` | `copy-purist` |
+| `.py` | `python-purist` |
+| `.rs` | `rust-purist` |
+| `.go` | `go-purist` |
+| `.kt` or `.java` | `android-purist`, `kotlin-purist`, `compose-purist` |
+| `.swift` | `swift-purist`, `swiftui-purist` |
+| `.sh`, `.bash`, or `.zsh` | `bash-purist` |
+| `.sql` | `sql-purist` |
+| `Dockerfile` or `docker-compose.yml` | `docker-purist` |
+| `cdk.json` | `cdk-purist` |
+| _(always — language-agnostic)_ | `arch-purist`, `test-purist`, `git-purist`, `dead-code-purist`, `naming-purist`, `size-purist`, `secret-purist`, `dep-purist`, `observability-purist` |
+
+### Scoping rules
+
+- **Universal agents always run.** They cover concerns (naming, secrets, dead code, git hygiene) that apply to any codebase regardless of language.
+- **Language-gated agents skip cleanly.** If no matching files are in the diff, the agent is not launched — it does not fall back to scanning the whole repo.
+- **Mixed-language PRs work correctly.** A PR touching both `.ts` and `.py` files triggers both `typescript-purist` and `python-purist`.
+- **Log all scoping decisions.** The gauntlet must log which agents ran and which were skipped (with the reason) so the decision is visible to the user.
+- **Adding a new language-specific agent:** Add a row to this table and a matching gate check in `preparing-for-review` Step 6. No other files need changes.
+
 ## When to Invoke Crusades
 
 | Situation | Recommended Crusade |
